@@ -1,131 +1,135 @@
-// Base de conocimiento de problemas y sus prioridades
-const baseConocimiento = {
+const catalogoProblemas = {
     hardware: {
-        label: 'Hardware / Equipos',
+        icono: '💻',
+        nombre: 'Computador o laptop',
         problemas: {
             'pc-no-enciende': {
-                titulo: 'Equipo no enciende',
+                titulo: 'Mi equipo no enciende',
                 descripcion: 'El computador no muestra señal de vida al presionar el botón de encendido. Posible falla en fuente de poder, placa madre o conexiones eléctricas.',
                 prioridad: 'Alta'
             },
             'pantalla-azul': {
-                titulo: 'Pantalla azul (BSOD)',
+                titulo: 'Aparece pantalla azul (BSOD)',
                 descripcion: 'El sistema presenta pantallazos azules aleatorios durante el uso. Posible conflicto de drivers, memoria RAM defectuosa o problema de disco duro.',
                 prioridad: 'Alta'
             },
+            'monitor-negro': {
+                titulo: 'Monitor negro, no muestra imagen',
+                descripcion: 'La pantalla permanece negra aunque el equipo esté encendido. Posible problema de cable, conexión o panel dañado.',
+                prioridad: 'Alta'
+            },
             'sobrecalentamiento': {
-                titulo: 'Equipo se sobrecalienta',
-                descripcion: 'El dispositivo alcanza temperaturas elevadas durante operación normal. Riesgo de daño permanente en componentes. Requiere limpieza o revisión de ventiladores.',
+                titulo: 'Se sobrecalienta mucho',
+                descripcion: 'El dispositivo alcanza temperaturas elevadas durante operación normal. Riesgo de daño permanente en componentes.',
                 prioridad: 'Media'
             },
             'teclado-danado': {
-                titulo: 'Teclado dañado o sucio',
+                titulo: 'Teclado sucio o teclas no funcionan',
                 descripcion: 'Teclas no responden, se traban o presentan suciedad acumulada. Afecta la productividad del usuario.',
                 prioridad: 'Baja'
             },
             'mouse-falla': {
-                titulo: 'Mouse no funciona correctamente',
+                titulo: 'Mouse no responde bien',
                 descripcion: 'El puntero no responde, se mueve erráticamente o los clicks no registran. Puede ser cable, sensor o batería.',
                 prioridad: 'Baja'
-            },
-            'monitor-negro': {
-                titulo: 'Monitor no muestra imagen',
-                descripcion: 'La pantalla permanece negra aunque el equipo esté encendido. Posible problema de cable, conexión o panel.',
-                prioridad: 'Alta'
             }
         }
     },
     software: {
-        label: 'Software / Aplicaciones',
+        icono: '⚙️',
+        nombre: 'Programas y aplicaciones',
         problemas: {
             'office-crash': {
-                titulo: 'Microsoft Office no responde',
-                descripcion: 'Las aplicaciones de Office (Word, Excel, Outlook) se cierran inesperadamente o no abren. Posible archivo corrupto o conflicto de complementos.',
+                titulo: 'Microsoft Office se cierra solo',
+                descripcion: 'Word, Excel o Outlook se cierran inesperadamente o no abren. Posible archivo corrupto o conflicto de complementos.',
                 prioridad: 'Media'
             },
             'antivirus-vencido': {
-                titulo: 'Licencia de antivirus vencida',
-                descripcion: 'El software de seguridad muestra alerta de licencia expirada. El equipo está desprotegido contra amenazas.',
+                titulo: 'Antivirus muestra alerta de vencimiento',
+                descripcion: 'El software de seguridad muestra licencia expirada. El equipo está desprotegido contra amenazas.',
                 prioridad: 'Alta'
             },
-            'actualizacion-pendiente': {
-                titulo: 'Actualizaciones del sistema pendientes',
-                descripcion: 'El sistema operativo requiere instalación de actualizaciones de seguridad y mejoras de rendimiento.',
-                prioridad: 'Baja'
-            },
             'app-externa': {
-                titulo: 'Aplicación de terceros falla',
+                titulo: 'Aplicación del trabajo no funciona',
                 descripcion: 'Software específico del departamento presenta errores o no ejecuta correctamente.',
                 prioridad: 'Media'
             },
             'navegador-lento': {
-                titulo: 'Navegador web lento',
-                descripcion: 'Chrome/Edge/Firefox tarda en cargar páginas o se congela. Posible exceso de extensiones o caché saturado.',
+                titulo: 'Internet va muy lento en el navegador',
+                descripcion: 'Chrome/Edge tarda en cargar páginas o se congela. Posible exceso de extensiones o caché saturado.',
+                prioridad: 'Baja'
+            },
+            'actualizacion-pendiente': {
+                titulo: 'Windows pide actualizarse constantemente',
+                descripcion: 'El sistema operativo requiere instalación de actualizaciones de seguridad y mejoras.',
                 prioridad: 'Baja'
             }
         }
     },
     red: {
-        label: 'Red / Internet',
+        icono: '🌐',
+        nombre: 'Internet y red',
         problemas: {
             'sin-internet': {
-                titulo: 'Sin conexión a Internet',
-                descripcion: 'El equipo no puede acceder a recursos web ni servicios en la nube. Afecta todas las operaciones que dependen de conectividad.',
+                titulo: 'No tengo internet',
+                descripcion: 'El equipo no puede acceder a recursos web ni servicios en la nube. Afecta todas las operaciones.',
                 prioridad: 'Critica'
             },
             'vpn-caida': {
-                titulo: 'VPN corporativa desconectada',
-                descripcion: 'No se puede establecer conexión segura con la red corporativa. Imposible acceder a servidores internos remotos.',
+                titulo: 'No puedo conectarme por VPN',
+                descripcion: 'No se puede establecer conexión segura con la red corporativa. Imposible acceder a servidores internos.',
                 prioridad: 'Alta'
             },
             'wifi-lento': {
-                titulo: 'WiFi lento o intermitente',
+                titulo: 'WiFi muy lento o se corta',
                 descripcion: 'La conexión inalámbrica presenta velocidades reducidas o desconexiones frecuentes.',
                 prioridad: 'Media'
             },
             'compartir-archivos': {
-                titulo: 'No se pueden compartir archivos en red',
+                titulo: 'No veo carpetas compartidas',
                 descripcion: 'Imposible acceder a carpetas compartidas del servidor o de otros equipos.',
                 prioridad: 'Media'
             }
         }
     },
     email: {
-        label: 'Correo / Email',
+        icono: '📧',
+        nombre: 'Correo electrónico',
         problemas: {
             'no-envia': {
-                titulo: 'No se pueden enviar correos',
+                titulo: 'No puedo enviar correos',
                 descripcion: 'Los mensajes quedan atascados en bandeja de salida. Posible problema de configuración SMTP o límite de almacenamiento.',
                 prioridad: 'Alta'
             },
             'no-recibe': {
-                titulo: 'No llegan correos nuevos',
-                descripcion: 'La bandeja de entrada no muestra mensajes recientes aunque se confirmó envío. Posible problema de sincronización.',
+                titulo: 'No me llegan correos nuevos',
+                descripcion: 'La bandeja de entrada no muestra mensajes recientes aunque se confirmó envío.',
                 prioridad: 'Alta'
             },
-            ' outlook-no-abre': {
+            'outlook-no-abre': {
                 titulo: 'Outlook no abre',
                 descripcion: 'La aplicación de correo no inicia o se cierra al momento de abrir. Posible perfil corrupto.',
                 prioridad: 'Alta'
             },
             'configurar-firma': {
-                titulo: 'Configurar firma de correo',
-                descripcion: 'El usuario requiere asistencia para crear o modificar su firma electrónica corporativa.',
+                titulo: 'Necesito configurar mi firma',
+                descripcion: 'El usuario requiere asistencia para crear o modificar firma electrónica corporativa.',
                 prioridad: 'Baja'
             },
             'recuperar-borrado': {
-                titulo: 'Recuperar correo borrado',
-                descripcion: 'Se eliminó accidentalmente un mensaje importante y se requiere recuperación desde copia de seguridad.',
+                titulo: 'Borré un correo importante',
+                descripcion: 'Se eliminó accidentalmente un mensaje y se requiere recuperación desde copia de seguridad.',
                 prioridad: 'Media'
             }
         }
     },
     impresion: {
-        label: 'Impresión / Escaneo',
+        icono: '🖨️',
+        nombre: 'Impresión',
         problemas: {
             'impresora-oficina': {
-                titulo: 'Impresora de oficina no responde',
-                descripcion: 'La impresora compartida no procesa trabajos de impresión. Posible atasco, sin toner o desconexión de red.',
+                titulo: 'Impresora de la oficina no responde',
+                descripcion: 'La impresora compartida no procesa trabajos de impresión. Posible atasco, sin toner o desconexión.',
                 prioridad: 'Alta'
             },
             'escaner-falla': {
@@ -133,39 +137,40 @@ const baseConocimiento = {
                 descripcion: 'El equipo no escanea documentos o la calidad es deficiente. Requiere limpieza o recalibración.',
                 prioridad: 'Media'
             },
-            'instalar-impresora': {
-                titulo: 'Instalar nueva impresora',
-                descripcion: 'Se requiere configurar impresora de red o USB en el equipo del usuario.',
-                prioridad: 'Baja'
-            },
             'toner-agotado': {
-                titulo: 'Tóner o tinta agotada',
+                titulo: 'Se acabó la tinta o tóner',
                 descripcion: 'La impresora muestra alerta de consumible vacío. Necesita reposición.',
                 prioridad: 'Media'
+            },
+            'instalar-impresora': {
+                titulo: 'Necesito instalar una impresora nueva',
+                descripcion: 'Configurar impresora de red o USB en el equipo del usuario.',
+                prioridad: 'Baja'
             }
         }
     },
     accesos: {
-        label: 'Accesos / Cuentas',
+        icono: '🔐',
+        nombre: 'Accesos y contraseñas',
         problemas: {
             'password-bloqueada': {
-                titulo: 'Cuenta bloqueada por intentos fallidos',
-                descripcion: 'El usuario ingresó mal su contraseña varias veces y la cuenta fue bloqueada por seguridad. Requiere desbloqueo administrativo.',
-                prioridad: 'Alta'
+                titulo: 'Mi cuenta está bloqueada',
+                descripcion: 'El usuario ingresó mal su contraseña varias veces y la cuenta fue bloqueada por seguridad.',
+                prioridad: 'Critica'
             },
             'reset-password': {
-                titulo: 'Restablecer contraseña',
-                descripcion: 'El usuario olvidó su contraseña y no puede acceder al sistema. Requiere reseteo y comunicación de nueva clave temporal.',
+                titulo: 'Olvidé mi contraseña',
+                descripcion: 'El usuario olvidó su contraseña y no puede acceder al sistema.',
                 prioridad: 'Media'
             },
             'acceso-carpeta': {
-                titulo: 'Sin acceso a carpeta compartida',
-                descripcion: 'El usuario necesita permisos para acceder a directorio específico del servidor.',
+                titulo: 'No tengo permiso para una carpeta',
+                descripcion: 'El usuario necesita acceso a directorio específico del servidor.',
                 prioridad: 'Media'
             },
             'crear-usuario': {
-                titulo: 'Crear nuevo usuario',
-                descripcion: 'Ingreso de personal nuevo que requiere cuenta de dominio, correo y accesos básicos.',
+                titulo: 'Nuevo empleado necesita cuenta',
+                descripcion: 'Ingreso de personal nuevo que requiere cuenta de dominio, correo y accesos.',
                 prioridad: 'Media'
             },
             'bloquear-exempleado': {
@@ -176,20 +181,21 @@ const baseConocimiento = {
         }
     },
     otros: {
-        label: 'Otros',
+        icono: '🌸',
+        nombre: 'Otras consultas',
         problemas: {
             'consulta-general': {
-                titulo: 'Consulta general de IT',
-                descripcion: 'El usuario tiene dudas sobre algún procedimiento, necesita orientación o capacitación básica.',
+                titulo: 'Tengo una duda sobre IT',
+                descripcion: 'El usuario tiene dudas sobre algún procedimiento o necesita orientación general.',
                 prioridad: 'Baja'
             },
             'compra-equipo': {
-                titulo: 'Solicitud de compra de equipo',
+                titulo: 'Solicitud de equipo nuevo',
                 descripcion: 'Requerimiento de nuevo hardware, periféricos o accesorios para el área.',
                 prioridad: 'Baja'
             },
             'urgencia-desconocida': {
-                titulo: 'Problema no catalogado',
+                titulo: 'Problema no listado aquí',
                 descripcion: 'Incidencia que no entra en categorías estándar. Requiere evaluación del técnico.',
                 prioridad: 'Media'
             }
@@ -197,227 +203,110 @@ const baseConocimiento = {
     }
 };
 
-// Elementos del DOM
 const selectCategoria = document.getElementById('categoria');
-const grupoProblema = document.getElementById('grupo-problema');
-const selectProblema = document.getElementById('tipo-problema');
+const campoProblema = document.getElementById('campo-problema');
+const selectProblema = document.getElementById('problema');
+const campoDetalles = document.getElementById('campo-detalles');
 const vistaPrevia = document.getElementById('vista-previa');
-const vpTitulo = document.getElementById('vp-titulo');
-const vpDesc = document.getElementById('vp-desc');
-const badgePrioridad = document.getElementById('badge-prioridad');
-const btnCrear = document.getElementById('btn-crear');
+const tagPrioridad = document.getElementById('tag-prioridad');
+const vpProblemaTexto = document.getElementById('vp-problema-texto');
+const btnEnviar = document.getElementById('btn-enviar');
 const form = document.getElementById('formTicket');
 
-let ticketActual = null;
+let seleccionActual = null;
 
-// Cuando cambia la categoría
 selectCategoria.addEventListener('change', function() {
-    const categoria = this.value;
+    const cat = this.value;
     
-    if (!categoria) {
-        grupoProblema.style.display = 'none';
+    if (!cat) {
+        campoProblema.style.display = 'none';
+        campoDetalles.style.display = 'none';
         vistaPrevia.style.display = 'none';
-        btnCrear.disabled = true;
+        btnEnviar.disabled = true;
         return;
     }
     
-    // Llenar select de problemas
-    const problemas = baseConocimiento[categoria].problemas;
+    const problemas = catalogoProblemas[cat].problemas;
     selectProblema.innerHTML = '<option value="">Selecciona el problema específico...</option>';
     
     Object.entries(problemas).forEach(([key, info]) => {
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = info.titulo;
-        selectProblema.appendChild(option);
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = info.titulo;
+        selectProblema.appendChild(opt);
     });
     
-    grupoProblema.style.display = 'block';
+    campoProblema.style.display = 'block';
     selectProblema.value = '';
+    campoDetalles.style.display = 'none';
     vistaPrevia.style.display = 'none';
-    btnCrear.disabled = true;
+    btnEnviar.disabled = true;
 });
 
-// Cuando selecciona un problema específico
 selectProblema.addEventListener('change', function() {
-    const categoria = selectCategoria.value;
-    const problemaKey = this.value;
+    const cat = selectCategoria.value;
+    const prob = this.value;
     
-    if (!problemaKey) {
+    if (!prob) {
+        campoDetalles.style.display = 'none';
         vistaPrevia.style.display = 'none';
-        btnCrear.disabled = true;
+        btnEnviar.disabled = true;
         return;
     }
     
-    const info = baseConocimiento[categoria].problemas[problemaKey];
-    
-    // Guardar datos del ticket
-    ticketActual = {
-        titulo: info.titulo,
-        descripcion: info.descripcion,
+    const info = catalogoProblemas[cat].problemas[prob];
+    seleccionActual = {
+        categoria: catalogoProblemas[cat].nombre,
+        problema: prob,
+        titulo_problema: info.titulo,
+        descripcion_problema: info.descripcion,
         prioridad: info.prioridad
     };
     
-    // Mostrar vista previa
-    vpTitulo.textContent = info.titulo;
-    vpDesc.textContent = info.descripcion;
-    badgePrioridad.textContent = info.prioridad;
-    badgePrioridad.className = 'prioridad-badge ' + info.prioridad.toLowerCase();
+    tagPrioridad.textContent = info.prioridad;
+    tagPrioridad.className = 'prioridad-tag ' + info.prioridad.toLowerCase();
+    vpProblemaTexto.textContent = info.titulo;
     
     vistaPrevia.style.display = 'block';
-    btnCrear.disabled = false;
+    campoDetalles.style.display = 'block';
+    btnEnviar.disabled = false;
 });
 
-// Enviar ticket
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    if (!ticketActual) return;
+    const datosEnvio = {
+        ...seleccionActual,
+        solicitante: document.getElementById('solicitante').value,
+        email: document.getElementById('email').value,
+        detalles_extra: document.getElementById('detalles').value
+    };
     
-    const solicitante = document.getElementById('solicitante').value;
-    const detallesExtra = document.getElementById('detalles-extra').value;
-    
-    if (!solicitante) {
-        mostrarToast('Por favor ingresa tu nombre', 'error');
-        return;
-    }
-    
-    // Construir descripción final
-    let descripcionFinal = ticketActual.descripcion;
-    if (detallesExtra) {
-        descripcionFinal += '\n\nDetalles adicionales: ' + detallesExtra;
-    }
-    
-    const btnOriginal = btnCrear.innerHTML;
-    btnCrear.disabled = true;
-    btnCrear.innerHTML = '<span class="btn-icon">⏳</span><span class="btn-texto">Creando...</span>';
+    btnEnviar.disabled = true;
+    btnEnviar.innerHTML = '<span class="btn-texto">Enviando...</span><span class="btn-icono">✨</span>';
     
     try {
-        const res = await fetch(`${API_URL}/tickets`, {
+        const res = await fetch(`${API_URL}/api/tickets`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                titulo: ticketActual.titulo,
-                descripcion: descripcionFinal,
-                solicitante: solicitante,
-                prioridad: ticketActual.prioridad
-            })
+            body: JSON.stringify(datosEnvio)
         });
         
-        if (res.ok) {
-            mostrarToast('✅ Ticket creado correctamente', 'success');
-            form.reset();
-            grupoProblema.style.display = 'none';
-            vistaPrevia.style.display = 'none';
-            btnCrear.disabled = true;
-            ticketActual = null;
-            cargarTickets();
+        const data = await res.json();
+        
+        if (data.exito) {
+            form.style.display = 'none';
+            document.getElementById('mensaje-exito').style.display = 'block';
+            document.getElementById('email-confirmado').textContent = datosEnvio.email;
+            document.getElementById('numero-ticket').textContent = '#' + data.ticket.id;
+            document.getElementById('prioridad-confirmada').textContent = data.ticket.prioridad;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
-            mostrarToast('❌ Error al crear ticket', 'error');
+            throw new Error(data.error);
         }
     } catch (err) {
-        mostrarToast('❌ No se pudo conectar al servidor', 'error');
-    } finally {
-        btnCrear.innerHTML = btnOriginal;
+        alert('Ups, algo salió mal. Intenta de nuevo.');
+        btnEnviar.disabled = false;
+        btnEnviar.innerHTML = '<span class="btn-texto">Enviar mi solicitud</span><span class="btn-icono">→</span>';
     }
 });
-
-// Cargar tickets existentes
-async function cargarTickets() {
-    const container = document.getElementById('lista-tickets');
-    
-    try {
-        const res = await fetch(`${API_URL}/tickets`);
-        const tickets = await res.json();
-        
-        document.getElementById('contador-abiertos').textContent = 
-            tickets.filter(t => t.estado === 'Abierto').length;
-        
-        if (tickets.length === 0) {
-            container.innerHTML = `
-                <div class="estado-vacio">
-                    <div class="ev-icon">📭</div>
-                    <p class="ev-texto">No hay incidencias registradas</p>
-                    <p class="ev-sub">Selecciona un problema en el panel izquierdo para comenzar</p>
-                </div>
-            `;
-            return;
-        }
-        
-        container.innerHTML = tickets.map(t => `
-            <div class="ticket ${t.estado === 'Cerrado' ? 'cerrado' : ''}" data-prioridad="${t.prioridad}">
-                <div class="ticket-header">
-                    <span class="ticket-titulo">#${t.id}: ${escapar(t.titulo)}</span>
-                    <span class="prioridad-badge ${t.prioridad.toLowerCase()}">${t.prioridad}</span>
-                </div>
-                <div class="ticket-meta">
-                    <span class="meta-item">👤 ${escapar(t.solicitante)}</span>
-                    <span class="meta-item">📅 ${new Date(t.fecha_creacion).toLocaleDateString()}</span>
-                    <span class="meta-item">🏷️ ${t.estado}</span>
-                </div>
-                <div class="ticket-desc">${escapar(t.descripcion).replace(/\n/g, '<br>')}</div>
-                <div class="ticket-actions">
-                    ${t.estado === 'Abierto' 
-                        ? `<button class="btn-accion btn-cerrar" onclick="cambiarEstado(${t.id}, 'Cerrado')">✓ Marcar resuelto</button>`
-                        : `<button class="btn-accion btn-reabrir" onclick="cambiarEstado(${t.id}, 'Abierto')">↻ Reabrir</button>`
-                    }
-                    <button class="btn-accion btn-borrar" onclick="borrarTicket(${t.id})">🗑 Eliminar</button>
-                </div>
-            </div>
-        `).join('');
-        
-    } catch (err) {
-        container.innerHTML = '<div class="estado-vacio"><p>Error al cargar datos</p></div>';
-    }
-}
-
-async function cambiarEstado(id, estado) {
-    try {
-        await fetch(`${API_URL}/tickets/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ estado })
-        });
-        cargarTickets();
-    } catch (err) {
-        mostrarToast('Error al actualizar', 'error');
-    }
-}
-
-async function borrarTicket(id) {
-    if (!confirm('¿Eliminar permanentemente este ticket?')) return;
-    
-    try {
-        await fetch(`${API_URL}/tickets/${id}`, { method: 'DELETE' });
-        cargarTickets();
-    } catch (err) {
-        mostrarToast('Error al eliminar', 'error');
-    }
-}
-
-function escapar(texto) {
-    const div = document.createElement('div');
-    div.textContent = texto;
-    return div.innerHTML;
-}
-
-function mostrarToast(mensaje, tipo) {
-    const toast = document.getElementById('toast');
-    toast.textContent = mensaje;
-    toast.className = 'toast ' + tipo;
-    setTimeout(() => toast.classList.add('show'), 10);
-    setTimeout(() => toast.classList.remove('show'), 3000);
-}
-
-// Filtros
-document.querySelectorAll('.filtro-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        // Aquí iría la lógica de filtrado visual
-    });
-});
-
-// Iniciar
-cargarTickets();
-setInterval(cargarTickets, 30000);
