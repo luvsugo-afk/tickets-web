@@ -3,112 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Incidencias</title>
+    <title>Soporte IT | ¿Necesitas ayuda?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <div class="logo">
-                <span class="logo-icon"></span>
-                <div class="logo-text">
-                    <h1>Sistemas</h1>
-                    <span class="tagline">Sistema de Gestión de Incidencias</span>
-                </div>
-            </div>
-            <div class="stats-mini">
-                <span class="stat-item"> <strong id="contador-abiertos">0</strong> abiertos</span>
-            </div>
-        </header>
+    <div class="pagina">
+        <div class="deco-lateral"></div>
 
-        <div class="main-layout">
-            <aside class="panel-izquierdo">
-                <div class="panel-header">
-                    <h2> Nueva Incidencia</h2>
-                    <p class="panel-subtitle">Selecciona el tipo de problema</p>
+        <main class="contenedor-principal">
+            <header class="encabezado">
+                <div class="logo-area">
+                    <span class="icono-corazon">💜</span>
+                    <div class="titulo-area">
+                        <h1>Centro de Ayuda</h1>
+                        <p class="subtitulo">Estamos aquí para cuidar de tu tecnología</p>
+                    </div>
                 </div>
+            </header>
 
-                <form id="formTicket" class="formulario-elegante">
+            <div class="bienvenida">
+                <p>Hola, sé que algo no está funcionando como debería. 
+                Respira profundo, completa este formulario y te prometo que 
+                <strong>lo resolveremos juntos</strong>. 💪</p>
+            </div>
+
+            <form id="formTicket" class="formulario-encantador">
+                
+                <fieldset class="seccion-form">
+                    <legend class="leyenda">
+                        <span class="numero-paso">1</span>
+                        <span class="texto-leyenda">Cuéntanos de ti</span>
+                    </legend>
                     
-                    <div class="campo-grupo">
-                        <label class="etiqueta">Área afectada</label>
-                        <div class="select-estilizado">
+                    <div class="fila-datos">
+                        <div class="campo-elegante">
+                            <label for="solicitante">
+                                <span class="label-icono">👤</span>
+                                Tu nombre completo
+                            </label>
+                            <input type="text" id="solicitante" required 
+                                   placeholder="Ej: María González">
+                        </div>
+                        
+                        <div class="campo-elegante">
+                            <label for="email">
+                                <span class="label-icono">✉️</span>
+                                Tu correo electrónico
+                            </label>
+                            <input type="email" id="email" required 
+                                   placeholder="maria@tuempresa.com">
+                            <span class="hint">Te enviaremos confirmación aquí</span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="seccion-form">
+                    <legend class="leyenda">
+                        <span class="numero-paso">2</span>
+                        <span class="texto-leyenda">¿Qué está pasando?</span>
+                    </legend>
+
+                    <div class="campo-elegante">
+                        <label for="categoria">
+                            <span class="label-icono">🏷️</span>
+                            ¿Con qué área necesitas ayuda?
+                        </label>
+                        <div class="select-wrapper">
                             <select id="categoria" required>
-                                <option value="">Selecciona una categoría...</option>
-                                <option value="hardware">Hardware / Equipos</option>
-                                <option value="software">Software / Aplicaciones</option>
-                                <option value="red">Red / Internet</option>
-                                <option value="email">Correo / Email</option>
-                                <option value="impresion">Impresión / Escaneo</option>
-                                <option value="accesos">Accesos / Cuentas</option>
-                                <option value="otros">Otros</option>
+                                <option value="">Selecciona una opción...</option>
+                                <option value="hardware">💻 Mi computador o laptop</option>
+                                <option value="software">⚙️ Un programa o aplicación</option>
+                                <option value="red">🌐 Internet o conexión</option>
+                                <option value="email">📧 Correo electrónico</option>
+                                <option value="impresion">🖨️ Impresora o escáner</option>
+                                <option value="accesos">🔐 Accesos o contraseñas</option>
+                                <option value="otros">🌸 Algo diferente</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="campo-grupo" id="grupo-problema" style="display:none;">
-                        <label class="etiqueta">Problema específico</label>
-                        <div class="select-estilizado">
-                            <select id="tipo-problema" required>
-                                <option value="">Selecciona el problema...</option>
+                    <div class="campo-elegante" id="campo-problema" style="display:none;">
+                        <label for="problema">
+                            <span class="label-icono">🔍</span>
+                            Cuéntanos un poco más...
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="problema" required>
+                                <option value="">Elige el problema específico...</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="vista-previa" id="vista-previa" style="display:none;">
-                        <div class="vp-header">
-                            <span class="vp-titulo">Vista previa del ticket</span>
-                            <span class="prioridad-badge" id="badge-prioridad">Media</span>
-                        </div>
-                        <div class="vp-contenido">
-                            <p><strong>Título:</strong> <span id="vp-titulo">-</span></p>
-                            <p><strong>Descripción:</strong> <span id="vp-desc">-</span></p>
-                        </div>
+                    <div class="campo-elegante" id="campo-detalles" style="display:none;">
+                        <label for="detalles">
+                            <span class="label-icono">📝</span>
+                            ¿Algo más que deberíamos saber?
+                            <span class="opcional">(opcional)</span>
+                        </label>
+                        <textarea id="detalles" rows="3" 
+                                  placeholder="Ej: 'Empezó a pasar después de la actualización de ayer'"></textarea>
                     </div>
+                </fieldset>
 
-                    <div class="campo-grupo">
-                        <label class="etiqueta">Solicitante</label>
-                        <input type="text" id="solicitante" placeholder="Nombre completo" required>
+                <div class="vista-previa-ticket" id="vista-previa" style="display:none;">
+                    <div class="vp-header">
+                        <span class="vp-titulo">Resumen de tu solicitud</span>
+                        <span class="prioridad-tag" id="tag-prioridad">Media</span>
                     </div>
-
-                    <div class="campo-grupo">
-                        <label class="etiqueta">Detalles adicionales <small>(opcional)</small></label>
-                        <textarea id="detalles-extra" rows="2" placeholder="Información extra que consideres relevante..."></textarea>
+                    <div class="vp-body">
+                        <p class="vp-problema" id="vp-problema-texto">-</p>
+                        <p class="vp-nota">📧 Recibirás confirmación en tu correo</p>
                     </div>
+                </div>
 
-                    <button type="submit" class="btn-crear" id="btn-crear" disabled>
-                        <span class="btn-icon"></span>
-                        <span class="btn-texto">Crear Ticket</span>
+                <div class="area-envio">
+                    <button type="submit" class="btn-magico" id="btn-enviar" disabled>
+                        <span class="btn-texto">Enviar mi solicitud</span>
+                        <span class="btn-icono">→</span>
                     </button>
-                </form>
-            </aside>
-
-            <main class="panel-derecho">
-                <div class="panel-header flex-between">
-                    <h2>Incidencias Registradas</h2>
-                    <div class="filtros">
-                        <button class="filtro-btn active" data-filtro="todos">Todos</button>
-                        <button class="filtro-btn" data-filtro="Abierto">Abiertos</button>
-                        <button class="filtro-btn" data-filtro="Cerrado">Resueltos</button>
-                    </div>
+                    <p class="mensaje-confianza">
+                        🔒 Tu información está segura y solo la verá el equipo de IT
+                    </p>
                 </div>
+            </form>
 
-                <div id="lista-tickets" class="tickets-container">
-                    <div class="estado-vacio">
-                        <div class="ev-icon">📭</div>
-                        <p class="ev-texto">No hay incidencias registradas</p>
-                        <p class="ev-sub">Selecciona un problema en el panel izquierdo para comenzar</p>
-                    </div>
-                </div>
-            </main>
-        </div>
+            <div class="mensaje-exito" id="mensaje-exito" style="display:none;">
+                <div class="exito-icono">🎉</div>
+                <h2>¡Listo! Tu solicitud está en buenas manos</h2>
+                <p>Hemos enviado un correo de confirmación a <strong id="email-confirmado"></strong></p>
+                <p class="exito-detalles">
+                    Número de ticket: <span class="numero-destacado" id="numero-ticket">-</span><br>
+                    Prioridad asignada: <span id="prioridad-confirmada">-</span>
+                </p>
+                <button class="btn-nuevo" onclick="location.reload()">
+                    Crear otra solicitud
+                </button>
+            </div>
+        </main>
+
+        <footer class="pie-pagina">
+            <p>Hecho con 💜 por el equipo de IT</p>
+        </footer>
     </div>
 
-    <div id="toast" class="toast"></div>
-
     <script>
-        const API_URL = 'https://tickets-api-63tv.onrender.com';
+        const API_URL = 'https://tickets-api.onrender.com';
     </script>
     <script src="app.js"></script>
 </body>
