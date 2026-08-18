@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sistema de Tickets</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Sistema de Tickets IT</h1>
+
+            <div class="form-box">
+                <h2>Nuevo Ticket</h2>
+                <form id="formTicket">
+                    <div class="campo">
+                        <label>Titulo:</label>
+                        <input type="text" id="titulo" required placeholder="Ej: Monitor no enciende">
+                    </div>
+
+                    <div class="fila">
+                        <div class="campo">
+                            <label>Solicitante:</label>
+                            <input type="text" id="solicitante" required placeholder="Tu nombre">
+                        </div>
+                        <div class="campo">
+                            <label>Prioridad:</label>
+                            <select id="prioridad">
+                                <option value="Baja">Baja</option>
+                                <option value="Media" selected>Media</option>
+                                <option value="Alta">Alta</option>
+                                <option value="Critica">Critica</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label>Descripcion:</label>
+                        <textarea id="descripcion" rows="4" required placeholder="Describe el problema..."></textarea>
+                    </div>
+
+                    <button type="submit">Crear Ticket</button>
+                </form>
+            </div>
+
+            <div class="lista-box">
+                <h2>Tickets Existentes</h2>
+                <div id="listaTickets">Cargando...</div>
+            </div>
+        </div>
+
+        <script>
+            const API_URL = 'https://tickets-api-63tv.onrender.com';
+        </script>
+        <script src="app.js"></script>
+    </body>
+</html>

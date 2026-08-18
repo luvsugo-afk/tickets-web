@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.form-box, .lista-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-top: 0;
+    color: #444;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.fila .campo {
+    flex: 1;
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.ticket {
+    border-left: 4px solid;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.ticket.critica { border-left-color: #dc3545; }
+.ticket.alta { border-left-color: #fd7e14; }
+.ticket.media { border-left-color: #ffc107; }
+.ticket.baja { border-left-color: #28a745; }
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.ticket-titulo {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.prioridad-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.prioridad-badge.critica { background: #ffebee; color: #c62828; }
+.prioridad-badge.alta { background: #fff3e0; color: #ef6c00; }
+.prioridad-badge.media { background: #fffde7; color: #f9a825; }
+.prioridad-badge.baja { background: #e8f5e9; color: #2e7d32; }
+
+.ticket-meta {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.ticket-desc {
+    color: #444;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.ticket-actions button {
+    width: auto;
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.btn-cerrar{ background: #28a745; }
+.btn-cerrar:hover { background: #218838; }
+.btn-borrar { background: #dc3545; }
+.btn-borrar:hover { background: #c82333; }
+
+.cerrado {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.vacio {
+    text-align: center;
+    color: #888;
+    padding: 40px;
+}
+@media (max-width: 600px) {
+    .fila { flex-direction: column; gap: 0; }
+}
