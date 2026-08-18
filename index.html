@@ -1,57 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sistema de Tickets</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>Sistema de Tickets IT</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Incidencias</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon"></span>
+                <div class="logo-text">
+                    <h1>Sistemas</h1>
+                    <span class="tagline">Sistema de Gestión de Incidencias</span>
+                </div>
+            </div>
+            <div class="stats-mini">
+                <span class="stat-item"> <strong id="contador-abiertos">0</strong> abiertos</span>
+            </div>
+        </header>
 
-            <div class="form-box">
-                <h2>Nuevo Ticket</h2>
-                <form id="formTicket">
-                    <div class="campo">
-                        <label>Titulo:</label>
-                        <input type="text" id="titulo" required placeholder="Ej: Monitor no enciende">
-                    </div>
+        <div class="main-layout">
+            <aside class="panel-izquierdo">
+                <div class="panel-header">
+                    <h2> Nueva Incidencia</h2>
+                    <p class="panel-subtitle">Selecciona el tipo de problema</p>
+                </div>
 
-                    <div class="fila">
-                        <div class="campo">
-                            <label>Solicitante:</label>
-                            <input type="text" id="solicitante" required placeholder="Tu nombre">
-                        </div>
-                        <div class="campo">
-                            <label>Prioridad:</label>
-                            <select id="prioridad">
-                                <option value="Baja">Baja</option>
-                                <option value="Media" selected>Media</option>
-                                <option value="Alta">Alta</option>
-                                <option value="Critica">Critica</option>
+                <form id="formTicket" class="formulario-elegante">
+                    
+                    <div class="campo-grupo">
+                        <label class="etiqueta">Área afectada</label>
+                        <div class="select-estilizado">
+                            <select id="categoria" required>
+                                <option value="">Selecciona una categoría...</option>
+                                <option value="hardware">Hardware / Equipos</option>
+                                <option value="software">Software / Aplicaciones</option>
+                                <option value="red">Red / Internet</option>
+                                <option value="email">Correo / Email</option>
+                                <option value="impresion">Impresión / Escaneo</option>
+                                <option value="accesos">Accesos / Cuentas</option>
+                                <option value="otros">Otros</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="campo">
-                        <label>Descripcion:</label>
-                        <textarea id="descripcion" rows="4" required placeholder="Describe el problema..."></textarea>
+                    <div class="campo-grupo" id="grupo-problema" style="display:none;">
+                        <label class="etiqueta">Problema específico</label>
+                        <div class="select-estilizado">
+                            <select id="tipo-problema" required>
+                                <option value="">Selecciona el problema...</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <button type="submit">Crear Ticket</button>
+                    <div class="vista-previa" id="vista-previa" style="display:none;">
+                        <div class="vp-header">
+                            <span class="vp-titulo">Vista previa del ticket</span>
+                            <span class="prioridad-badge" id="badge-prioridad">Media</span>
+                        </div>
+                        <div class="vp-contenido">
+                            <p><strong>Título:</strong> <span id="vp-titulo">-</span></p>
+                            <p><strong>Descripción:</strong> <span id="vp-desc">-</span></p>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="etiqueta">Solicitante</label>
+                        <input type="text" id="solicitante" placeholder="Nombre completo" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="etiqueta">Detalles adicionales <small>(opcional)</small></label>
+                        <textarea id="detalles-extra" rows="2" placeholder="Información extra que consideres relevante..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-crear" id="btn-crear" disabled>
+                        <span class="btn-icon"></span>
+                        <span class="btn-texto">Crear Ticket</span>
+                    </button>
                 </form>
-            </div>
+            </aside>
 
-            <div class="lista-box">
-                <h2>Tickets Existentes</h2>
-                <div id="listaTickets">Cargando...</div>
-            </div>
+            <main class="panel-derecho">
+                <div class="panel-header flex-between">
+                    <h2>Incidencias Registradas</h2>
+                    <div class="filtros">
+                        <button class="filtro-btn active" data-filtro="todos">Todos</button>
+                        <button class="filtro-btn" data-filtro="Abierto">Abiertos</button>
+                        <button class="filtro-btn" data-filtro="Cerrado">Resueltos</button>
+                    </div>
+                </div>
+
+                <div id="lista-tickets" class="tickets-container">
+                    <div class="estado-vacio">
+                        <div class="ev-icon">📭</div>
+                        <p class="ev-texto">No hay incidencias registradas</p>
+                        <p class="ev-sub">Selecciona un problema en el panel izquierdo para comenzar</p>
+                    </div>
+                </div>
+            </main>
         </div>
+    </div>
 
-        <script>
-            const API_URL = 'https://tickets-api-63tv.onrender.com';
-        </script>
-        <script src="app.js"></script>
-    </body>
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const API_URL = 'https://tickets-api-63tv.onrender.com';
+    </script>
+    <script src="app.js"></script>
+</body>
 </html>
