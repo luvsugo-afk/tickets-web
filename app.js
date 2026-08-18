@@ -1,3 +1,4 @@
+const API_URL = 'https://tickets-api-63tv.onrender.com';
 const catalogoProblemas = {
     hardware: {
         icono: '💻',
