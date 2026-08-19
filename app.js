@@ -1,188 +1,341 @@
-const catalogoProblemas = {
-    hardware: {
-        problemas: {
-            'pc-no-enciende': { titulo: 'Equipo no enciende', descripcion: 'Sin respuesta al presionar botón de encendido.', prioridad: 'Alta' },
-            'pantalla-azul': { titulo: 'Pantalla azul (BSOD)', descripcion: 'Error crítico del sistema operativo.', prioridad: 'Alta' },
-            'monitor-negro': { titulo: 'Sin señal de video', descripcion: 'Monitor no detecta entrada.', prioridad: 'Alta' },
-            'sobrecalentamiento': { titulo: 'Temperatura elevada', descripcion: 'Equipo supera 90°C.', prioridad: 'Media' },
-            'teclado-danado': { titulo: 'Teclado no responde', descripcion: 'Teclas atascadas o sin función.', prioridad: 'Baja' },
-            'mouse-falla': { titulo: 'Mouse errático', descripcion: 'Movimientos imprecisos o saltos.', prioridad: 'Baja' }
-        }
-    },
-    software: {
-        problemas: {
-            'office-crash': { titulo: 'Microsoft Office falla', descripcion: 'Cierres inesperados de Word, Excel, etc.', prioridad: 'Media' },
-            'antivirus-vencido': { titulo: 'Licencia de seguridad expirada', descripcion: 'Sistema desprotegido.', prioridad: 'Alta' },
-            'app-externa': { titulo: 'Aplicación corporativa falla', descripcion: 'Software de terceros no responde.', prioridad: 'Media' },
-            'navegador-lento': { titulo: 'Navegador web lento', descripcion: 'Carga lenta de páginas.', prioridad: 'Baja' },
-            'actualizacion-pendiente': { titulo: 'Actualizaciones pendientes', descripcion: 'Parches de seguridad sin instalar.', prioridad: 'Baja' }
-        }
-    },
-    red: {
-        problemas: {
-            'sin-internet': { titulo: 'Sin conectividad', descripcion: 'No acceso a internet ni red corporativa.', prioridad: 'Critica' },
-            'vpn-caida': { titulo: 'VPN desconectada', descripcion: 'Sin acceso remoto a servidores.', prioridad: 'Alta' },
-            'wifi-lento': { titulo: 'WiFi intermitente', descripcion: 'Conexión inestable o lenta.', prioridad: 'Media' },
-            'compartir-archivos': { titulo: 'Sin acceso a recursos compartidos', descripcion: 'No se ven carpetas de red.', prioridad: 'Media' }
-        }
-    },
-    email: {
-        problemas: {
-            'no-envia': { titulo: 'No se pueden enviar correos', descripcion: 'Mensajes atascados en bandeja de salida.', prioridad: 'Alta' },
-            'no-recibe': { titulo: 'No llegan correos nuevos', descripcion: 'Bandeja no sincroniza.', prioridad: 'Alta' },
-            'outlook-no-abre': { titulo: 'Cliente de correo no inicia', descripcion: 'Outlook se cierra al abrir.', prioridad: 'Alta' },
-            'configurar-firma': { titulo: 'Configuración de firma', descripcion: 'Firma HTML corporativa.', prioridad: 'Baja' },
-            'recuperar-borrado': { titulo: 'Recuperación de ítem eliminado', descripcion: 'Restaurar desde papelera.', prioridad: 'Media' }
-        }
-    },
-    impresion: {
-        problemas: {
-            'impresora-oficina': { titulo: 'Impresora compartida offline', descripcion: 'No responde en red.', prioridad: 'Alta' },
-            'escaner-falla': { titulo: 'Escáner no funciona', descripcion: 'Error de digitalización.', prioridad: 'Media' },
-            'toner-agotado': { titulo: 'Consumible agotado', descripcion: 'Sin tinta o tóner.', prioridad: 'Media' },
-            'instalar-impresora': { titulo: 'Instalación de nueva impresora', descripcion: 'Configuración de dispositivo.', prioridad: 'Baja' }
-        }
-    },
-    accesos: {
-        problemas: {
-            'password-bloqueada': { titulo: 'Cuenta bloqueada', descripcion: 'Múltiples intentos fallidos de login.', prioridad: 'Critica' },
-            'reset-password': { titulo: 'Restablecimiento de contraseña', descripcion: 'Usuario olvidó credenciales.', prioridad: 'Media' },
-            'acceso-carpeta': { titulo: 'Permisos de carpeta', descripcion: 'Sin acceso a directorio específico.', prioridad: 'Media' },
-            'crear-usuario': { titulo: 'Alta de nuevo usuario', descripcion: 'Onboarding: creación de cuenta.', prioridad: 'Media' },
-            'bloquear-exempleado': { titulo: 'Baja de usuario', descripcion: 'Desactivación de cuenta y backup.', prioridad: 'Alta' }
-        }
-    },
-    otros: {
-        problemas: {
-            'consulta-general': { titulo: 'Consulta técnica', descripcion: 'Duda general sobre procedimiento.', prioridad: 'Baja' },
-            'compra-equipo': { titulo: 'Solicitud de hardware', descripcion: 'Requerimiento de nuevo equipo.', prioridad: 'Baja' },
-            'urgencia-desconocida': { titulo: 'Incidente no catalogado', descripcion: 'Requiere análisis manual.', prioridad: 'Media' }
-        }
+:root {
+    --bg: #F5F3F8;              /* Fondo lavanda visible (NO blanco) */
+    --surface: #FFFFFF;          /* Tarjetas blancas */
+    --sidebar: #7C6B8A;          /* Violeta APAGADO (menos intenso) */
+    --sidebar-text: #FFFFFF;       /* Blanco puro para sidebar */
+    --text: #000000;             /* TEXTO NEGRO */
+    --text-muted: #4A4A4A;       /* Gris oscuro (casi negro) */
+    --accent: #9B8AA5;           /* Violeta SUAVE para acentos */
+    --accent-hover: #7C6B8A;       /* Hover más oscuro */
+    --accent-soft: #D4C8DA;        /* Violeta muy claro */
+    --border: #D4C8DA;           /* Bordes violeta suave */
+    --shadow: rgba(124, 107, 138, 0.15);
+    --font-serif: 'DM Serif Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);           /* NEGRO */
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.page {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar);
+    color: var(--sidebar-text);
+    padding: 40px 30px;
+    position: fixed;
+    height: 100vh;
+}
+
+.brand {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    margin-bottom: 60px;
+    letter-spacing: -0.5px;
+    color: var(--sidebar-text);    /* Blanco */
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+    opacity: 0.85;
+    transition: all 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    margin-left: 260px;
+    padding: 60px;
+    max-width: 800px;
+}
+
+.header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    color: var(--text);            /* NEGRO */
+}
+
+.subtitle {
+    color: var(--text-muted);      /* Gris oscuro */
+    font-size: 16px;
+}
+
+/* Form */
+.form-section {
+    margin-bottom: 48px;
+}
+
+.form-section h2 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    color: var(--text);            /* NEGRO */
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.field {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-weight: 600;              /* Más peso para contraste */
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text);            /* NEGRO */
+}
+
+.required {
+    color: #C62828;                /* Rojo oscuro */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    background: var(--surface);
+    color: var(--text);            /* NEGRO */
+    transition: all 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--shadow);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%237C6B8A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+/* Summary Card */
+.summary-card {
+    background: #FFFFFF;
+    border-left: 4px solid var(--accent);
+    padding: 28px;
+    margin: 40px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.summary-title {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+.badge {
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    background: #E8E0EC;
+    color: var(--text);            /* NEGRO */
+}
+
+.badge.critica { background: #E57373; color: #000000; }
+.badge.alta { background: #FFB74D; color: #000000; }
+.badge.media { background: var(--accent); color: #000000; }
+.badge.baja { background: #B8A8C0; color: #000000; }
+
+.summary-problem {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--text);            /* NEGRO */
+}
+
+.summary-note {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Buttons */
+.actions {
+    margin-top: 40px;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #000000;                /* Texto negro en botón */
+    border: none;
+    padding: 16px 40px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    color: #FFFFFF;                /* Blanco en hover */
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text);            /* NEGRO */
+    border: 2px solid var(--border);
+    padding: 12px 32px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+}
+
+/* Success Message */
+.success-message {
+    text-align: center;
+    padding: 60px 40px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--accent);
+    color: #000000;                /* NEGRO */
+    font-size: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-weight: bold;
+}
+
+.success-message h2 {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--text);            /* NEGRO */
+}
+
+.success-message > p {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+.ticket-details {
+    background: var(--bg);
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.ticket-details p {
+    margin-bottom: 12px;
+    color: var(--text);            /* NEGRO */
+}
+
+.ticket-details strong {
+    display: inline-block;
+    width: 100px;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 20px;
     }
-};
-
-const selectCategoria = document.getElementById('categoria');
-const campoProblema = document.getElementById('campo-problema');
-const selectProblema = document.getElementById('problema');
-const campoDetalles = document.getElementById('campo-detalles');
-const vistaPrevia = document.getElementById('vista-previa');
-const tagPrioridad = document.getElementById('tag-prioridad');
-const vpProblemaTexto = document.getElementById('vp-problema-texto');
-const btnEnviar = document.getElementById('btn-enviar');
-const form = document.getElementById('formTicket');
-
-let seleccionActual = null;
-
-selectCategoria.addEventListener('change', function() {
-    const cat = this.value;
     
-    if (!cat) {
-        campoProblema.style.display = 'none';
-        campoDetalles.style.display = 'none';
-        vistaPrevia.style.display = 'none';
-        btnEnviar.disabled = true;
-        return;
+    .main {
+        margin-left: 0;
+        padding: 30px;
     }
     
-    const problemas = catalogoProblemas[cat].problemas;
-    selectProblema.innerHTML = '<option value="">Seleccionar...</option>';
-    
-    Object.entries(problemas).forEach(([key, info]) => {
-        const opt = document.createElement('option');
-        opt.value = key;
-        opt.textContent = info.titulo;
-        selectProblema.appendChild(opt);
-    });
-    
-    campoProblema.style.display = 'block';
-    selectProblema.value = '';
-    campoDetalles.style.display = 'none';
-    vistaPrevia.style.display = 'none';
-    btnEnviar.disabled = true;
-});
-
-selectProblema.addEventListener('change', function() {
-    const cat = selectCategoria.value;
-    const prob = this.value;
-    
-    if (!prob) {
-        campoDetalles.style.display = 'none';
-        vistaPrevia.style.display = 'none';
-        btnEnviar.disabled = true;
-        return;
+    .form-row {
+        grid-template-columns: 1fr;
     }
-    
-    const info = catalogoProblemas[cat].problemas[prob];
-    seleccionActual = {
-        categoria: cat,
-        problema: prob,
-        titulo: info.titulo,
-        descripcion: info.descripcion,
-        prioridad: info.prioridad
-    };
-    
-    tagPrioridad.textContent = info.prioridad;
-    tagPrioridad.className = 'priority-badge ' + info.prioridad.toLowerCase();
-    vpProblemaTexto.textContent = info.titulo;
-    
-    vistaPrevia.style.display = 'block';
-    campoDetalles.style.display = 'block';
-    btnEnviar.disabled = false;
-});
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const detalles = document.getElementById('detalles').value.trim();
-    if (!detalles) {
-        alert('Completá el campo de detalles adicionales');
-        document.getElementById('detalles').focus();
-        return;
-    }
-    
-    const datosEnvio = {
-        titulo: seleccionActual.titulo,
-        descripcion: seleccionActual.descripcion,
-        solicitante: document.getElementById('solicitante').value,
-        email: document.getElementById('email').value,
-        prioridad: seleccionActual.prioridad,
-        detalles_extra: detalles
-    };
-    
-    btnEnviar.disabled = true;
-    btnEnviar.innerHTML = '<span>Enviando...</span>';
-    
-    try {
-        const res = await fetch(`${API_URL}/api/tickets`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(datosEnvio)
-        });
-        
-        const data = await res.json();
-        
-        if (data.exito) {
-            form.style.display = 'none';
-            document.getElementById('mensaje-exito').style.display = 'block';
-            document.getElementById('email-confirmado').textContent = datosEnvio.email;
-            document.getElementById('numero-ticket').textContent = '#' + data.ticket.id;
-            document.getElementById('prioridad-confirmada').textContent = data.ticket.prioridad;
-        } else {
-            throw new Error(data.error);
-        }
-    } catch (err) {
-        alert('Error al enviar. Intentá de nuevo.');
-        btnEnviar.disabled = false;
-        btnEnviar.innerHTML = '<span>Crear ticket</span><span class="btn-arrow">→</span>';
-    }
-});
-
-// Enter para enviar
-document.querySelectorAll('input, select, textarea').forEach(input => {
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && !btnEnviar.disabled) {
-            e.preventDefault();
-            form.dispatchEvent(new Event('submit'));
-        }
-    });
-});
+}
