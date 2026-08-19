@@ -1,15 +1,16 @@
 :root {
-    --bg: #F5F3F8;              /* Fondo lavanda visible (NO blanco) */
+    /* Paleta exacta de la imagen generada */
+    --bg: #F5F3F8;              /* Fondo lavanda visible #F5F3F8 */
     --surface: #FFFFFF;          /* Tarjetas blancas */
-    --sidebar: #7C6B8A;          /* Violeta APAGADO (menos intenso) */
-    --sidebar-text: #FFFFFF;       /* Blanco puro para sidebar */
-    --text: #000000;             /* TEXTO NEGRO */
-    --text-muted: #4A4A4A;       /* Gris oscuro (casi negro) */
-    --accent: #9B8AA5;           /* Violeta SUAVE para acentos */
-    --accent-hover: #7C6B8A;       /* Hover más oscuro */
-    --accent-soft: #D4C8DA;        /* Violeta muy claro */
-    --border: #D4C8DA;           /* Bordes violeta suave */
-    --shadow: rgba(124, 107, 138, 0.15);
+    --sidebar: #7C6B8A;          /* Violeta apagado #7C6B8A */
+    --sidebar-text: #FFFFFF;     /* Texto blanco en sidebar */
+    --text: #000000;             /* Texto NEGRO #000000 */
+    --text-muted: #4A4A4A;       /* Gris oscuro #4A4A4A */
+    --accent: #9B8AA5;           /* Violeta medio suave #9B8AA5 */
+    --accent-hover: #7C6B8A;     /* Hover violeta oscuro #7C6B8A */
+    --accent-soft: #D4C8DA;      /* Violeta muy claro #D4C8DA */
+    --border: #D4C8DA;           /* Bordes #D4C8DA */
+    --shadow: rgba(124, 107, 138, 0.1);
     --font-serif: 'DM Serif Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -22,8 +23,8 @@
 
 body {
     font-family: var(--font-sans);
-    background: var(--bg);
-    color: var(--text);           /* NEGRO */
+    background: var(--bg);        /* #F5F3F8 fondo lavanda */
+    color: var(--text);           /* #000000 NEGRO */
     line-height: 1.6;
     font-size: 15px;
 }
@@ -36,8 +37,8 @@ body {
 /* Sidebar */
 .sidebar {
     width: 260px;
-    background: var(--sidebar);
-    color: var(--sidebar-text);
+    background: #7C6B8A;        /* Violeta apagado exacto */
+    color: #FFFFFF;
     padding: 40px 30px;
     position: fixed;
     height: 100vh;
@@ -48,7 +49,7 @@ body {
     font-size: 28px;
     margin-bottom: 60px;
     letter-spacing: -0.5px;
-    color: var(--sidebar-text);    /* Blanco */
+    color: #FFFFFF;
 }
 
 .nav {
@@ -58,7 +59,7 @@ body {
 }
 
 .nav-item {
-    color: var(--sidebar-text);
+    color: #FFFFFF;
     text-decoration: none;
     padding: 12px 16px;
     border-radius: 6px;
@@ -84,7 +85,7 @@ body {
 .header {
     margin-bottom: 48px;
     padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #D4C8DA;  /* Borde violeta claro */
 }
 
 .header h1 {
@@ -93,11 +94,11 @@ body {
     font-weight: 400;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
-    color: var(--text);            /* NEGRO */
+    color: #000000;              /* NEGRO */
 }
 
 .subtitle {
-    color: var(--text-muted);      /* Gris oscuro */
+    color: #4A4A4A;              /* Gris oscuro */
     font-size: 16px;
 }
 
@@ -111,7 +112,7 @@ body {
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 24px;
-    color: var(--text);            /* NEGRO */
+    color: #000000;              /* NEGRO */
 }
 
 .form-row {
@@ -126,32 +127,32 @@ body {
 
 label {
     display: block;
-    font-weight: 600;              /* Más peso para contraste */
+    font-weight: 600;
     margin-bottom: 8px;
     font-size: 14px;
-    color: var(--text);            /* NEGRO */
+    color: #000000;              /* NEGRO */
 }
 
 .required {
-    color: #C62828;                /* Rojo oscuro */
+    color: #C62828;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid var(--border);
+    border: 1px solid #D4C8DA;   /* Borde violeta claro */
     border-radius: 4px;
     font-family: var(--font-sans);
     font-size: 15px;
-    background: var(--surface);
-    color: var(--text);            /* NEGRO */
+    background: #FFFFFF;
+    color: #000000;              /* NEGRO */
     transition: all 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--shadow);
+    border-color: #9B8AA5;       /* Violeta medio */
+    box-shadow: 0 0 0 3px rgba(155, 138, 165, 0.15);
 }
 
 textarea {
@@ -171,7 +172,7 @@ select {
 /* Summary Card */
 .summary-card {
     background: #FFFFFF;
-    border-left: 4px solid var(--accent);
+    border-left: 4px solid #9B8AA5;  /* Violeta medio */
     padding: 28px;
     margin: 40px 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -189,7 +190,7 @@ select {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--text-muted);
+    color: #4A4A4A;
 }
 
 .badge {
@@ -200,23 +201,23 @@ select {
     letter-spacing: 0.5px;
     border-radius: 4px;
     background: #E8E0EC;
-    color: var(--text);            /* NEGRO */
+    color: #000000;              /* NEGRO */
 }
 
 .badge.critica { background: #E57373; color: #000000; }
 .badge.alta { background: #FFB74D; color: #000000; }
-.badge.media { background: var(--accent); color: #000000; }
+.badge.media { background: #9B8AA5; color: #000000; }
 .badge.baja { background: #B8A8C0; color: #000000; }
 
 .summary-problem {
     font-size: 18px;
     margin-bottom: 12px;
-    color: var(--text);            /* NEGRO */
+    color: #000000;              /* NEGRO */
 }
 
 .summary-note {
     font-size: 14px;
-    color: var(--text-muted);
+    color: #4A4A4A;
 }
 
 /* Buttons */
@@ -225,8 +226,8 @@ select {
 }
 
 .btn-primary {
-    background: var(--accent);
-    color: #000000;                /* Texto negro en botón */
+    background: #9B8AA5;         /* Violeta medio */
+    color: #000000;              /* NEGRO */
     border: none;
     padding: 16px 40px;
     font-family: var(--font-sans);
@@ -238,9 +239,9 @@ select {
 }
 
 .btn-primary:hover:not(:disabled) {
-    background: var(--accent-hover);
+    background: #7C6B8A;         /* Violeta oscuro */
+    color: #FFFFFF;
     transform: translateY(-1px);
-    color: #FFFFFF;                /* Blanco en hover */
 }
 
 .btn-primary:disabled {
@@ -250,8 +251,8 @@ select {
 
 .btn-secondary {
     background: transparent;
-    color: var(--text);            /* NEGRO */
-    border: 2px solid var(--border);
+    color: #000000;              /* NEGRO */
+    border: 2px solid #D4C8DA;
     padding: 12px 32px;
     font-family: var(--font-sans);
     font-size: 14px;
@@ -262,8 +263,8 @@ select {
 }
 
 .btn-secondary:hover {
-    background: var(--accent-soft);
-    border-color: var(--accent);
+    background: #D4C8DA;
+    border-color: #9B8AA5;
 }
 
 /* Success Message */
@@ -278,8 +279,8 @@ select {
 .success-icon {
     width: 80px;
     height: 80px;
-    background: var(--accent);
-    color: #000000;                /* NEGRO */
+    background: #9B8AA5;       /* Violeta medio */
+    color: #000000;              /* NEGRO */
     font-size: 40px;
     border-radius: 50%;
     display: flex;
@@ -294,16 +295,16 @@ select {
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 12px;
-    color: var(--text);            /* NEGRO */
+    color: #000000;              /* NEGRO */
 }
 
 .success-message > p {
-    color: var(--text-muted);
+    color: #4A4A4A;
     margin-bottom: 32px;
 }
 
 .ticket-details {
-    background: var(--bg);
+    background: #F5F3F8;         /* Fondo lavanda */
     padding: 24px;
     border-radius: 8px;
     margin-bottom: 32px;
@@ -312,13 +313,13 @@ select {
 
 .ticket-details p {
     margin-bottom: 12px;
-    color: var(--text);            /* NEGRO */
+    color: #000000;              /* NEGRO */
 }
 
 .ticket-details strong {
     display: inline-block;
     width: 100px;
-    color: var(--text-muted);
+    color: #4A4A4A;
 }
 
 /* Responsive */
