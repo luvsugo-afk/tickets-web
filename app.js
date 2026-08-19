@@ -139,7 +139,7 @@ form.addEventListener('submit', async (e) => {
         solicitante: document.getElementById('solicitante').value,
         email: document.getElementById('email').value,
         prioridad: seleccionActual.prioridad,
-        detalles_extra: document.getElementById('detalles').value
+        detalles_extra: document.getElementById('detalles').value,
     };
     
     btnEnviar.disabled = true;
