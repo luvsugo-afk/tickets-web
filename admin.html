@@ -56,7 +56,7 @@
         <div class="login-box">
             <h1>🔐 Acceso IT</h1>
             <p>Panel de gestión de incidencias</p>
-            <input type="password" id="password" placeholder="Clave de acceso">
+            <input type="password" id="password" placeholder="Clave de acceso" onkeypress="if(event.key==='Enter')login()">
             <button onclick="login()">Entrar al panel</button>
             <div id="login-error" class="error-msg"></div>
         </div>
