@@ -1,15 +1,15 @@
 :root {
-    /* Violeta CLARO y SUAVE */
-    --bg: #F8F6FA;              /* Fondo lavanda muy claro */
+    /* VIOLETA CLARITO para sidebar */
+    --bg: #F5F3F8;              /* Fondo lavanda muy claro */
     --surface: #FFFFFF;          /* Tarjetas blancas */
-    --sidebar: #A89BB0;          /* Violeta CLARO y suave */
-    --sidebar-text: #000000;     /* Texto NEGRO en sidebar */
-    --text: #000000;             /* TODO texto NEGRO */
-    --text-muted: #333333;       /* Gris oscuro casi negro */
-    --accent: #B8A8C0;           /* Violeta muy suave */
-    --accent-hover: #C4B8CC;     /* Hover más claro */
-    --border: #D8D0E0;           /* Bordes violeta grisáceo */
-    --shadow: rgba(168, 155, 176, 0.12);
+    --sidebar: #D4C8DA;          /* VIOLETA CLARITO - antes era oscuro */
+    --sidebar-text: #000000;     /* NEGRO */
+    --text: #000000;             /* NEGRO puro */
+    --text-muted: #333333;       /* Gris muy oscuro */
+    --accent: #B8A8C0;           /* Violeta suave para acentos */
+    --accent-hover: #A89BB0;     /* Hover */
+    --border: #E8E0EC;           /* Bordes claros */
+    --shadow: rgba(0, 0, 0, 0.08);
     --font-serif: 'DM Serif Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -22,7 +22,7 @@
 
 body {
     font-family: var(--font-sans);
-    background: #F8F6FA;          /* Fondo lavanda claro */
+    background: #F5F3F8;
     color: #000000;               /* NEGRO */
     line-height: 1.6;
     font-size: 15px;
@@ -33,11 +33,11 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar - VIOLETA CLARO */
+/* Sidebar - VIOLETA CLARITO */
 .sidebar {
     width: 260px;
-    background: #A89BB0;        /* Violeta suave claro */
-    color: #000000;               /* Texto NEGRO */
+    background: #D4C8DA !important;  /* VIOLETA CLARITO - forzado */
+    color: #000000;
     padding: 40px 30px;
     position: fixed;
     height: 100vh;
@@ -48,7 +48,7 @@ body {
     font-size: 28px;
     margin-bottom: 60px;
     letter-spacing: -0.5px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO forzado */
     font-weight: 600;
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 .nav-item {
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;     /* NEGRO forzado */
     text-decoration: none;
     padding: 12px 16px;
     border-radius: 6px;
@@ -69,8 +69,8 @@ body {
 
 .nav-item:hover,
 .nav-item.active {
-    background: rgba(0, 0, 0, 0.08);  /* Sombra negra suave */
-    color: #000000;               /* NEGRO */
+    background: rgba(0, 0, 0, 0.1);
+    color: #000000 !important;    /* NEGRO */
 }
 
 /* Main Content */
@@ -84,7 +84,7 @@ body {
 .header {
     margin-bottom: 48px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #D8D0E0;
+    border-bottom: 1px solid #E8E0EC;
 }
 
 .header h1 {
@@ -93,7 +93,7 @@ body {
     font-weight: 400;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO forzado */
 }
 
 .subtitle {
@@ -106,12 +106,14 @@ body {
     margin-bottom: 48px;
 }
 
-.form-section h2 {
+/* TODOS los h2 en NEGRO */
+.form-section h2,
+h2 {
     font-family: var(--font-serif);
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 24px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO forzado - antes era violeta */
 }
 
 .form-row {
@@ -129,18 +131,18 @@ label {
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 14px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO forzado */
 }
 
 .required {
-    color: #000000;               /* NEGRO */
+    color: #000000;
     font-weight: 700;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid #D8D0E0;
+    border: 1px solid #E8E0EC;
     border-radius: 4px;
     font-family: var(--font-sans);
     font-size: 15px;
@@ -190,7 +192,7 @@ select {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO */
 }
 
 .badge {
@@ -201,23 +203,23 @@ select {
     letter-spacing: 0.5px;
     border-radius: 4px;
     background: #E8E0EC;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO */
 }
 
 .badge.critica { background: #FFCDD2; color: #000000; }
 .badge.alta { background: #FFE0B2; color: #000000; }
 .badge.media { background: #B8A8C0; color: #000000; }
-.badge.baja { background: #D8D0E0; color: #000000; }
+.badge.baja { background: #D4C8DA; color: #000000; }
 
 .summary-problem {
     font-size: 18px;
     margin-bottom: 12px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO */
 }
 
 .summary-note {
     font-size: 14px;
-    color: #333333;               /* Gris oscuro */
+    color: #333333;
 }
 
 /* Buttons */
@@ -227,7 +229,7 @@ select {
 
 .btn-primary {
     background: #B8A8C0;          /* Violeta suave */
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO en botón */
     border: none;
     padding: 16px 40px;
     font-family: var(--font-sans);
@@ -251,8 +253,8 @@ select {
 
 .btn-secondary {
     background: transparent;
-    color: #000000;               /* NEGRO */
-    border: 2px solid #D8D0E0;
+    color: #000000 !important;    /* NEGRO */
+    border: 2px solid #D4C8DA;
     padding: 12px 32px;
     font-family: var(--font-sans);
     font-size: 14px;
@@ -263,7 +265,7 @@ select {
 }
 
 .btn-secondary:hover {
-    background: #D8D0E0;
+    background: #D4C8DA;
     color: #000000;
 }
 
@@ -280,7 +282,7 @@ select {
     width: 80px;
     height: 80px;
     background: #B8A8C0;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO */
     font-size: 40px;
     border-radius: 50%;
     display: flex;
@@ -295,7 +297,7 @@ select {
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 12px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO */
 }
 
 .success-message > p {
@@ -304,7 +306,7 @@ select {
 }
 
 .ticket-details {
-    background: #F8F6FA;
+    background: #F5F3F8;
     padding: 24px;
     border-radius: 8px;
     margin-bottom: 32px;
@@ -313,13 +315,13 @@ select {
 
 .ticket-details p {
     margin-bottom: 12px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO */
 }
 
 .ticket-details strong {
     display: inline-block;
     width: 100px;
-    color: #000000;               /* NEGRO */
+    color: #000000 !important;    /* NEGRO */
     font-weight: 600;
 }
 
