@@ -61,6 +61,7 @@ const catalogoProblemas = {
     }
 };
 
+// Elementos del DOM
 const selectCategoria = document.getElementById('categoria');
 const campoProblema = document.getElementById('campo-problema');
 const selectProblema = document.getElementById('problema');
@@ -73,13 +74,14 @@ const form = document.getElementById('formTicket');
 
 let seleccionActual = null;
 
+// Cambio de categoría
 selectCategoria.addEventListener('change', function() {
     const cat = this.value;
     
     if (!cat) {
-        campoProblema.style.display = 'none';
-        campoDetalles.style.display = 'none';
-        vistaPrevia.style.display = 'none';
+        if (campoProblema) campoProblema.style.display = 'none';
+        if (campoDetalles) campoDetalles.style.display = 'none';
+        if (vistaPrevia) vistaPrevia.style.display = 'none';
         btnEnviar.disabled = true;
         return;
     }
@@ -96,18 +98,19 @@ selectCategoria.addEventListener('change', function() {
     
     campoProblema.style.display = 'block';
     selectProblema.value = '';
-    campoDetalles.style.display = 'none';
-    vistaPrevia.style.display = 'none';
+    if (campoDetalles) campoDetalles.style.display = 'none';
+    if (vistaPrevia) vistaPrevia.style.display = 'none';
     btnEnviar.disabled = true;
 });
 
+// Cambio de problema específico
 selectProblema.addEventListener('change', function() {
     const cat = selectCategoria.value;
     const prob = this.value;
     
     if (!prob) {
-        campoDetalles.style.display = 'none';
-        vistaPrevia.style.display = 'none';
+        if (campoDetalles) campoDetalles.style.display = 'none';
+        if (vistaPrevia) vistaPrevia.style.display = 'none';
         btnEnviar.disabled = true;
         return;
     }
@@ -130,8 +133,18 @@ selectProblema.addEventListener('change', function() {
     btnEnviar.disabled = false;
 });
 
+// Envío del formulario
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    const detalles = document.getElementById('detalles').value;
+    
+    // Validación de detalles obligatorios
+    if (!detalles.trim()) {
+        alert('Por favor completa el campo de detalles adicionales');
+        document.getElementById('detalles').focus();
+        return;
+    }
     
     const datosEnvio = {
         titulo: seleccionActual.titulo,
@@ -139,7 +152,7 @@ form.addEventListener('submit', async (e) => {
         solicitante: document.getElementById('solicitante').value,
         email: document.getElementById('email').value,
         prioridad: seleccionActual.prioridad,
-        detalles_extra: document.getElementById('detalles').value
+        detalles_extra: detalles
     };
     
     btnEnviar.disabled = true;
@@ -169,4 +182,14 @@ form.addEventListener('submit', async (e) => {
         btnEnviar.disabled = false;
         btnEnviar.innerHTML = '<span class="btn-texto">Enviar mi solicitud</span><span class="btn-icono">→</span>';
     }
+});
+
+// Enter en cualquier campo envía el formulario
+document.querySelectorAll('input, select, textarea').forEach(input => {
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !btnEnviar.disabled) {
+            e.preventDefault();
+            form.dispatchEvent(new Event('submit'));
+        }
+    });
 });
