@@ -13,6 +13,8 @@
         .login-box p { color: #64748b; margin-bottom: 24px; font-size: 0.9rem; }
         .login-box input { width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #334155; background: #0f172a; color: white; border-radius: 8px; }
         .login-box button { width: 100%; padding: 12px; background: #8b5cf6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        .login-box button:hover { background: #7c3aed; }
+        .error-msg { color: #ef4444; margin-top: 12px; font-size: 0.875rem; }
         .panel { display: none; padding: 24px; max-width: 1400px; margin: 0 auto; }
         .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #334155; flex-wrap: wrap; gap: 16px; }
         .panel-header h1 { color: #8b5cf6; }
@@ -54,6 +56,7 @@
             <p>Panel de gestión de incidencias</p>
             <input type="password" id="password" placeholder="Clave de acceso">
             <button onclick="login()">Entrar al panel</button>
+            <div id="login-error" class="error-msg"></div>
         </div>
     </div>
 
@@ -87,33 +90,53 @@
     </div>
 
     <script>
-        const API_URL = 'https://tickets-api.onrender.com';
+        const API_URL = 'https://tickets-api-63tv.onrender.com';
         let IT_TOKEN = '';
         let ticketsData = [];
 
-        function login() {
+        async function login() {
             const pass = document.getElementById('password').value;
-            if (!pass) return alert('Ingresa la clave');
+            document.getElementById('login-error').textContent = '';
+            
+            if (!pass) {
+                document.getElementById('login-error').textContent = 'Ingresa la clave';
+                return;
+            }
+            
             IT_TOKEN = pass;
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('panel').style.display = 'block';
-            cargarTickets();
-        }
-
-        async function cargarTickets() {
+            
             try {
                 const res = await fetch(`${API_URL}/api/admin/tickets`, {
-                    headers: { 'x-api-key': IT_TOKEN }
+                    method: 'GET',
+                    headers: { 
+                        'x-api-key': IT_TOKEN,
+                        'Content-Type': 'application/json'
+                    }
                 });
                 
-                if (!res.ok) throw new Error('No autorizado');
+                if (res.status === 401) {
+                    document.getElementById('login-error').textContent = 'Clave incorrecta';
+                    IT_TOKEN = '';
+                    return;
+                }
+                
+                if (!res.ok) {
+                    throw new Error('Error del servidor: ' + res.status);
+                }
                 
                 ticketsData = await res.json();
+                
+                // Mostrar panel
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('panel').style.display = 'block';
+                
                 mostrarTickets('todos');
                 actualizarStats();
+                
             } catch (err) {
-                document.getElementById('tickets-container').innerHTML = 
-                    '<div class="estado-vacio">Error de autenticación. Verifica tu clave.</div>';
+                console.error('Error:', err);
+                document.getElementById('login-error').textContent = 'Error de conexión: ' + err.message;
+                IT_TOKEN = '';
             }
         }
 
@@ -159,24 +182,32 @@
         }
 
         async function cambiarEstado(id, estado) {
-            await fetch(`${API_URL}/api/admin/tickets/${id}`, {
-                method: 'PUT',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'x-api-key': IT_TOKEN
-                },
-                body: JSON.stringify({ estado })
-            });
-            cargarTickets();
+            try {
+                await fetch(`${API_URL}/api/admin/tickets/${id}`, {
+                    method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'x-api-key': IT_TOKEN
+                    },
+                    body: JSON.stringify({ estado })
+                });
+                await login(); // Recargar tickets
+            } catch (err) {
+                alert('Error al actualizar: ' + err.message);
+            }
         }
 
         async function borrar(id) {
             if (!confirm('¿Eliminar este ticket permanentemente?')) return;
-            await fetch(`${API_URL}/api/admin/tickets/${id}`, {
-                method: 'DELETE',
-                headers: { 'x-api-key': IT_TOKEN }
-            });
-            cargarTickets();
+            try {
+                await fetch(`${API_URL}/api/admin/tickets/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'x-api-key': IT_TOKEN }
+                });
+                await login(); // Recargar tickets
+            } catch (err) {
+                alert('Error al eliminar: ' + err.message);
+            }
         }
 
         function filtrar(tipo, btn) {
@@ -190,8 +221,6 @@
             div.textContent = texto;
             return div.innerHTML;
         }
-
-        setInterval(() => { if (IT_TOKEN) cargarTickets(); }, 30000);
     </script>
 </body>
 </html>
