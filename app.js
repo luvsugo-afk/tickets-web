@@ -276,11 +276,12 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const datosEnvio = {
-        ...seleccionActual,
-        solicitante: document.getElementById('solicitante').value,
-        email: document.getElementById('email').value,
-        detalles_extra: document.getElementById('detalles').value
-    };
+    titulo: seleccionActual.titulo_problema,
+    descripcion: seleccionActual.descripcion_problema,
+    solicitante: document.getElementById('solicitante').value,
+    email: document.getElementById('email').value,
+    prioridad: seleccionActual.prioridad
+};
     
     btnEnviar.disabled = true;
     btnEnviar.innerHTML = '<span class="btn-texto">Enviando...</span><span class="btn-icono">✨</span>';
