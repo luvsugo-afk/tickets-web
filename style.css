@@ -1,332 +1,381 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/*
+ * Sistema de Tickets IT
+ * Estilo: Terminal/Developer Artesanal
+ * Hecho por: Alguien que sabe del tema
+ * Fecha: 2024
+ */
 
 :root {
-    --color-primario: #8b5cf6;
-    --color-primario-light: #ddd6fe;
-    --color-secundario: #06b6d4;
-    --color-acento: #f472b6;
-    --color-fondo: #faf7ff;
-    --color-card: #ffffff;
-    --color-texto: #374151;
-    --color-texto-suave: #6b7280;
-    --color-borde: #e5e7eb;
-    --fuente-titulos: 'Playfair Display', Georgia, serif;
-    --fuente-cuerpo: 'Inter', sans-serif;
+    /* Paleta sacada de una terminal de los 80s pero usable */
+    --bg: #0d1117;              /* GitHub dark, no negro puro */
+    --bg-secondary: #161b22;     /* Para tarjetas */
+    --accent: #58a6ff;           /* Azul GitHub, no el azul IA genérico */
+    --accent-hover: #79c0ff;     /* Más claro para hover */
+    --success: #238636;          /* Verde GitHub */
+    --warning: #f0883e;          /* Naranja GitHub */
+    --danger: #da3633;           /* Rojo GitHub */
+    --text: #c9d1d9;             /* Blanco roto */
+    --text-muted: #8b949e;       /* Gris terminal */
+    --border: #30363d;           /* Borde sutil */
+    
+    /* Font: Monospace porque somos devs */
+    --font: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--fuente-cuerpo);
-    background: var(--color-fondo);
-    color: var(--color-texto);
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.6;
-    min-height: 100vh;
+    font-size: 14px; /* Tamaño cómodo para leer código */
 }
 
-.pagina {
-    position: relative;
-    min-height: 100vh;
+/* Contenedor: ancho fijo, centrado pero no perfecto */
+.app-container {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.deco-lateral {
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 8px;
-    background: linear-gradient(to bottom, var(--color-primario), var(--color-acento));
-    opacity: 0.3;
+/* Header: estilo prompt de terminal */
+.app-header {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
 }
 
-.contenedor-principal {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 40px 24px;
-    position: relative;
-    z-index: 1;
-}
-
-.encabezado {
-    text-align: center;
-    margin-bottom: 32px;
-    padding-bottom: 24px;
-    border-bottom: 2px solid var(--color-primario-light);
-}
-
-.logo-area {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 8px;
-}
-
-.icono-corazon {
-    font-size: 2.5rem;
-    animation: latido 2s ease-in-out infinite;
-}
-
-@keyframes latido {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-.titulo-area h1 {
-    font-family: var(--fuente-titulos);
-    font-size: 2rem;
-    color: var(--color-primario);
+.app-header h1 {
+    font-size: 24px;
     font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
 }
 
-.subtitulo {
-    color: var(--color-texto-suave);
-    font-size: 1rem;
-    font-weight: 300;
+.app-header h1::before {
+    content: "$ ";
+    color: var(--success);
 }
 
-.bienvenida {
-    background: linear-gradient(135deg, #fef3c7, #fde68a);
-    border-radius: 16px;
-    padding: 24px;
+.tagline {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Welcome box: estilo output de comando */
+.welcome-box {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 13px;
+}
+
+.welcome-box p {
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+.welcome-box p:last-child {
+    margin-bottom: 0;
+}
+
+.prompt {
+    color: var(--success);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Formularios: estilo config file */
+.form-section {
     margin-bottom: 32px;
-    text-align: center;
-    font-size: 1.05rem;
-    color: #92400e;
-    border-left: 4px solid #f59e0b;
 }
 
-.formulario-encantador {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+.form-group {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 16px;
 }
 
-.seccion-form {
-    border: none;
-    padding: 0;
-    margin: 0;
+.form-group h2 {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.leyenda {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    font-family: var(--fuente-titulos);
-    font-size: 1.25rem;
-    color: var(--color-texto);
+.form-group h2::before {
+    content: "// ";
+    color: var(--text-muted);
 }
 
-.numero-paso {
-    width: 32px;
-    height: 32px;
-    background: var(--color-primario);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--fuente-cuerpo);
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.campo-elegante {
-    margin-bottom: 20px;
-}
-
-.fila-datos {
+/* Campos: estilo variables de entorno */
+.field-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
 
+.field {
+    margin-bottom: 16px;
+}
+
 label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--color-texto);
-    font-size: 0.95rem;
-}
-
-.hint {
     display: block;
-    margin-top: 4px;
-    font-size: 0.8rem;
-    color: var(--color-texto-suave);
-    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: lowercase;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
 }
 
-.opcional {
-    font-weight: 400;
-    color: var(--color-texto-suave);
-    font-size: 0.875rem;
-    margin-left: 4px;
+.required {
+    color: var(--danger);
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 14px 16px;
-    border: 2px solid var(--color-borde);
-    border-radius: 12px;
-    font-family: var(--fuente-cuerpo);
-    font-size: 1rem;
-    background: white;
-    transition: all 0.3s ease;
+    padding: 10px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    border-radius: 3px;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: var(--color-primario);
-    box-shadow: 0 0 0 4px var(--color-primario-light);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);
 }
 
-.select-wrapper {
-    position: relative;
+input::placeholder, textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.5;
 }
 
-.select-wrapper::after {
-    content: '▼';
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-primario);
-    font-size: 0.75rem;
-    pointer-events: none;
+textarea {
+    resize: vertical;
+    min-height: 80px;
 }
 
+/* Select: flecha simple */
 select {
     appearance: none;
-    cursor: pointer;
-    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%2358a6ff' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
 }
 
-.vista-previa-ticket {
-    background: linear-gradient(135deg, #f3e8ff, #e0e7ff);
-    border-radius: 16px;
-    padding: 24px;
-    border: 2px dashed var(--color-primario-light);
+/* Preview box: estilo JSON */
+.preview-box {
+    background: var(--bg);
+    border: 1px solid var(--accent);
+    border-radius: 3px;
+    padding: 16px;
+    margin: 20px 0;
 }
 
-.vp-header {
+.preview-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
 }
 
-.vp-titulo {
-    font-weight: 600;
-    color: var(--color-texto);
-    font-size: 0.9rem;
-}
-
-.prioridad-tag {
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
+.preview-title {
+    font-size: 11px;
+    color: var(--text-muted);
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.prioridad-tag.critica { background: #fee2e2; color: #dc2626; }
-.prioridad-tag.alta { background: #ffedd5; color: #ea580c; }
-.prioridad-tag.media { background: #fef9c3; color: #ca8a04; }
-.prioridad-tag.baja { background: #dcfce7; color: #16a34a; }
-
-.vp-problema {
-    font-size: 1.1rem;
-    color: var(--color-texto);
+.preview-content p {
     margin-bottom: 8px;
-    font-weight: 500;
+    font-size: 13px;
 }
 
-.area-envio {
+.preview-note {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-style: italic;
+}
+
+/* Priority badges: estilo tags */
+.priority-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 2px;
+}
+
+.priority-badge.critica {
+    background: var(--danger);
+    color: white;
+}
+
+.priority-badge.alta {
+    background: var(--warning);
+    color: var(--bg);
+}
+
+.priority-badge.media {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.priority-badge.baja {
+    background: var(--border);
+    color: var(--text);
+}
+
+/* Botones: estilo comandos */
+.actions {
+    margin-top: 24px;
     text-align: center;
-    padding-top: 16px;
 }
 
-.btn-magico {
-    background: linear-gradient(135deg, var(--color-primario), #7c3aed);
+.btn-submit {
+    background: var(--success);
     color: white;
     border: none;
-    padding: 18px 48px;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    padding: 12px 24px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s ease;
+    border-radius: 3px;
+    transition: all 0.2s;
 }
 
-.btn-magico:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+.btn-submit:hover:not(:disabled) {
+    background: #2ea043;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3);
 }
 
-.btn-magico:disabled {
-    opacity: 0.5;
+.btn-submit:disabled {
+    background: var(--border);
+    color: var(--text-muted);
     cursor: not-allowed;
 }
 
-.mensaje-confianza {
+.btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 10px 20px;
+    font-family: var(--font);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 3px;
     margin-top: 16px;
-    font-size: 0.875rem;
-    color: var(--color-texto-suave);
 }
 
-.mensaje-exito {
+.btn-secondary:hover {
+    background: rgba(88, 166, 255, 0.1);
+}
+
+.hint {
+    color: var(--text-muted);
+    font-size: 11px;
+    margin-top: 12px;
+}
+
+/* Success screen: estilo compilación exitosa */
+.success-screen {
     text-align: center;
     padding: 48px 24px;
+    border: 2px solid var(--success);
+    background: var(--bg-secondary);
 }
 
-.exito-icono {
-    font-size: 4rem;
+.success-icon {
+    font-size: 48px;
+    color: var(--success);
     margin-bottom: 16px;
 }
 
-.mensaje-exito h2 {
-    font-family: var(--fuente-titulos);
-    color: var(--color-primario);
-    margin-bottom: 16px;
+.success-screen h2 {
+    color: var(--success);
+    font-size: 18px;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
 }
 
-.exito-detalles {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    margin: 24px 0;
+.success-details {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 13px;
 }
 
-.numero-destacado {
-    font-family: var(--fuente-titulos);
-    font-size: 1.5rem;
-    color: var(--color-primario);
-    font-weight: 700;
+.success-details p {
+    margin-bottom: 8px;
 }
 
-.btn-nuevo {
-    background: white;
-    color: var(--color-primario);
-    border: 2px solid var(--color-primario);
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-size: 1rem;
-    cursor: pointer;
+.success-details strong {
+    color: var(--accent);
+    display: inline-block;
+    width: 80px;
 }
 
-.pie-pagina {
-    text-align: center;
-    padding: 40px 24px;
-    color: var(--color-texto-suave);
-    font-size: 0.875rem;
+.success-message {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-bottom: 24px;
 }
 
-@media (max-width: 640px) {
-    .fila-datos { grid-template-columns: 1fr; }
-    .titulo-area h1 { font-size: 1.5rem; }
+/* Footer: estilo versión */
+.footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.footer p {
+    margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .app-container {
+        margin: 20px auto;
+    }
+    
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .app-header h1 {
+        font-size: 18px;
+    }
 }
