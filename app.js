@@ -1,15 +1,16 @@
 :root {
-    /* VIOLETA CLARITO para sidebar */
-    --bg: #F5F3F8;              /* Fondo lavanda muy claro */
-    --surface: #FFFFFF;          /* Tarjetas blancas */
-    --sidebar: #D4C8DA;          /* VIOLETA CLARITO - antes era oscuro */
-    --sidebar-text: #000000;     /* NEGRO */
-    --text: #000000;             /* NEGRO puro */
-    --text-muted: #333333;       /* Gris muy oscuro */
-    --accent: #B8A8C0;           /* Violeta suave para acentos */
-    --accent-hover: #A89BB0;     /* Hover */
-    --border: #E8E0EC;           /* Bordes claros */
-    --shadow: rgba(0, 0, 0, 0.08);
+    /* Lavanda pastel */
+    --bg: #EDE8F5;                 /* Lavanda pastel claro */
+    --surface: #FFFFFF;            /* Blanco para tarjetas */
+    --sidebar: #8B7AA0;            /* Violeta grisáceo suave */
+    --sidebar-text: #FFFFFF;         /* Blanco */
+    --text: #000000;                 /* NEGRO absoluto */
+    --text-muted: #333333;           /* Gris muy oscuro (casi negro) */
+    --accent: #A89BB8;               /* Lavanda pastel medio */
+    --accent-hover: #8B7AA0;         /* Hover más oscuro */
+    --accent-soft: #D4C8E0;          /* Lavanda muy claro */
+    --border: #C8BED4;               /* Borde lavanda */
+    --shadow: rgba(139, 122, 160, 0.12);
     --font-serif: 'DM Serif Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -22,8 +23,8 @@
 
 body {
     font-family: var(--font-sans);
-    background: #F5F3F8;
-    color: #000000;               /* NEGRO */
+    background: var(--bg);
+    color: var(--text);                /* NEGRO */
     line-height: 1.6;
     font-size: 15px;
 }
@@ -33,11 +34,11 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar - VIOLETA CLARITO */
+/* Sidebar */
 .sidebar {
     width: 260px;
-    background: #D4C8DA !important;  /* VIOLETA CLARITO - forzado */
-    color: #000000;
+    background: var(--sidebar);
+    color: var(--sidebar-text);
     padding: 40px 30px;
     position: fixed;
     height: 100vh;
@@ -48,8 +49,7 @@ body {
     font-size: 28px;
     margin-bottom: 60px;
     letter-spacing: -0.5px;
-    color: #000000 !important;    /* NEGRO forzado */
-    font-weight: 600;
+    color: var(--sidebar-text);
 }
 
 .nav {
@@ -59,18 +59,19 @@ body {
 }
 
 .nav-item {
-    color: #000000 !important;     /* NEGRO forzado */
+    color: var(--sidebar-text);
     text-decoration: none;
     padding: 12px 16px;
     border-radius: 6px;
-    font-weight: 500;
+    opacity: 0.9;
     transition: all 0.2s;
 }
 
 .nav-item:hover,
 .nav-item.active {
-    background: rgba(0, 0, 0, 0.1);
-    color: #000000 !important;    /* NEGRO */
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
 }
 
 /* Main Content */
@@ -84,7 +85,7 @@ body {
 .header {
     margin-bottom: 48px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #E8E0EC;
+    border-bottom: 1px solid var(--border);
 }
 
 .header h1 {
@@ -93,27 +94,29 @@ body {
     font-weight: 400;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
-    color: #000000 !important;    /* NEGRO forzado */
+    color: var(--text);                /* NEGRO */
 }
 
 .subtitle {
-    color: #333333;               /* Gris oscuro */
+    color: var(--text-muted);          /* Gris oscuro casi negro */
     font-size: 16px;
 }
 
 /* Form */
 .form-section {
-    margin-bottom: 48px;
+    background: var(--surface);
+    padding: 32px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
-/* TODOS los h2 en NEGRO */
-.form-section h2,
-h2 {
+.form-section h2 {
     font-family: var(--font-serif);
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 24px;
-    color: #000000 !important;    /* NEGRO forzado - antes era violeta */
+    color: var(--text);                /* NEGRO */
 }
 
 .form-row {
@@ -123,7 +126,7 @@ h2 {
 }
 
 .field {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 label {
@@ -131,30 +134,30 @@ label {
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 14px;
-    color: #000000 !important;    /* NEGRO forzado */
+    color: var(--text);                /* NEGRO */
 }
 
 .required {
-    color: #000000;
-    font-weight: 700;
+    color: #B71C1C;                    /* Rojo oscuro */
 }
 
 input, select, textarea {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid #E8E0EC;
-    border-radius: 4px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
     font-family: var(--font-sans);
     font-size: 15px;
-    background: #FFFFFF;
-    color: #000000;               /* NEGRO */
+    background: var(--bg);             /* Fondo lavanda pastel */
+    color: var(--text);                  /* NEGRO */
     transition: all 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #B8A8C0;
-    box-shadow: 0 0 0 3px rgba(184, 168, 192, 0.2);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--shadow);
+    background: var(--surface);
 }
 
 textarea {
@@ -165,7 +168,7 @@ textarea {
 select {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23000000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238B7AA0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
@@ -173,11 +176,12 @@ select {
 
 /* Summary Card */
 .summary-card {
-    background: #FFFFFF;
-    border-left: 4px solid #B8A8C0;
+    background: var(--surface);
+    border-left: 4px solid var(--accent);
     padding: 28px;
     margin: 40px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .summary-header {
@@ -192,7 +196,7 @@ select {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #000000 !important;    /* NEGRO */
+    color: var(--text-muted);
 }
 
 .badge {
@@ -202,24 +206,24 @@ select {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     border-radius: 4px;
-    background: #E8E0EC;
-    color: #000000 !important;    /* NEGRO */
+    background: var(--accent-soft);
+    color: var(--text);                /* NEGRO */
 }
 
-.badge.critica { background: #FFCDD2; color: #000000; }
-.badge.alta { background: #FFE0B2; color: #000000; }
-.badge.media { background: #B8A8C0; color: #000000; }
-.badge.baja { background: #D4C8DA; color: #000000; }
+.badge.critica { background: #EF9A9A; color: #000000; }
+.badge.alta { background: #FFCC80; color: #000000; }
+.badge.media { background: var(--accent); color: #000000; }
+.badge.baja { background: #C8BED4; color: #000000; }
 
 .summary-problem {
     font-size: 18px;
     margin-bottom: 12px;
-    color: #000000 !important;    /* NEGRO */
+    color: var(--text);                /* NEGRO */
 }
 
 .summary-note {
     font-size: 14px;
-    color: #333333;
+    color: var(--text-muted);
 }
 
 /* Buttons */
@@ -228,61 +232,61 @@ select {
 }
 
 .btn-primary {
-    background: #B8A8C0;          /* Violeta suave */
-    color: #000000 !important;    /* NEGRO en botón */
+    background: var(--accent);
+    color: #000000;                    /* NEGRO */
     border: none;
     padding: 16px 40px;
     font-family: var(--font-sans);
     font-size: 15px;
     font-weight: 600;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .btn-primary:hover:not(:disabled) {
-    background: #A89BB0;
-    color: #000000;
+    background: var(--accent-hover);
     transform: translateY(-1px);
+    color: #FFFFFF;
 }
 
 .btn-primary:disabled {
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 .btn-secondary {
     background: transparent;
-    color: #000000 !important;    /* NEGRO */
-    border: 2px solid #D4C8DA;
+    color: var(--text);                /* NEGRO */
+    border: 2px solid var(--border);
     padding: 12px 32px;
     font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 600;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .btn-secondary:hover {
-    background: #D4C8DA;
-    color: #000000;
+    background: var(--accent-soft);
+    border-color: var(--accent);
 }
 
 /* Success Message */
 .success-message {
     text-align: center;
     padding: 60px 40px;
-    background: #FFFFFF;
+    background: var(--surface);
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
 .success-icon {
     width: 80px;
     height: 80px;
-    background: #B8A8C0;
-    color: #000000 !important;    /* NEGRO */
+    background: var(--accent);
+    color: #000000;                    /* NEGRO */
     font-size: 40px;
     border-radius: 50%;
     display: flex;
@@ -297,16 +301,16 @@ select {
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 12px;
-    color: #000000 !important;    /* NEGRO */
+    color: var(--text);                /* NEGRO */
 }
 
 .success-message > p {
-    color: #333333;
+    color: var(--text-muted);
     margin-bottom: 32px;
 }
 
 .ticket-details {
-    background: #F5F3F8;
+    background: var(--bg);
     padding: 24px;
     border-radius: 8px;
     margin-bottom: 32px;
@@ -315,14 +319,13 @@ select {
 
 .ticket-details p {
     margin-bottom: 12px;
-    color: #000000 !important;    /* NEGRO */
+    color: var(--text);                /* NEGRO */
 }
 
 .ticket-details strong {
     display: inline-block;
     width: 100px;
-    color: #000000 !important;    /* NEGRO */
-    font-weight: 600;
+    color: var(--text-muted);
 }
 
 /* Responsive */
@@ -341,5 +344,9 @@ select {
     
     .form-row {
         grid-template-columns: 1fr;
+    }
+    
+    .form-section {
+        padding: 24px;
     }
 }
