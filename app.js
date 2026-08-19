@@ -1,67 +1,68 @@
+// Catálogo de problemas: datos técnicos reales
 const catalogoProblemas = {
     hardware: {
         problemas: {
-            'pc-no-enciende': { titulo: 'Mi equipo no enciende', descripcion: 'El computador no muestra señal de vida al presionar el botón de encendido.', prioridad: 'Alta' },
-            'pantalla-azul': { titulo: 'Aparece pantalla azul (BSOD)', descripcion: 'El sistema presenta pantallazos azules aleatorios.', prioridad: 'Alta' },
-            'monitor-negro': { titulo: 'Monitor negro, no muestra imagen', descripcion: 'La pantalla permanece negra.', prioridad: 'Alta' },
-            'sobrecalentamiento': { titulo: 'Se sobrecalienta mucho', descripcion: 'El dispositivo alcanza temperaturas elevadas.', prioridad: 'Media' },
-            'teclado-danado': { titulo: 'Teclado sucio o teclas no funcionan', descripcion: 'Teclas no responden.', prioridad: 'Baja' },
-            'mouse-falla': { titulo: 'Mouse no responde bien', descripcion: 'El puntero no responde correctamente.', prioridad: 'Baja' }
+            'pc-no-enciende': { titulo: 'PC no enciende', descripcion: 'Fallo en fuente de poder o placa madre. Revisar conexiones.', prioridad: 'Alta' },
+            'pantalla-azul': { titulo: 'BSOD - Pantalla azul', descripcion: 'Error crítico de sistema. Posible driver o RAM defectuosa.', prioridad: 'Alta' },
+            'monitor-negro': { titulo: 'Sin señal de video', descripcion: 'Cable HDMI/DP suelto o monitor dañado.', prioridad: 'Alta' },
+            'sobrecalentamiento': { titulo: 'Overheating', descripcion: 'Temperatura >90°C. Limpiar coolers y cambiar pasta térmica.', prioridad: 'Media' },
+            'teclado-danado': { titulo: 'Teclado no responde', descripcion: 'Teclas atascadas o desconexión USB.', prioridad: 'Baja' },
+            'mouse-falla': { titulo: 'Mouse errático', descripcion: 'Sensor sucio o batería baja (si es wireless).', prioridad: 'Baja' }
         }
     },
     software: {
         problemas: {
-            'office-crash': { titulo: 'Microsoft Office se cierra solo', descripcion: 'Word, Excel o Outlook se cierran inesperadamente.', prioridad: 'Media' },
-            'antivirus-vencido': { titulo: 'Antivirus muestra alerta de vencimiento', descripcion: 'El software de seguridad muestra licencia expirada.', prioridad: 'Alta' },
-            'app-externa': { titulo: 'Aplicación del trabajo no funciona', descripcion: 'Software específico del departamento presenta errores.', prioridad: 'Media' },
-            'navegador-lento': { titulo: 'Internet va muy lento en el navegador', descripcion: 'Chrome/Edge tarda en cargar páginas.', prioridad: 'Baja' },
-            'actualizacion-pendiente': { titulo: 'Windows pide actualizarse', descripcion: 'El sistema operativo requiere actualizaciones.', prioridad: 'Baja' }
+            'office-crash': { titulo: 'Office se cierra', descripcion: 'Add-ins corruptos. Iniciar en modo seguro.', prioridad: 'Media' },
+            'antivirus-vencido': { titulo: 'Licencia expirada', descripcion: 'Sistema desprotegido. Renovar licencia urgentemente.', prioridad: 'Alta' },
+            'app-externa': { titulo: 'App corporativa falla', descripcion: 'Error específico de software de la empresa.', prioridad: 'Media' },
+            'navegador-lento': { titulo: 'Browser lento', descripcion: 'Cache saturado o demasiadas extensiones.', prioridad: 'Baja' },
+            'actualizacion-pendiente': { titulo: 'Updates pendientes', descripcion: 'Parches de seguridad sin instalar.', prioridad: 'Baja' }
         }
     },
     red: {
         problemas: {
-            'sin-internet': { titulo: 'No tengo internet', descripcion: 'El equipo no puede acceder a recursos web.', prioridad: 'Critica' },
-            'vpn-caida': { titulo: 'No puedo conectarme por VPN', descripcion: 'No se puede establecer conexión segura.', prioridad: 'Alta' },
-            'wifi-lento': { titulo: 'WiFi muy lento o se corta', descripcion: 'La conexión inalámbrica presenta problemas.', prioridad: 'Media' },
-            'compartir-archivos': { titulo: 'No veo carpetas compartidas', descripcion: 'Imposible acceder a carpetas compartidas.', prioridad: 'Media' }
+            'sin-internet': { titulo: 'Sin conectividad', descripcion: 'Cable de red desconectado o fallo en switch.', prioridad: 'Critica' },
+            'vpn-caida': { titulo: 'VPN caída', descripcion: 'No acceso a servidores corporativos. Revisar certificados.', prioridad: 'Alta' },
+            'wifi-lento': { titulo: 'WiFi intermitente', descripcion: 'Señal débil o interferencia de 2.4GHz.', prioridad: 'Media' },
+            'compartir-archivos': { titulo: 'Sin acceso a shares', descripcion: 'Permisos de red o SMB deshabilitado.', prioridad: 'Media' }
         }
     },
     email: {
         problemas: {
-            'no-envia': { titulo: 'No puedo enviar correos', descripcion: 'Los mensajes quedan atascados.', prioridad: 'Alta' },
-            'no-recibe': { titulo: 'No me llegan correos nuevos', descripcion: 'La bandeja no muestra mensajes recientes.', prioridad: 'Alta' },
-            'outlook-no-abre': { titulo: 'Outlook no abre', descripcion: 'La aplicación no inicia.', prioridad: 'Alta' },
-            'configurar-firma': { titulo: 'Necesito configurar mi firma', descripcion: 'Ayuda con firma electrónica.', prioridad: 'Baja' },
-            'recuperar-borrado': { titulo: 'Borré un correo importante', descripcion: 'Recuperación de mensaje eliminado.', prioridad: 'Media' }
+            'no-envia': { titulo: 'SMTP fallando', descripcion: 'Cola de envío bloqueada o autenticación errónea.', prioridad: 'Alta' },
+            'no-recibe': { titulo: 'IMAP/POP3 error', descripcion: 'No sincroniza bandeja de entrada.', prioridad: 'Alta' },
+            'outlook-no-abre': { titulo: 'Outlook corrupto', descripcion: 'Reparar perfil o recrear OST.', prioridad: 'Alta' },
+            'configurar-firma': { titulo: 'Firma HTML', descripcion: 'Configuración de firma corporativa.', prioridad: 'Baja' },
+            'recuperar-borrado': { titulo: 'Restore deleted item', descripcion: 'Recuperar de Deleted Items o backup.', prioridad: 'Media' }
         }
     },
     impresion: {
         problemas: {
-            'impresora-oficina': { titulo: 'Impresora de la oficina no responde', descripcion: 'La impresora compartida no funciona.', prioridad: 'Alta' },
-            'escaner-falla': { titulo: 'Escáner no funciona', descripcion: 'El equipo no escanea documentos.', prioridad: 'Media' },
-            'toner-agotado': { titulo: 'Se acabó la tinta o tóner', descripcion: 'La impresora muestra alerta.', prioridad: 'Media' },
-            'instalar-impresora': { titulo: 'Necesito instalar una impresora nueva', descripcion: 'Configurar impresora nueva.', prioridad: 'Baja' }
+            'impresora-oficina': { titulo: 'Printer offline', descripcion: 'Cola de impresión atascada o sin toner.', prioridad: 'Alta' },
+            'escaner-falla': { titulo: 'Scanner error', descripcion: 'Calibración perdida o cristal sucio.', prioridad: 'Media' },
+            'toner-agotado': { titulo: 'Out of toner', descripcion: 'Reemplazar cartucho.', prioridad: 'Media' },
+            'instalar-impresora': { titulo: 'Setup printer', descripcion: 'Instalar driver y configurar puerto.', prioridad: 'Baja' }
         }
     },
     accesos: {
         problemas: {
-            'password-bloqueada': { titulo: 'Mi cuenta está bloqueada', descripcion: 'Cuenta bloqueada por intentos fallidos.', prioridad: 'Critica' },
-            'reset-password': { titulo: 'Olvidé mi contraseña', descripcion: 'No puedo acceder al sistema.', prioridad: 'Media' },
-            'acceso-carpeta': { titulo: 'No tengo permiso para una carpeta', descripcion: 'Necesito acceso a directorio específico.', prioridad: 'Media' },
-            'crear-usuario': { titulo: 'Nuevo empleado necesita cuenta', descripcion: 'Ingreso de personal nuevo.', prioridad: 'Media' },
-            'bloquear-exempleado': { titulo: 'Deshabilitar cuenta de exempleado', descripcion: 'Baja de personal.', prioridad: 'Alta' }
+            'password-bloqueada': { titulo: 'Account locked', descripcion: 'Múltiples intentos fallidos. Desbloquear desde AD.', prioridad: 'Critica' },
+            'reset-password': { titulo: 'Password reset', descripcion: 'Usuario olvidó contraseña. Generar temporal.', prioridad: 'Media' },
+            'acceso-carpeta': { titulo: 'Permisos NTFS', descripcion: 'Sin acceso a recurso compartido.', prioridad: 'Media' },
+            'crear-usuario': { titulo: 'New user setup', descripcion: 'Onboarding: crear AD, email, VPN.', prioridad: 'Media' },
+            'bloquear-exempleado': { titulo: 'Disable account', descripcion: 'Offboarding: desactivar y backup.', prioridad: 'Alta' }
         }
     },
     otros: {
         problemas: {
-            'consulta-general': { titulo: 'Tengo una duda sobre IT', descripcion: 'Consulta general.', prioridad: 'Baja' },
-            'compra-equipo': { titulo: 'Solicitud de equipo nuevo', descripcion: 'Requerimiento de hardware.', prioridad: 'Baja' },
-            'urgencia-desconocida': { titulo: 'Problema no listado aquí', descripcion: 'Incidencia no catalogada.', prioridad: 'Media' }
+            'consulta-general': { titulo: 'Consulta técnica', descripcion: 'Duda general sobre procedimiento.', prioridad: 'Baja' },
+            'compra-equipo': { titulo: 'Hardware request', descripcion: 'Solicitud de nuevo equipo.', prioridad: 'Baja' },
+            'urgencia-desconocida': { titulo: 'Incidente no catalogado', descripcion: 'Requiere análisis manual.', prioridad: 'Media' }
         }
     }
 };
 
-// Elementos del DOM
+// Referencias DOM
 const selectCategoria = document.getElementById('categoria');
 const campoProblema = document.getElementById('campo-problema');
 const selectProblema = document.getElementById('problema');
@@ -79,38 +80,38 @@ selectCategoria.addEventListener('change', function() {
     const cat = this.value;
     
     if (!cat) {
-        if (campoProblema) campoProblema.style.display = 'none';
-        if (campoDetalles) campoDetalles.style.display = 'none';
-        if (vistaPrevia) vistaPrevia.style.display = 'none';
+        campoProblema.style.display = 'none';
+        campoDetalles.style.display = 'none';
+        vistaPrevia.style.display = 'none';
         btnEnviar.disabled = true;
         return;
     }
     
     const problemas = catalogoProblemas[cat].problemas;
-    selectProblema.innerHTML = '<option value="">Selecciona el problema específico...</option>';
+    selectProblema.innerHTML = '<option value="">-- seleccionar --</option>';
     
     Object.entries(problemas).forEach(([key, info]) => {
         const opt = document.createElement('option');
         opt.value = key;
-        opt.textContent = info.titulo;
+        opt.textContent = `[${info.prioridad.substring(0,1)}] ${info.titulo}`;
         selectProblema.appendChild(opt);
     });
     
     campoProblema.style.display = 'block';
     selectProblema.value = '';
-    if (campoDetalles) campoDetalles.style.display = 'none';
-    if (vistaPrevia) vistaPrevia.style.display = 'none';
+    campoDetalles.style.display = 'none';
+    vistaPrevia.style.display = 'none';
     btnEnviar.disabled = true;
 });
 
-// Cambio de problema específico
+// Cambio de problema
 selectProblema.addEventListener('change', function() {
     const cat = selectCategoria.value;
     const prob = this.value;
     
     if (!prob) {
-        if (campoDetalles) campoDetalles.style.display = 'none';
-        if (vistaPrevia) vistaPrevia.style.display = 'none';
+        campoDetalles.style.display = 'none';
+        vistaPrevia.style.display = 'none';
         btnEnviar.disabled = true;
         return;
     }
@@ -124,8 +125,8 @@ selectProblema.addEventListener('change', function() {
         prioridad: info.prioridad
     };
     
-    tagPrioridad.textContent = info.prioridad;
-    tagPrioridad.className = 'prioridad-tag ' + info.prioridad.toLowerCase();
+    tagPrioridad.textContent = info.prioridad.toUpperCase();
+    tagPrioridad.className = 'priority-badge ' + info.prioridad.toLowerCase();
     vpProblemaTexto.textContent = info.titulo;
     
     vistaPrevia.style.display = 'block';
@@ -133,15 +134,13 @@ selectProblema.addEventListener('change', function() {
     btnEnviar.disabled = false;
 });
 
-// Envío del formulario
+// Submit con validación
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const detalles = document.getElementById('detalles').value;
-    
-    // Validación de detalles obligatorios
-    if (!detalles.trim()) {
-        alert('Por favor completa el campo de detalles adicionales');
+    const detalles = document.getElementById('detalles').value.trim();
+    if (!detalles) {
+        alert('> ERROR: El campo notas_adicionales es obligatorio');
         document.getElementById('detalles').focus();
         return;
     }
@@ -156,7 +155,7 @@ form.addEventListener('submit', async (e) => {
     };
     
     btnEnviar.disabled = true;
-    btnEnviar.innerHTML = '<span class="btn-texto">Enviando...</span><span class="btn-icono">⏳</span>';
+    btnEnviar.textContent = '[ ENVIANDO... ]';
     
     try {
         const res = await fetch(`${API_URL}/api/tickets`, {
@@ -172,24 +171,23 @@ form.addEventListener('submit', async (e) => {
             document.getElementById('mensaje-exito').style.display = 'block';
             document.getElementById('email-confirmado').textContent = datosEnvio.email;
             document.getElementById('numero-ticket').textContent = '#' + data.ticket.id;
-            document.getElementById('prioridad-confirmada').textContent = data.ticket.prioridad;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('prioridad-confirmada').textContent = data.ticket.prioridad.toUpperCase();
         } else {
             throw new Error(data.error);
         }
     } catch (err) {
-        alert('Ups, algo salió mal. Intenta de nuevo.');
+        alert('> ERROR: ' + err.message);
         btnEnviar.disabled = false;
-        btnEnviar.innerHTML = '<span class="btn-texto">Enviar mi solicitud</span><span class="btn-icono">→</span>';
+        btnEnviar.textContent = '[ ENVIAR_TICKET ]';
     }
 });
 
-// Enter en cualquier campo envía el formulario
+// Enter en cualquier campo envía
 document.querySelectorAll('input, select, textarea').forEach(input => {
     input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !btnEnviar.disabled) {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
             e.preventDefault();
-            form.dispatchEvent(new Event('submit'));
+            if (!btnEnviar.disabled) form.dispatchEvent(new Event('submit'));
         }
     });
 });
