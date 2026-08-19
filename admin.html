@@ -10,7 +10,7 @@
         .login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
         .login-box { background: #1e293b; padding: 40px; border-radius: 16px; width: 100%; max-width: 400px; text-align: center; }
         .login-box h1 { color: #8b5cf6; margin-bottom: 8px; }
-        .login-box p { color: #64748b; margin-bottom: 24px; font-size: 0.9rem; }
+        .login-box p { color: #64748b; margin-bottom: 24px; }
         .login-box input { width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #334155; background: #0f172a; color: white; border-radius: 8px; }
         .login-box button { width: 100%; padding: 12px; background: #8b5cf6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
         .login-box button:hover { background: #7c3aed; }
@@ -39,8 +39,10 @@
         .prioridad-badge.media { background: #422006; color: #fde047; }
         .prioridad-badge.baja { background: #052e16; color: #86efac; }
         .ticket-meta { color: #94a3b8; font-size: 0.875rem; margin-bottom: 12px; }
-        .ticket-desc { color: #e2e8f0; line-height: 1.6; margin-bottom: 16px; padding: 12px; background: #0f172a; border-radius: 8px; white-space: pre-wrap; }
-        .ticket-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .ticket-desc { color: #e2e8f0; line-height: 1.6; margin-bottom: 12px; padding: 12px; background: #0f172a; border-radius: 8px; white-space: pre-wrap; }
+        .detalles-extra { margin-top: 12px; padding: 12px; background: #334155; border-radius: 6px; border-left: 3px solid #8b5cf6; }
+        .detalles-extra strong { color: #c4b5fd; }
+        .ticket-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
         .btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem; }
         .btn-cerrar { background: #059669; color: white; }
         .btn-reabrir { background: #475569; color: white; }
@@ -107,11 +109,7 @@
             
             try {
                 const res = await fetch(`${API_URL}/api/admin/tickets`, {
-                    method: 'GET',
-                    headers: { 
-                        'x-api-key': IT_TOKEN,
-                        'Content-Type': 'application/json'
-                    }
+                    headers: { 'x-api-key': IT_TOKEN }
                 });
                 
                 if (res.status === 401) {
@@ -120,22 +118,16 @@
                     return;
                 }
                 
-                if (!res.ok) {
-                    throw new Error('Error del servidor: ' + res.status);
-                }
+                if (!res.ok) throw new Error('Error del servidor');
                 
                 ticketsData = await res.json();
-                
-                // Mostrar panel
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('panel').style.display = 'block';
-                
                 mostrarTickets('todos');
                 actualizarStats();
                 
             } catch (err) {
-                console.error('Error:', err);
-                document.getElementById('login-error').textContent = 'Error de conexión: ' + err.message;
+                document.getElementById('login-error').textContent = 'Error de conexión';
                 IT_TOKEN = '';
             }
         }
@@ -144,9 +136,7 @@
             const container = document.getElementById('tickets-container');
             let tickets = ticketsData;
             
-            if (filtro !== 'todos') {
-                tickets = tickets.filter(t => t.estado === filtro);
-            }
+            if (filtro !== 'todos') tickets = tickets.filter(t => t.estado === filtro);
             
             if (tickets.length === 0) {
                 container.innerHTML = '<div class="estado-vacio">No hay tickets en esta categoría</div>';
@@ -162,7 +152,10 @@
                     <div class="ticket-meta">
                         📧 ${esc(t.email)} | 👤 ${esc(t.solicitante)} | 📅 ${new Date(t.fecha_creacion).toLocaleString()} | Estado: ${t.estado}
                     </div>
-                    <div class="ticket-desc">${esc(t.descripcion)}</div>
+                    <div class="ticket-desc">
+                        ${esc(t.descripcion)}
+                        ${t.detalles_extra ? `<div class="detalles-extra"><strong>📋 Detalles adicionales:</strong><br>${esc(t.detalles_extra)}</div>` : ''}
+                    </div>
                     <div class="ticket-actions">
                         ${t.estado === 'Abierto' 
                             ? `<button class="btn btn-cerrar" onclick="cambiarEstado(${t.id}, 'Cerrado')">✓ Marcar resuelto</button>`
@@ -182,32 +175,24 @@
         }
 
         async function cambiarEstado(id, estado) {
-            try {
-                await fetch(`${API_URL}/api/admin/tickets/${id}`, {
-                    method: 'PUT',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'x-api-key': IT_TOKEN
-                    },
-                    body: JSON.stringify({ estado })
-                });
-                await login(); // Recargar tickets
-            } catch (err) {
-                alert('Error al actualizar: ' + err.message);
-            }
+            await fetch(`${API_URL}/api/admin/tickets/${id}`, {
+                method: 'PUT',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'x-api-key': IT_TOKEN
+                },
+                body: JSON.stringify({ estado })
+            });
+            await login();
         }
 
         async function borrar(id) {
             if (!confirm('¿Eliminar este ticket permanentemente?')) return;
-            try {
-                await fetch(`${API_URL}/api/admin/tickets/${id}`, {
-                    method: 'DELETE',
-                    headers: { 'x-api-key': IT_TOKEN }
-                });
-                await login(); // Recargar tickets
-            } catch (err) {
-                alert('Error al eliminar: ' + err.message);
-            }
+            await fetch(`${API_URL}/api/admin/tickets/${id}`, {
+                method: 'DELETE',
+                headers: { 'x-api-key': IT_TOKEN }
+            });
+            await login();
         }
 
         function filtrar(tipo, btn) {
