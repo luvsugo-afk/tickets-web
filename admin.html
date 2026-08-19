@@ -206,6 +206,20 @@
             div.textContent = texto;
             return div.innerHTML;
         }
+        // Limpiar al salir de la página
+window.addEventListener('beforeunload', () => {
+    IT_TOKEN = '';
+});
+
+// También limpiar cuando la página pierde visibilidad
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        IT_TOKEN = '';
+        document.getElementById('panel').style.display = 'none';
+        document.getElementById('login').style.display = 'flex';
+        document.getElementById('password').value = '';
+    }
+});
     </script>
 </body>
 </html>
