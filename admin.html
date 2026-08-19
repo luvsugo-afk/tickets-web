@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Admin — IT Support</title>
+    <title>Panel Admin/title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -117,7 +117,6 @@
             margin-top: 16px;
         }
         
-        /* Panel de tickets (después de login) */
         .admin-layout {
             display: flex;
             min-height: 100vh;
@@ -350,7 +349,6 @@
 </head>
 <body>
 
-    <!-- PANTALLA DE LOGIN -->
     <div id="login-screen" class="login-layout">
         <aside class="login-sidebar">
             <div class="brand">IT Support</div>
@@ -373,10 +371,9 @@
         </main>
     </div>
 
-    <!-- PANEL DE ADMIN (oculto inicialmente) -->
     <div id="admin-panel" class="admin-layout" style="display:none;">
         <aside class="admin-sidebar">
-            <div class="brand">IT Support</div>
+            <div class="brand">Soporte</div>
             <nav class="admin-nav">
                 <a href="index.html">Nuevo Ticket</a>
                 <a href="#" class="active">Panel Admin</a>
@@ -522,7 +519,6 @@
             return div.innerHTML;
         }
 
-        // Seguridad: limpiar al salir
         window.addEventListener('beforeunload', () => { TOKEN = ''; });
     </script>
 </body>
