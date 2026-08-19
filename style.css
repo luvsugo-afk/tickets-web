@@ -1,14 +1,14 @@
 :root {
-    --bg: #faf9f7;
-    --surface: #ffffff;
-    --sidebar: #2d4a3e;
-    --sidebar-text: #e8e6e3;
-    --text: #1a1a1a;
-    --text-muted: #6b6b6b;
-    --accent: #4a7c59;
-    --accent-hover: #3d6548;
-    --border: #e5e5e5;
-    --shadow: rgba(0,0,0,0.08);
+    --bg: #FAF7FC;           /* Lila casi blanco */
+    --surface: #FFFFFF;       /* Blanco */
+    --sidebar: #E8E0F5;     /* Lavanda claro */
+    --sidebar-text: #000000;  /* NEGRO */
+    --text: #000000;          /* NEGRO puro */
+    --text-muted: #4A4A4A;    /* Gris oscuro, casi negro */
+    --accent: #8B5CF6;        /* Violeta */
+    --accent-hover: #7C3AED;  /* Violeta más oscuro */
+    --border: #DDD6FE;        /* Lavanda borde */
+    --shadow: rgba(139, 92, 246, 0.1);
     --font-serif: 'DM Serif Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -22,7 +22,7 @@
 body {
     font-family: var(--font-sans);
     background: var(--bg);
-    color: var(--text);
+    color: var(--text); /* NEGRO */
     line-height: 1.6;
     font-size: 15px;
 }
@@ -32,14 +32,15 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar */
+/* Sidebar lavanda */
 .sidebar {
     width: 260px;
-    background: var(--sidebar);
-    color: var(--sidebar-text);
+    background: var(--sidebar); /* Lavanda pastel */
+    color: var(--sidebar-text); /* NEGRO */
     padding: 40px 30px;
     position: fixed;
     height: 100vh;
+    border-right: 1px solid var(--border);
 }
 
 .brand {
@@ -47,6 +48,7 @@ body {
     font-size: 28px;
     margin-bottom: 60px;
     letter-spacing: -0.5px;
+    color: #000000; /* NEGRO */
 }
 
 .nav {
@@ -56,18 +58,20 @@ body {
 }
 
 .nav-item {
-    color: var(--sidebar-text);
+    color: #000000; /* NEGRO */
     text-decoration: none;
     padding: 12px 16px;
-    border-radius: 6px;
-    opacity: 0.7;
+    border-radius: 8px;
+    opacity: 0.8;
     transition: all 0.2s;
+    font-weight: 500;
 }
 
 .nav-item:hover,
 .nav-item.active {
     opacity: 1;
-    background: rgba(255,255,255,0.1);
+    background: rgba(139, 92, 246, 0.15); /* Violeta muy suave */
+    color: #000000;
 }
 
 /* Main Content */
@@ -81,7 +85,7 @@ body {
 .header {
     margin-bottom: 48px;
     padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--border); /* Violeta borde */
 }
 
 .header h1 {
@@ -90,10 +94,11 @@ body {
     font-weight: 400;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
+    color: #000000; /* NEGRO */
 }
 
 .subtitle {
-    color: var(--text-muted);
+    color: #333333; /* Casi negro */
     font-size: 16px;
 }
 
@@ -107,7 +112,7 @@ body {
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 24px;
-    color: var(--accent);
+    color: #000000; /* NEGRO */
 }
 
 .form-row {
@@ -122,30 +127,33 @@ body {
 
 label {
     display: block;
-    font-weight: 500;
+    font-weight: 600; /* Más bold para contraste */
     margin-bottom: 8px;
     font-size: 14px;
-    color: var(--text);
+    color: #000000; /* NEGRO */
 }
 
 .required {
-    color: #c45c4a;
+    color: #DC2626; /* Rojo para destacar */
+    font-weight: 700;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    border: 2px solid var(--border); /* Violeta borde */
+    border-radius: 8px;
     font-family: var(--font-sans);
     font-size: 15px;
     background: var(--surface);
+    color: #000000; /* NEGRO */
     transition: all 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: var(--accent);
+    border-color: var(--accent); /* Violeta */
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
 }
 
 textarea {
@@ -156,7 +164,7 @@ textarea {
 select {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236b6b6b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
@@ -164,10 +172,11 @@ select {
 
 /* Summary Card */
 .summary-card {
-    background: #f5f4f2;
-    border-left: 4px solid var(--accent);
+    background: #F3E8FF; /* Violeta muy suave */
+    border-left: 4px solid var(--accent); /* Violeta */
     padding: 28px;
     margin: 40px 0;
+    border-radius: 0 8px 8px 0;
 }
 
 .summary-header {
@@ -178,37 +187,40 @@ select {
 }
 
 .summary-title {
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 700; /* Bold */
+    font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
+    letter-spacing: 1px;
+    color: #000000; /* NEGRO */
 }
 
 .badge {
-    padding: 6px 14px;
+    padding: 8px 16px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700; /* Bold */
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-radius: 4px;
-    background: #e8e6e3;
-    color: var(--text);
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #000000; /* NEGRO */
+    border: 2px solid;
 }
 
-.badge.critica { background: #c45c4a; color: white; }
-.badge.alta { background: #c4a13d; color: white; }
-.badge.media { background: var(--accent); color: white; }
-.badge.baja { background: #8b8b8b; color: white; }
+.badge.critica { background: #FECACA; border-color: #DC2626; }
+.badge.alta { background: #FDE68A; border-color: #D97706; }
+.badge.media { background: #DDD6FE; border-color: #8B5CF6; }
+.badge.baja { background: #E5E7EB; border-color: #6B7280; }
 
 .summary-problem {
     font-size: 18px;
     margin-bottom: 12px;
+    color: #000000; /* NEGRO */
+    font-weight: 500;
 }
 
 .summary-note {
     font-size: 14px;
-    color: var(--text-muted);
+    color: #4A4A4A; /* Casi negro */
 }
 
 /* Buttons */
@@ -217,42 +229,48 @@ select {
 }
 
 .btn-primary {
-    background: var(--accent);
-    color: white;
+    background: var(--accent); /* Violeta */
+    color: #FFFFFF; /* Blanco para contraste */
     border: none;
     padding: 16px 40px;
     font-family: var(--font-sans);
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700; /* Bold */
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
 .btn-primary:hover:not(:disabled) {
     background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
 .btn-primary:disabled {
-    background: #ccc;
+    background: #C4B5FD; /* Violeta apagado */
+    color: #FFFFFF;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--accent);
-    border: 1px solid var(--accent);
+    color: var(--accent); /* Violeta */
+    border: 2px solid var(--accent);
     padding: 14px 32px;
     font-family: var(--font-sans);
     font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
     margin-top: 24px;
 }
 
 .btn-secondary:hover {
     background: var(--accent);
-    color: white;
+    color: #FFFFFF;
 }
 
 /* Success */
@@ -260,20 +278,22 @@ select {
     text-align: center;
     padding: 60px 40px;
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
+    border-radius: 12px;
 }
 
 .success-icon {
     width: 64px;
     height: 64px;
-    background: var(--accent);
-    color: white;
+    background: var(--accent); /* Violeta */
+    color: #FFFFFF;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
     margin: 0 auto 24px;
+    font-weight: 700;
 }
 
 .success-message h2 {
@@ -281,24 +301,28 @@ select {
     font-size: 32px;
     font-weight: 400;
     margin-bottom: 8px;
+    color: #000000; /* NEGRO */
 }
 
 .success-message > p {
-    color: var(--text-muted);
+    color: #333333; /* Casi negro */
     margin-bottom: 32px;
 }
 
 .ticket-details {
-    background: var(--bg);
-    padding: 24px;
+    background: #F5F3FF; /* Violeta muy suave */
+    padding: 28px;
     margin-bottom: 32px;
     text-align: left;
+    border-radius: 8px;
+    border: 1px solid var(--border);
 }
 
 .ticket-details p {
-    margin-bottom: 12px;
-    padding-bottom: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--border);
+    color: #000000; /* NEGRO */
 }
 
 .ticket-details p:last-child {
@@ -310,8 +334,8 @@ select {
 .ticket-details strong {
     display: inline-block;
     width: 120px;
-    color: var(--text-muted);
-    font-weight: 500;
+    color: #000000; /* NEGRO */
+    font-weight: 700;
 }
 
 @media (max-width: 900px) {
