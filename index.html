@@ -30,6 +30,7 @@
                 <strong>lo resolveremos juntos</strong>. 💪</p>
             </div>
 
+            <!-- FORMULARIO -->
             <form id="formTicket" class="formulario-encantador">
                 
                 <fieldset class="seccion-form">
@@ -66,14 +67,11 @@
                         <span class="texto-leyenda">¿Qué está pasando?</span>
                     </legend>
 
-                    <div class="campo-elegante" id="campo-detalles" style="display:none;">
-    <label for="detalles">
-        <span class="label-icono">📝</span>
-        ¿Algo más que deberíamos saber?
-        <span style="color: #ef4444;">*</span>
-    </label>
-    <textarea id="detalles" rows="3" required placeholder="Describe detalles importantes..."></textarea>
-</div>
+                    <div class="campo-elegante">
+                        <label for="categoria">
+                            <span class="label-icono">🏷️</span>
+                            ¿Con qué área necesitas ayuda?
+                        </label>
                         <div class="select-wrapper">
                             <select id="categoria" required>
                                 <option value="">Selecciona una opción...</option>
@@ -100,12 +98,13 @@
                         </div>
                     </div>
 
-                    <label for="detalles">
-    <span class="label-icono">📝</span>
-    ¿Algo más que deberíamos saber?
-    <span style="color: #ef4444;">*</span>
-</label>
-<textarea id="detalles" rows="3" required placeholder="Describe detalles importantes..."></textarea>
+                    <div class="campo-elegante" id="campo-detalles" style="display:none;">
+                        <label for="detalles">
+                            <span class="label-icono">📝</span>
+                            ¿Algo más que deberíamos saber?
+                            <span style="color: #ef4444;">*</span>
+                        </label>
+                        <textarea id="detalles" rows="3" required placeholder="Describe detalles importantes..."></textarea>
                     </div>
                 </fieldset>
 
@@ -131,6 +130,7 @@
                 </div>
             </form>
 
+            <!-- MENSAJE DE ÉXITO (oculto inicialmente) -->
             <div class="mensaje-exito" id="mensaje-exito" style="display:none;">
                 <div class="exito-icono">🎉</div>
                 <h2>¡Listo! Tu solicitud está en buenas manos</h2>
