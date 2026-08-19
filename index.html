@@ -3,150 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soporte IT | ¿Necesitas ayuda?</title>
+    <title>Sistema Tickets // IT Support</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="pagina">
-        <div class="deco-lateral"></div>
+    <div class="app-container">
+        <!-- Header simple, tipo terminal -->
+        <header class="app-header">
+            <h1>► SISTEMA_TICKETS v2.0</h1>
+            <p class="tagline">// Soporte técnico interno</p>
+        </header>
 
-        <main class="contenedor-principal">
-            <header class="encabezado">
-                <div class="logo-area">
-                    <span class="icono-corazon">💜</span>
-                    <div class="titulo-area">
-                        <h1>Centro de Ayuda</h1>
-                        <p class="subtitulo">Estamos aquí para cuidar de tu tecnología</p>
-                    </div>
-                </div>
-            </header>
+        <!-- Mensaje de bienvenida -->
+        <div class="welcome-box">
+            <p>> Iniciando sesión de soporte...</p>
+            <p>> Detecté que tienes un problema. No te preocupes, lo resolvemos.</p>
+            <p class="prompt">> _</p>
+        </div>
 
-            <div class="bienvenida">
-                <p>Hola, sé que algo no está funcionando como debería. 
-                Respira profundo, completa este formulario y te prometo que 
-                <strong>lo resolveremos juntos</strong>. 💪</p>
-            </div>
-
-            <!-- FORMULARIO -->
-            <form id="formTicket" class="formulario-encantador">
+        <!-- Formulario -->
+        <form id="formTicket" class="form-section">
+            
+            <div class="form-group">
+                <h2>[1] Identificación</h2>
                 
-                <fieldset class="seccion-form">
-                    <legend class="leyenda">
-                        <span class="numero-paso">1</span>
-                        <span class="texto-leyenda">Cuéntanos de ti</span>
-                    </legend>
+                <div class="field-row">
+                    <div class="field">
+                        <label>usuario:</label>
+                        <input type="text" id="solicitante" required placeholder="tu_nombre">
+                    </div>
                     
-                    <div class="fila-datos">
-                        <div class="campo-elegante">
-                            <label for="solicitante">
-                                <span class="label-icono">👤</span>
-                                Tu nombre completo
-                            </label>
-                            <input type="text" id="solicitante" required 
-                                   placeholder="Ej: María González">
-                        </div>
-                        
-                        <div class="campo-elegante">
-                            <label for="email">
-                                <span class="label-icono">✉️</span>
-                                Tu correo electrónico
-                            </label>
-                            <input type="email" id="email" required 
-                                   placeholder="maria@tuempresa.com">
-                            <span class="hint">Te enviaremos confirmación aquí</span>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset class="seccion-form">
-                    <legend class="leyenda">
-                        <span class="numero-paso">2</span>
-                        <span class="texto-leyenda">¿Qué está pasando?</span>
-                    </legend>
-
-                    <div class="campo-elegante">
-                        <label for="categoria">
-                            <span class="label-icono">🏷️</span>
-                            ¿Con qué área necesitas ayuda?
-                        </label>
-                        <div class="select-wrapper">
-                            <select id="categoria" required>
-                                <option value="">Selecciona una opción...</option>
-                                <option value="hardware">💻 Mi computador o laptop</option>
-                                <option value="software">⚙️ Un programa o aplicación</option>
-                                <option value="red">🌐 Internet o conexión</option>
-                                <option value="email">📧 Correo electrónico</option>
-                                <option value="impresion">🖨️ Impresora o escáner</option>
-                                <option value="accesos">🔐 Accesos o contraseñas</option>
-                                <option value="otros">🌸 Algo diferente</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="campo-elegante" id="campo-problema" style="display:none;">
-                        <label for="problema">
-                            <span class="label-icono">🔍</span>
-                            Cuéntanos un poco más...
-                        </label>
-                        <div class="select-wrapper">
-                            <select id="problema" required>
-                                <option value="">Elige el problema específico...</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="campo-elegante" id="campo-detalles" style="display:none;">
-                        <label for="detalles">
-                            <span class="label-icono">📝</span>
-                            ¿Algo más que deberíamos saber?
-                            <span style="color: #ef4444;">*</span>
-                        </label>
-                        <textarea id="detalles" rows="3" required placeholder="Describe detalles importantes..."></textarea>
-                    </div>
-                </fieldset>
-
-                <div class="vista-previa-ticket" id="vista-previa" style="display:none;">
-                    <div class="vp-header">
-                        <span class="vp-titulo">Resumen de tu solicitud</span>
-                        <span class="prioridad-tag" id="tag-prioridad">Media</span>
-                    </div>
-                    <div class="vp-body">
-                        <p class="vp-problema" id="vp-problema-texto">-</p>
-                        <p class="vp-nota">📧 Recibirás confirmación en tu correo</p>
+                    <div class="field">
+                        <label>email:</label>
+                        <input type="email" id="email" required placeholder="nombre@empresa.com">
                     </div>
                 </div>
-
-                <div class="area-envio">
-                    <button type="submit" class="btn-magico" id="btn-enviar" disabled>
-                        <span class="btn-texto">Enviar mi solicitud</span>
-                        <span class="btn-icono">→</span>
-                    </button>
-                    <p class="mensaje-confianza">
-                        🔒 Tu información está segura y solo la verá el equipo de IT
-                    </p>
-                </div>
-            </form>
-
-            <!-- MENSAJE DE ÉXITO (oculto inicialmente) -->
-            <div class="mensaje-exito" id="mensaje-exito" style="display:none;">
-                <div class="exito-icono">🎉</div>
-                <h2>¡Listo! Tu solicitud está en buenas manos</h2>
-                <p>Hemos enviado un correo de confirmación a <strong id="email-confirmado"></strong></p>
-                <p class="exito-detalles">
-                    Número de ticket: <span class="numero-destacado" id="numero-ticket">-</span><br>
-                    Prioridad asignada: <span id="prioridad-confirmada">-</span>
-                </p>
-                <button class="btn-nuevo" onclick="location.reload()">
-                    Crear otra solicitud
-                </button>
             </div>
-        </main>
 
-        <footer class="pie-pagina">
-            <p>Hecho con 💜 por el equipo de IT</p>
+            <div class="form-group">
+                <h2>[2] Diagnóstico</h2>
+
+                <div class="field">
+                    <label>categoría:</label>
+                    <select id="categoria" required>
+                        <option value="">-- seleccionar --</option>
+                        <option value="hardware">[HW] Hardware / Equipos</option>
+                        <option value="software">[SW] Software / Apps</option>
+                        <option value="red">[NET] Red / Conectividad</option>
+                        <option value="email">[MAIL] Correo / Email</option>
+                        <option value="impresion">[PRN] Impresión</option>
+                        <option value="accesos">[SEC] Accesos / Seguridad</option>
+                        <option value="otros">[OTR] Otros</option>
+                    </select>
+                </div>
+
+                <div class="field" id="campo-problema" style="display:none;">
+                    <label>problema_detectado:</label>
+                    <select id="problema" required>
+                        <option value="">-- seleccionar --</option>
+                    </select>
+                </div>
+
+                <div class="field" id="campo-detalles" style="display:none;">
+                    <label>notas_adicionales: <span class="required">*</span></label>
+                    <textarea id="detalles" rows="4" required placeholder="Describe lo que pasó... cuanto más detalle, mejor"></textarea>
+                </div>
+            </div>
+
+            <!-- Vista previa tipo terminal -->
+            <div class="preview-box" id="vista-previa" style="display:none;">
+                <div class="preview-header">
+                    <span class="preview-title">RESUMEN_TICKET</span>
+                    <span class="priority-badge" id="tag-prioridad">MEDIA</span>
+                </div>
+                <div class="preview-content">
+                    <p><strong>Problema:</strong> <span id="vp-problema-texto">-</span></p>
+                    <p class="preview-note">> Se enviará confirmación por email</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="submit" class="btn-submit" id="btn-enviar" disabled>
+                    [ ENVIAR_TICKET ]
+                </button>
+                <p class="hint">Presiona ENTER para enviar</p>
+            </div>
+        </form>
+
+        <!-- Mensaje de éxito -->
+        <div class="success-screen" id="mensaje-exito" style="display:none;">
+            <div class="success-icon">✓</div>
+            <h2>TICKET_CREADO</h2>
+            <div class="success-details">
+                <p><strong>ID:</strong> <span id="numero-ticket">-</span></p>
+                <p><strong>Prioridad:</strong> <span id="prioridad-confirmada">-</span></p>
+                <p><strong>Email:</strong> <span id="email-confirmado">-</span></p>
+            </div>
+            <p class="success-message">> Revisa tu correo para confirmación</p>
+            <button class="btn-secondary" onclick="location.reload()">
+                [ NUEVO_TICKET ]
+            </button>
+        </div>
+
+        <footer class="footer">
+            <p>> Sistema desarrollado por el equipo IT // 2024</p>
+            <p>> Versión 2.0 | Build 20240819</p>
         </footer>
     </div>
 
