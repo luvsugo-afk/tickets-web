@@ -1,15 +1,14 @@
 :root {
-    --bg: #f8f9fa;
-    --surface: #ffffff;
-    --sidebar: #2d2d3a;
-    --sidebar-text: #dfe6e9;
-    --text: #2d3436;
-    --text-muted: #636e72;
-    --accent: #6c5ce7;
-    --accent-hover: #5f3dc4;
-    --accent-soft: #a29bfe;
-    --border: #e1e8ed;
-    --shadow: rgba(108, 92, 231, 0.08);
+    --bg: #f3f0ff;              /* Lavanda suave */
+    --surface: #ffffff;          /* Blanco puro para tarjetas */
+    --sidebar: #4c1d95;          /* Violeta profundo */
+    --sidebar-text: #e9d5ff;       /* Lavanda claro */
+    --text: #1e1b4b;             /* Índigo casi negro */
+    --text-muted: #6b7280;       /* Gris */
+    --accent: #7c3aed;           /* Violeta eléctrico */
+    --accent-hover: #6d28d9;       /* Violeta más oscuro */
+    --border: #ddd6fe;           /* Lavanda borde */
+    --shadow: rgba(124, 58, 237, 0.1);
     --font-serif: 'DM Serif Display', serif;
     --font-sans: 'Inter', sans-serif;
 }
