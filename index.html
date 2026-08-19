@@ -1,147 +1,138 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✧･ﾟIT Support･ﾟ✧</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>// SISTEMA_TICKETS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background crystals -->
-    <div class="bg-crystal c1">💎</div>
-    <div class="bg-crystal c2">✨</div>
-    <div class="bg-crystal c3">🔮</div>
-    <div class="bg-crystal c4">💫</div>
+    <div class="noise"></div>
     
-    <div class="main-container">
-        
-        <!-- Header con glitter -->
-        <header class="dream-header">
-            <div class="sparkle">✧</div>
-            <h1 class="dream-title">Help Desk</h1>
-            <div class="subtitle">✧･ﾟtechnical support･ﾟ✧</div>
-            <div class="sparkle">✧</div>
+    <main class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">◈</div>
+                <div>
+                    <h1>SISTEMA_TICKETS</h1>
+                    <span class="version">v2.0.1 // build 240819</span>
+                </div>
+            </div>
         </header>
 
-        <!-- Welcome card -->
-        <div class="crystal-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-                <p class="dream-text">
-                    Welcome to the digital realm...<br>
-                    Your technical issues will be resolved with magic ✨<br>
-                    Fill out the form below and I'll take care of it
-                </p>
-            </div>
+        <div class="hero">
+            <p class="hero-text">
+                Soporte técnico interno. Reportá tu incidente y lo resolvemos.
+            </p>
         </div>
 
-        <!-- Form -->
-        <form id="formTicket" class="dream-form">
+        <form id="formTicket" class="form">
             
             <section class="form-section">
                 <h2 class="section-title">
-                    <span class="star">⋆</span>
-                    Your Information
-                    <span class="star">⋆</span>
+                    <span class="section-number">01</span>
+                    Identificación
                 </h2>
                 
-                <div class="input-row">
-                    <div class="dream-input-group">
-                        <label class="dream-label">Name ⋆｡˚</label>
-                        <input type="text" id="solicitante" required placeholder="your name">
+                <div class="grid-2">
+                    <div class="field">
+                        <label class="field-label">Nombre completo</label>
+                        <input type="text" id="solicitante" required placeholder="Juan Pérez">
                     </div>
                     
-                    <div class="dream-input-group">
-                        <label class="dream-label">Email ⋆｡˚</label>
-                        <input type="email" id="email" required placeholder="your@email.com">
+                    <div class="field">
+                        <label class="field-label">Correo electrónico</label>
+                        <input type="email" id="email" required placeholder="juan@empresa.com">
                     </div>
                 </div>
             </section>
 
             <section class="form-section">
                 <h2 class="section-title">
-                    <span class="star">⋆</span>
-                    Describe Your Issue
-                    <span class="star">⋆</span>
+                    <span class="section-number">02</span>
+                    Incidente
                 </h2>
 
-                <div class="dream-input-group">
-                    <label class="dream-label">Category</label>
-                    <div class="select-dream">
-                        <select id="categoria" required>
-                            <option value="">Select...</option>
-                            <option value="hardware">💻 Hardware Problems</option>
-                            <option value="software">⚙️ Software Issues</option>
-                            <option value="red">🌐 Network</option>
-                            <option value="email">📧 Email</option>
-                            <option value="impresion">🖨️ Printing</option>
-                            <option value="accesos">🔐 Access</option>
-                            <option value="otros">✨ Other</option>
-                        </select>
-                    </div>
+                <div class="field">
+                    <label class="field-label">Categoría</label>
+                    <select id="categoria" required>
+                        <option value="">Seleccionar categoría...</option>
+                        <option value="hardware">Hardware / Equipos</option>
+                        <option value="software">Software / Aplicaciones</option>
+                        <option value="red">Red / Conectividad</option>
+                        <option value="email">Email / Comunicaciones</option>
+                        <option value="impresion">Impresión / Periféricos</option>
+                        <option value="accesos">Accesos / Seguridad</option>
+                        <option value="otros">Otros / General</option>
+                    </select>
                 </div>
 
-                <div class="dream-input-group" id="campo-problema" style="display:none;">
-                    <label class="dream-label">Specific Issue</label>
-                    <div class="select-dream">
-                        <select id="problema" required>
-                            <option value="">Choose...</option>
-                        </select>
-                    </div>
+                <div class="field" id="campo-problema" style="display:none;">
+                    <label class="field-label">Problema específico</label>
+                    <select id="problema" required>
+                        <option value="">Seleccionar problema...</option>
+                    </select>
                 </div>
 
-                <div class="dream-input-group" id="campo-detalles" style="display:none;">
-                    <label class="dream-label">
-                        Additional Details <span class="required-star">*</span>
+                <div class="field" id="campo-detalles" style="display:none;">
+                    <label class="field-label">
+                        Detalles adicionales
+                        <span class="required-mark">*</span>
                     </label>
-                    <textarea id="detalles" rows="4" required placeholder="Tell me everything..."></textarea>
+                    <textarea id="detalles" rows="4" required placeholder="Describí el error, cuándo empezó, qué estabas haciendo..."></textarea>
                 </div>
             </section>
 
-            <!-- Preview crystal -->
-            <div class="preview-crystal" id="vista-previa" style="display:none;">
-                <div class="crystal-icon">💎</div>
+            <div class="preview-card" id="vista-previa" style="display:none;">
+                <div class="preview-header">
+                    <span class="preview-title">Vista previa</span>
+                    <span class="priority-badge" id="tag-prioridad">Media</span>
+                </div>
                 <div class="preview-content">
-                    <div class="preview-header">
-                        <span class="preview-title">Ticket Preview</span>
-                        <span class="priority-pill" id="tag-prioridad">Medium</span>
-                    </div>
-                    <p class="preview-issue" id="vp-problema-texto">-</p>
-                    <p class="preview-note">✧ Confirmation will be sent to your email ✧</p>
+                    <p class="preview-problem" id="vp-problema-texto">-</p>
+                    <p class="preview-note">Se enviará confirmación al correo</p>
                 </div>
             </div>
 
-            <div class="submit-area">
-                <button type="submit" class="dream-button" id="btn-enviar" disabled>
-                    <span class="btn-star">✧</span>
-                    <span>Send Request</span>
-                    <span class="btn-star">✧</span>
+            <div class="actions">
+                <button type="submit" class="btn-primary" id="btn-enviar" disabled>
+                    <span>Crear ticket</span>
+                    <span class="btn-arrow">→</span>
                 </button>
+                <p class="security-note">Datos encriptados · Solo personal IT</p>
             </div>
         </form>
 
-        <!-- Success state -->
-        <div class="success-crystal" id="mensaje-exito" style="display:none;">
-            <div class="success-glow"></div>
-            <div class="success-icon">✨💎✨</div>
-            <h2 class="success-title">Received!</h2>
-            <div class="success-info">
-                <p><span class="label">Ticket:</span> <span id="numero-ticket">-</span></p>
-                <p><span class="label">Priority:</span> <span id="prioridad-confirmada">-</span></p>
-                <p><span class="label">Email:</span> <span id="email-confirmado">-</span></p>
+        <div class="success-view" id="mensaje-exito" style="display:none;">
+            <div class="success-icon">◉</div>
+            <h2 class="success-title">Ticket creado</h2>
+            <p class="success-message">Recibimos tu consulta. Te contactamos pronto.</p>
+            
+            <div class="ticket-info">
+                <div class="info-row">
+                    <span class="info-label">Número</span>
+                    <span class="info-value" id="numero-ticket">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Prioridad</span>
+                    <span class="info-value" id="prioridad-confirmada">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Email</span>
+                    <span class="info-value" id="email-confirmado">-</span>
+                </div>
             </div>
-            <p class="success-message">Check your inbox (and spam folder) ✧</p>
-            <button class="dream-button-secondary" onclick="location.reload()">
-                New Request
+            
+            <button class="btn-secondary" onclick="location.reload()">
+                Nuevo ticket
             </button>
         </div>
 
-        <footer class="dream-footer">
-            <p>✧ Crafted with intention ✧</p>
-            <p class="location">Buenos Aires · 2024</p>
+        <footer class="footer">
+            <p>Sistema interno · 2024</p>
         </footer>
-    </div>
+    </main>
 
     <script>
         const API_URL = 'https://tickets-api-63tv.onrender.com';
