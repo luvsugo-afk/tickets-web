@@ -1,195 +1,103 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>// SISTEMA_TICKETS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <title>Tickets</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Sistema de Tickets — IT Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="noise"></div>
-    
-    <div class="gradient-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
-
-    <main class="container">
-        <header class="header">
-            <div class="logo">
-                <div class="logo-icon">◈</div>
-                <div>
-                    <h1>SISTEMA_TICKETS</h1>
-                    <span class="version">v2.0.1 // build 240819</span>
-                </div>
-            </div>
-        <header class="glass-header">
-            <h1>Help Desk</h1>
-            <p>Sistema de soporte técnico</p>
-        </header>
-
-        <div class="hero">
-            <p class="hero-text">
-                Soporte técnico interno. Reportá tu incidente y lo resolvemos.
-            </p>
-        </div>
-
-        <form id="formTicket" class="form">
-        <form id="formTicket" class="glass-card">
-            <h2>Nuevo ticket</h2>
-
-            <section class="form-section">
-                <h2 class="section-title">
-                    <span class="section-number">01</span>
-                    Identificación
-                </h2>
+    <div class="page">
+        <aside class="sidebar">
+            <div class="brand">IT Support</div>
+            <nav class="nav">
+                <a href="#" class="nav-item active">Nuevo Ticket</a>
+                <a href="admin.html" class="nav-item">Panel Admin</a>
+            </nav>
+        </aside>
+        
+        <main class="main">
+            <header class="header">
+                <h1>Nueva Solicitud</h1>
+                <p class="subtitle">Complete el formulario para reportar su incidente</p>
+            </header>
+            
+            <form id="formTicket" class="form">
                 
-                <div class="grid-2">
-                    <div class="field">
-                        <label class="field-label">Nombre completo</label>
-                        <input type="text" id="solicitante" required placeholder="Juan Pérez">
+                <section class="form-section">
+                    <h2>Información de Contacto</h2>
+                    <div class="form-row">
+                        <div class="field">
+                            <label>Nombre completo</label>
+                            <input type="text" id="solicitante" required placeholder="Ej: María González">
+                        </div>
+                        <div class="field">
+                            <label>Correo electrónico</label>
+                            <input type="email" id="email" required placeholder="maria@empresa.com">
+                        </div>
                     </div>
+                </section>
+
+                <section class="form-section">
+                    <h2>Detalle del Incidente</h2>
                     
                     <div class="field">
-                        <label class="field-label">Correo electrónico</label>
-                        <input type="email" id="email" required placeholder="juan@empresa.com">
+                        <label>Categoría</label>
+                        <select id="categoria" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="hardware">Hardware y Equipos</option>
+                            <option value="software">Software y Aplicaciones</option>
+                            <option value="red">Red y Conectividad</option>
+                            <option value="email">Correo Electrónico</option>
+                            <option value="impresion">Impresión y Escaneo</option>
+                            <option value="accesos">Accesos y Seguridad</option>
+                            <option value="otros">Otros</option>
+                        </select>
                     </div>
-                </div>
-            </section>
 
-            <section class="form-section">
-                <h2 class="section-title">
-                    <span class="section-number">02</span>
-                    Incidente
-                </h2>
+                    <div class="field" id="campo-problema" style="display:none;">
+                        <label>Problema específico</label>
+                        <select id="problema" required>
+                            <option value="">Seleccione el problema</option>
+                        </select>
+                    </div>
 
-                <div class="field">
-                    <label class="field-label">Categoría</label>
-                    <select id="categoria" required>
-                        <option value="">Seleccionar categoría...</option>
-                        <option value="hardware">Hardware / Equipos</option>
-                        <option value="software">Software / Aplicaciones</option>
-                        <option value="red">Red / Conectividad</option>
-                        <option value="email">Email / Comunicaciones</option>
-                        <option value="impresion">Impresión / Periféricos</option>
-                        <option value="accesos">Accesos / Seguridad</option>
-                        <option value="otros">Otros / General</option>
-                    </select>
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Nombre</label>
-                    <input type="text" id="solicitante" required placeholder="Tu nombre">
+                    <div class="field" id="campo-detalles" style="display:none;">
+                        <label>Descripción detallada <span class="required">*</span></label>
+                        <textarea id="detalles" rows="5" required placeholder="Describa el incidente con el mayor detalle posible..."></textarea>
+                    </div>
+                </section>
+
+                <div class="summary-card" id="vista-previa" style="display:none;">
+                    <div class="summary-header">
+                        <span class="summary-title">Resumen de la Solicitud</span>
+                        <span class="badge" id="tag-prioridad">Media</span>
+                    </div>
+                    <p class="summary-problem" id="vp-problema-texto">-</p>
+                    <p class="summary-note">Se enviará confirmación al correo proporcionado</p>
                 </div>
 
-                <div class="field" id="campo-problema" style="display:none;">
-                    <label class="field-label">Problema específico</label>
-                    <select id="problema" required>
-                        <option value="">Seleccionar problema...</option>
-                    </select>
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" id="email" required placeholder="tu@email.com">
+                <div class="actions">
+                    <button type="submit" class="btn-primary" id="btn-enviar" disabled>
+                        Enviar Solicitud
+                    </button>
                 </div>
+            </form>
+
+            <div class="success-message" id="mensaje-exito" style="display:none;">
+                <div class="success-icon">✓</div>
+                <h2>Solicitud Recibida</h2>
+                <p>Su ticket ha sido registrado correctamente</p>
+                <div class="ticket-details">
+                    <p><strong>Ticket N°</strong> <span id="numero-ticket">-</span></p>
+                    <p><strong>Prioridad</strong> <span id="prioridad-confirmada">-</span></p>
+                    <p><strong>Email</strong> <span id="email-confirmado">-</span></p>
+                </div>
+                <button class="btn-secondary" onclick="location.reload()">Nueva Solicitud</button>
             </div>
-
-                <div class="field" id="campo-detalles" style="display:none;">
-                    <label class="field-label">
-                        Detalles adicionales
-                        <span class="required-mark">*</span>
-                    </label>
-                    <textarea id="detalles" rows="4" required placeholder="Describí el error, cuándo empezó, qué estabas haciendo..."></textarea>
-                </div>
-            </section>
-            <div class="input-group">
-                <label>Categoría</label>
-                <select id="categoria" required>
-                    <option value="">Seleccionar...</option>
-                    <option value="hardware">Hardware</option>
-                    <option value="software">Software</option>
-                    <option value="red">Red</option>
-                    <option value="email">Email</option>
-                    <option value="impresion">Impresión</option>
-                    <option value="accesos">Accesos</option>
-                    <option value="otros">Otros</option>
-                </select>
-            </div>
-
-            <div class="preview-card" id="vista-previa" style="display:none;">
-                <div class="preview-header">
-                    <span class="preview-title">Vista previa</span>
-                    <span class="priority-badge" id="tag-prioridad">Media</span>
-                </div>
-                <div class="preview-content">
-                    <p class="preview-problem" id="vp-problema-texto">-</p>
-                    <p class="preview-note">Se enviará confirmación al correo</p>
-                </div>
-            <div class="input-group" id="campo-problema" style="display:none;">
-                <label>Problema</label>
-                <select id="problema" required>
-                    <option value="">Seleccionar...</option>
-                </select>
-            </div>
-
-            <div class="actions">
-                <button type="submit" class="btn-primary" id="btn-enviar" disabled>
-                    <span>Crear ticket</span>
-                    <span class="btn-arrow">→</span>
-                </button>
-                <p class="security-note">Datos encriptados · Solo personal IT</p>
-            <div class="input-group" id="campo-detalles" style="display:none;">
-                <label>Detalles <span class="req">*</span></label>
-                <textarea id="detalles" rows="3" required placeholder="Describe el incidente..."></textarea>
-            </div>
-        </form>
-
-        <div class="success-view" id="mensaje-exito" style="display:none;">
-            <div class="success-icon">◉</div>
-            <h2 class="success-title">Ticket creado</h2>
-            <p class="success-message">Recibimos tu consulta. Te contactamos pronto.</p>
-            
-            <div class="ticket-info">
-                <div class="info-row">
-                    <span class="info-label">Número</span>
-                    <span class="info-value" id="numero-ticket">-</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Prioridad</span>
-                    <span class="info-value" id="prioridad-confirmada">-</span>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">Email</span>
-                    <span class="info-value" id="email-confirmado">-</span>
-                </div>
-            <div class="preview-glass" id="vista-previa" style="display:none;">
-                <span class="badge" id="tag-prioridad">Media</span>
-                <p id="vp-problema-texto">-</p>
-            </div>
-            
-            <button class="btn-secondary" onclick="location.reload()">
-                Nuevo ticket
-
-            <button type="submit" class="btn-glass" id="btn-enviar" disabled>
-                Crear ticket →
-            </button>
-        </div>
-        </form>
-
-        <footer class="footer">
-            <p>Sistema interno · 2024</p>
-        </footer>
-        <div class="glass-card success" id="mensaje-exito" style="display:none;">
-            <div class="check">✓</div>
-            <h3>Ticket creado</h3>
-            <p>ID: <strong id="numero-ticket">-</strong></p>
-            <p>Prioridad: <strong id="prioridad-confirmada">-</strong></p>
-            <button class="btn-glass secondary" onclick="location.reload()">Nuevo</button>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script>
         const API_URL = 'https://tickets-api-63tv.onrender.com';
