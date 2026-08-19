@@ -66,11 +66,14 @@
                         <span class="texto-leyenda">¿Qué está pasando?</span>
                     </legend>
 
-                    <div class="campo-elegante">
-                        <label for="categoria">
-                            <span class="label-icono">🏷️</span>
-                            ¿Con qué área necesitas ayuda?
-                        </label>
+                    <div class="campo-elegante" id="campo-detalles" style="display:none;">
+    <label for="detalles">
+        <span class="label-icono">📝</span>
+        ¿Algo más que deberíamos saber?
+        <span style="color: #ef4444;">*</span>
+    </label>
+    <textarea id="detalles" rows="3" required placeholder="Describe detalles importantes..."></textarea>
+</div>
                         <div class="select-wrapper">
                             <select id="categoria" required>
                                 <option value="">Selecciona una opción...</option>
