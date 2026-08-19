@@ -3,113 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Tickets // IT Support</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>✨ Sistema de Tickets ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header simple, tipo terminal -->
-        <header class="app-header">
-            <h1>► SISTEMA_TICKETS v2.0</h1>
-            <p class="tagline">// Soporte técnico interno</p>
+    <div class="fondo-puntos"></div>
+    
+    <div class="container">
+        <!-- Header con onditas -->
+        <header class="header-onda">
+            <div class="emoji-flotante">💻</div>
+            <h1 class="titulo-principal">Centro de Ayuda IT</h1>
+            <p class="subtitulo-cursiva">~ hecho con 💜 por el equipo ~</p>
         </header>
 
-        <!-- Mensaje de bienvenida -->
-        <div class="welcome-box">
-            <p>> Iniciando sesión de soporte...</p>
-            <p>> Detecté que tienes un problema. No te preocupes, lo resolvemos.</p>
-            <p class="prompt">> _</p>
+        <!-- Card de bienvenida -->
+        <div class="card-bienvenida">
+            <div class="decoracion-esquina">✨</div>
+            <p class="texto-bienvenida">
+                ¡Hola! 👋 Sé que algo no está funcionando como debería... 
+                <br><br>
+                No te preocupes, estoy acá para ayudarte. 
+                Completá el formulario y vemos cómo lo resolvemos 😉
+            </p>
+            <div class="firma">- Tu amiga del IT</div>
         </div>
 
         <!-- Formulario -->
-        <form id="formTicket" class="form-section">
+        <form id="formTicket" class="formulario-cute">
             
-            <div class="form-group">
-                <h2>[1] Identificación</h2>
+            <div class="seccion-cute">
+                <h2 class="titulo-seccion">
+                    <span class="numero-circulo">1</span>
+                    Primero contame de vos
+                </h2>
                 
-                <div class="field-row">
-                    <div class="field">
-                        <label>usuario:</label>
-                        <input type="text" id="solicitante" required placeholder="tu_nombre">
+                <div class="fila-inputs">
+                    <div class="grupo-input">
+                        <label class="label-cute">¿Cómo te llamás? 🌸</label>
+                        <input type="text" id="solicitante" required placeholder="Ej: María, Juan, etc.">
                     </div>
                     
-                    <div class="field">
-                        <label>email:</label>
+                    <div class="grupo-input">
+                        <label class="label-cute">Tu mail ✉️</label>
                         <input type="email" id="email" required placeholder="nombre@empresa.com">
+                        <span class="hint-cute">Te mando confirmación ahí</span>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <h2>[2] Diagnóstico</h2>
+            <div class="seccion-cute">
+                <h2 class="titulo-seccion">
+                    <span class="numero-circulo">2</span>
+                    ¿Qué te está pasando?
+                </h2>
 
-                <div class="field">
-                    <label>categoría:</label>
-                    <select id="categoria" required>
-                        <option value="">-- seleccionar --</option>
-                        <option value="hardware">[HW] Hardware / Equipos</option>
-                        <option value="software">[SW] Software / Apps</option>
-                        <option value="red">[NET] Red / Conectividad</option>
-                        <option value="email">[MAIL] Correo / Email</option>
-                        <option value="impresion">[PRN] Impresión</option>
-                        <option value="accesos">[SEC] Accesos / Seguridad</option>
-                        <option value="otros">[OTR] Otros</option>
-                    </select>
+                <div class="grupo-input">
+                    <label class="label-cute">Área del problema</label>
+                    <div class="select-wrapper-cute">
+                        <select id="categoria" required>
+                            <option value="">Elegí una opción...</option>
+                            <option value="hardware">💻 Mi compu no anda</option>
+                            <option value="software">⚙️ Un programa se cierra solo</option>
+                            <option value="red">🌐 No tengo internet</option>
+                            <option value="email">📧 El mail no funciona</option>
+                            <option value="impresion">🖨️ La impresora no quiere</option>
+                            <option value="accesos">🔐 Me olvidé la contraseña</option>
+                            <option value="otros">🌸 Otra cosa</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="field" id="campo-problema" style="display:none;">
-                    <label>problema_detectado:</label>
-                    <select id="problema" required>
-                        <option value="">-- seleccionar --</option>
-                    </select>
+                <div class="grupo-input" id="campo-problema" style="display:none;">
+                    <label class="label-cute">Contame un poco más...</label>
+                    <div class="select-wrapper-cute">
+                        <select id="problema" required>
+                            <option value="">Seleccioná el problema...</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="field" id="campo-detalles" style="display:none;">
-                    <label>notas_adicionales: <span class="required">*</span></label>
-                    <textarea id="detalles" rows="4" required placeholder="Describe lo que pasó... cuanto más detalle, mejor"></textarea>
-                </div>
-            </div>
-
-            <!-- Vista previa tipo terminal -->
-            <div class="preview-box" id="vista-previa" style="display:none;">
-                <div class="preview-header">
-                    <span class="preview-title">RESUMEN_TICKET</span>
-                    <span class="priority-badge" id="tag-prioridad">MEDIA</span>
-                </div>
-                <div class="preview-content">
-                    <p><strong>Problema:</strong> <span id="vp-problema-texto">-</span></p>
-                    <p class="preview-note">> Se enviará confirmación por email</p>
+                <div class="grupo-input" id="campo-detalles" style="display:none;">
+                    <label class="label-cute">
+                        ¿Algo más que deba saber? 
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <textarea id="detalles" rows="4" required placeholder="Contame todo... cuanto más detalle, mejor puedo ayudarte 💪"></textarea>
                 </div>
             </div>
 
-            <div class="actions">
-                <button type="submit" class="btn-submit" id="btn-enviar" disabled>
-                    [ ENVIAR_TICKET ]
+            <!-- Vista previa tipo sticky note -->
+            <div class="sticky-note" id="vista-previa" style="display:none;">
+                <div class="pin">📌</div>
+                <div class="sticky-header">
+                    <span class="sticky-titulo">Resumen de tu consulta</span>
+                    <span class="prioridad-tag-cute" id="tag-prioridad">Media</span>
+                </div>
+                <p class="sticky-texto" id="vp-problema-texto">-</p>
+                <div class="sticky-footer">✨ Te aviso por mail cuando lo tenga</div>
+            </div>
+
+            <div class="area-boton">
+                <button type="submit" class="boton-principal" id="btn-enviar" disabled>
+                    <span>Enviar consulta</span>
+                    <span class="emoji-boton">✨</span>
                 </button>
-                <p class="hint">Presiona ENTER para enviar</p>
+                <p class="texto-chico">🔒 Todo queda entre nosotros</p>
             </div>
         </form>
 
         <!-- Mensaje de éxito -->
-        <div class="success-screen" id="mensaje-exito" style="display:none;">
-            <div class="success-icon">✓</div>
-            <h2>TICKET_CREADO</h2>
-            <div class="success-details">
-                <p><strong>ID:</strong> <span id="numero-ticket">-</span></p>
+        <div class="mensaje-exito-cute" id="mensaje-exito" style="display:none;">
+            <div class="confetti">🎉</div>
+            <h2 class="titulo-exito">¡Listo!</h2>
+            <p class="texto-exito">Ya recibí tu consulta</p>
+            <div class="datos-ticket-cute">
+                <p><strong>Ticket #</strong> <span id="numero-ticket">-</span></p>
                 <p><strong>Prioridad:</strong> <span id="prioridad-confirmada">-</span></p>
-                <p><strong>Email:</strong> <span id="email-confirmado">-</span></p>
+                <p><strong>Mail:</strong> <span id="email-confirmado">-</span></p>
             </div>
-            <p class="success-message">> Revisa tu correo para confirmación</p>
-            <button class="btn-secondary" onclick="location.reload()">
-                [ NUEVO_TICKET ]
+            <p class="mensaje-final">Revisá tu correo (y spam también, por las dudas) 📧</p>
+            <button class="boton-secundario" onclick="location.reload()">
+                Hacer otra consulta
             </button>
         </div>
 
-        <footer class="footer">
-            <p>> Sistema desarrollado por el equipo IT // 2024</p>
-            <p>> Versión 2.0 | Build 20240819</p>
+        <footer class="footer-cute">
+            <p>Hecho con 💜 y muchos mates 🧉</p>
+            <p class="version">v2.0 · Buenos Aires, 2024</p>
         </footer>
     </div>
 
