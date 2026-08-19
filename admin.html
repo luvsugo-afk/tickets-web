@@ -104,6 +104,27 @@
             margin-top: 12px;
         }
         
+        /* NUEVO: Link para volver */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--accent);
+        }
+        
+        .back-link::before {
+            content: '← ';
+        }
+        
         .panel {
             display: none;
             max-width: 1200px;
@@ -131,12 +152,6 @@
             content: '$';
             color: var(--accent);
             font-family: var(--font-mono);
-        }
-        
-        .header-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
         }
         
         .stats {
@@ -189,24 +204,6 @@
             background: var(--accent);
             color: var(--bg);
             border-color: var(--accent);
-        }
-        
-        .btn-link {
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 10px 20px;
-            font-family: var(--font);
-            font-size: 13px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .btn-link:hover {
-            background: rgba(20, 184, 166, 0.1);
         }
         
         .tickets {
@@ -332,23 +329,23 @@
             <input type="password" id="password" placeholder="Ingresar clave de acceso" onkeypress="if(event.key==='Enter')login()">
             <button onclick="login()">ACCEDER</button>
             <div id="error" class="error"></div>
+            
+            <!-- NUEVO: Link para volver al formulario -->
+            <a href="index.html" class="back-link">Volver al formulario de tickets</a>
         </div>
     </div>
 
     <div class="panel" id="panel">
         <div class="panel-header">
             <h1>TICKETS_SYSTEM</h1>
-            <div class="header-actions">
-                <a href="index.html" class="btn-link">← Nuevo Ticket</a>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-value" id="stat-open">0</div>
-                        <div class="stat-label">Abiertos</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" id="stat-crit">0</div>
-                        <div class="stat-label">Críticos</div>
-                    </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="stat-open">0</div>
+                    <div class="stat-label">Abiertos</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="stat-crit">0</div>
+                    <div class="stat-label">Críticos</div>
                 </div>
             </div>
         </div>
