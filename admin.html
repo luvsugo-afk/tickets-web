@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración — IT Support</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>// ADMIN_PANEL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
-     :root {
+        :root {
     --bg: #FAF7FC;           /* Lila casi blanco */
     --surface: #FFFFFF;       /* Blanco */
     --sidebar: #E8E0F5;     /* Lavanda claro */
@@ -24,11 +24,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: var(--font-sans);
+            font-family: var(--font);
             background: var(--bg);
             color: var(--text);
+            font-size: 14px;
             line-height: 1.6;
-            font-size: 15px;
         }
         
         .login-screen {
@@ -45,28 +45,36 @@
             padding: 48px;
             width: 100%;
             max-width: 400px;
-            text-align: center;
         }
         
         .login-box h1 {
-            font-family: var(--font-serif);
-            font-size: 32px;
-            font-weight: 400;
+            font-size: 20px;
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .login-box h1::before {
+            content: '◈';
+            color: var(--accent);
         }
         
         .login-box p {
             color: var(--text-muted);
+            font-size: 13px;
             margin-bottom: 32px;
         }
         
         .login-box input {
             width: 100%;
             padding: 14px;
+            background: var(--bg);
             border: 1px solid var(--border);
+            color: var(--text);
+            font-family: var(--font);
             margin-bottom: 16px;
-            font-family: var(--font-sans);
-            font-size: 15px;
+            font-size: 14px;
         }
         
         .login-box input:focus {
@@ -78,282 +86,260 @@
             width: 100%;
             padding: 14px;
             background: var(--accent);
-            color: white;
+            color: var(--bg);
             border: none;
-            font-family: var(--font-sans);
-            font-size: 15px;
+            font-family: var(--font);
             font-weight: 600;
             cursor: pointer;
+            font-size: 14px;
         }
         
         .login-box button:hover {
-            background: var(--accent-hover);
+            opacity: 0.9;
         }
         
         .error {
             color: var(--danger);
-            margin-top: 16px;
-            font-size: 14px;
+            font-size: 13px;
+            margin-top: 12px;
         }
         
-        .page {
-            display: flex;
-            min-height: 100vh;
+        .panel {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px;
         }
         
-        .sidebar {
-            width: 280px;
-            background: var(--sidebar);
-            color: var(--sidebar-text);
-            padding: 40px 30px;
-            position: fixed;
-            height: 100vh;
-        }
-        
-        .brand {
-            font-family: var(--font-serif);
-            font-size: 28px;
-            margin-bottom: 60px;
-        }
-        
-        .nav {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .nav-item {
-            color: var(--sidebar-text);
-            text-decoration: none;
-            padding: 12px 16px;
-            border-radius: 4px;
-            opacity: 0.7;
-            transition: all 0.2s;
-        }
-        
-        .nav-item:hover,
-        .nav-item.active {
-            opacity: 1;
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .main {
-            flex: 1;
-            margin-left: 280px;
-            padding: 40px 60px;
-        }
-        
-        .header {
+        .panel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
             padding-bottom: 24px;
             border-bottom: 1px solid var(--border);
         }
         
-        .header h1 {
-            font-family: var(--font-serif);
-            font-size: 36px;
-            font-weight: 400;
+        .panel-header h1 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .panel-header h1::before {
+            content: '$';
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
         }
         
         .stats {
             display: flex;
-            gap: 24px;
+            gap: 16px;
         }
         
         .stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 16px 24px;
             text-align: center;
+            min-width: 100px;
         }
         
         .stat-value {
-            font-family: var(--font-serif);
-            font-size: 36px;
+            font-family: var(--font-mono);
+            font-size: 24px;
+            font-weight: 600;
             color: var(--accent);
         }
         
         .stat-label {
-            font-size: 12px;
+            font-size: 11px;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--text-muted);
+            margin-top: 4px;
         }
         
         .filters {
             display: flex;
-            gap: 12px;
-            margin-bottom: 32px;
+            gap: 8px;
+            margin-bottom: 24px;
         }
         
         .filter-btn {
-            padding: 10px 20px;
-            background: transparent;
+            padding: 8px 16px;
+            background: var(--surface);
             border: 1px solid var(--border);
             color: var(--text);
-            font-family: var(--font-sans);
+            font-family: var(--font);
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .filter-btn.active {
             background: var(--accent);
-            color: white;
+            color: var(--bg);
             border-color: var(--accent);
         }
         
+        .btn-link {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            font-family: var(--font);
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-link:hover {
+            background: rgba(20, 184, 166, 0.1);
+        }
+        
         .tickets {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            gap: 16px;
         }
         
         .ticket {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-left: 4px solid;
-            padding: 28px;
+            border-left: 3px solid;
+            padding: 20px;
         }
         
         .ticket.critica { border-left-color: var(--danger); }
         .ticket.alta { border-left-color: var(--warning); }
         .ticket.media { border-left-color: var(--accent); }
-        .ticket.baja { border-left-color: #8b8b8b; }
+        .ticket.baja { border-left-color: var(--text-muted); }
         
         .ticket-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
+            align-items: center;
+            margin-bottom: 12px;
         }
         
-        .ticket-title {
-            font-family: var(--font-serif);
-            font-size: 22px;
-            font-weight: 400;
+        .ticket-id {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--accent);
         }
         
         .ticket-priority {
-            padding: 6px 14px;
-            font-size: 11px;
+            padding: 4px 10px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            background: #e8e6e3;
+            background: rgba(20, 184, 166, 0.1);
+            color: var(--accent);
         }
         
-        .ticket-priority.critica { background: #f5e5e3; color: var(--danger); }
-        .ticket-priority.alta { background: #f5f0e3; color: #9a7b18; }
-        .ticket-priority.media { background: #e8f0e9; color: var(--accent); }
+        .ticket-priority.critica { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+        .ticket-priority.alta { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
         
         .ticket-meta {
             color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 16px;
+            font-size: 12px;
+            margin-bottom: 12px;
+            font-family: var(--font-mono);
         }
         
         .ticket-desc {
             background: var(--bg);
-            padding: 20px;
-            margin-bottom: 16px;
-            line-height: 1.7;
+            border: 1px solid var(--border);
+            padding: 16px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            white-space: pre-wrap;
         }
         
         .ticket-details {
-            margin-top: 16px;
-            padding: 16px;
-            background: #f5f4f2;
-            border-left: 3px solid var(--accent);
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(20, 184, 166, 0.05);
+            border-left: 2px solid var(--accent);
+            font-size: 12px;
+            color: var(--text-muted);
         }
         
         .ticket-actions {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 8px;
+            margin-top: 16px;
         }
         
         .btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             border: none;
-            font-family: var(--font-sans);
-            font-size: 14px;
+            font-family: var(--font);
+            font-size: 12px;
             cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .btn-resolve {
-            background: var(--accent);
-            color: white;
-        }
-        
-        .btn-resolve:hover {
-            background: var(--accent-hover);
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
         }
         
         .btn-reopen {
-            background: #e8e6e3;
+            background: var(--border);
             color: var(--text);
         }
         
         .btn-delete {
-            background: transparent;
+            background: rgba(239, 68, 68, 0.2);
             color: var(--danger);
-            border: 1px solid var(--danger);
             margin-left: auto;
         }
         
-        .btn-delete:hover {
-            background: var(--danger);
-            color: white;
+        .btn:hover {
+            opacity: 0.8;
         }
         
         .empty {
             text-align: center;
-            padding: 80px;
+            padding: 64px;
             color: var(--text-muted);
         }
         
         .closed {
-            opacity: 0.7;
-        }
-        
-        @media (max-width: 900px) {
-            .sidebar {
-                width: 100%;
-                position: relative;
-                height: auto;
-            }
-            .main {
-                margin-left: 0;
-            }
-            .page {
-                flex-direction: column;
-            }
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
     <div class="login-screen" id="login">
         <div class="login-box">
-            <h1>Administración</h1>
-            <p>Panel de gestión de tickets</p>
-            <input type="password" id="password" placeholder="Clave de acceso" onkeypress="if(event.key==='Enter')login()">
-            <button onclick="login()">Ingresar</button>
+            <h1>ADMIN_PANEL</h1>
+            <p>Gestión de tickets de soporte</p>
+            <input type="password" id="password" placeholder="Ingresar clave de acceso" onkeypress="if(event.key==='Enter')login()">
+            <button onclick="login()">ACCEDER</button>
             <div id="error" class="error"></div>
         </div>
     </div>
 
-    <div class="page" id="panel" style="display:none;">
-        <aside class="sidebar">
-            <div class="brand">IT Support</div>
-            <nav class="nav">
-                <a href="index.html" class="nav-item">Nuevo Ticket</a>
-                <a href="#" class="nav-item active">Panel Admin</a>
-            </nav>
-        </aside>
-        
-        <main class="main">
-            <div class="header">
-                <h1>Tickets</h1>
+    <div class="panel" id="panel">
+        <div class="panel-header">
+            <h1>TICKETS_SYSTEM</h1>
+            <div class="header-actions">
+                <a href="index.html" class="btn-link">← Nuevo Ticket</a>
                 <div class="stats">
                     <div class="stat">
                         <div class="stat-value" id="stat-open">0</div>
@@ -365,17 +351,17 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="filters">
-                <button class="filter-btn active" onclick="filter('all', this)">Todos</button>
-                <button class="filter-btn" onclick="filter('open', this)">Abiertos</button>
-                <button class="filter-btn" onclick="filter('closed', this)">Resueltos</button>
-            </div>
+        <div class="filters">
+            <button class="filter-btn active" onclick="filter('all', this)">Todos</button>
+            <button class="filter-btn" onclick="filter('open', this)">Abiertos</button>
+            <button class="filter-btn" onclick="filter('closed', this)">Cerrados</button>
+        </div>
 
-            <div id="tickets-container" class="tickets">
-                <div class="empty">Cargando tickets...</div>
-            </div>
-        </main>
+        <div id="tickets-container" class="tickets">
+            <div class="empty">Cargando tickets...</div>
+        </div>
     </div>
 
     <script>
@@ -404,7 +390,7 @@
                 
                 tickets = await res.json();
                 document.getElementById('login').style.display = 'none';
-                document.getElementById('panel').style.display = 'flex';
+                document.getElementById('panel').style.display = 'block';
                 render('all');
                 updateStats();
                 
@@ -422,26 +408,24 @@
             if (filterType === 'closed') list = tickets.filter(t => t.estado === 'Cerrado');
             
             if (list.length === 0) {
-                container.innerHTML = '<div class="empty">No hay tickets en esta categoría</div>';
+                container.innerHTML = '<div class="empty">Sin tickets en esta categoría</div>';
                 return;
             }
             
             container.innerHTML = list.map(t => `
                 <div class="ticket ${t.prioridad.toLowerCase()} ${t.estado === 'Cerrado' ? 'closed' : ''}">
                     <div class="ticket-header">
-                        <div>
-                            <div class="ticket-title">#${t.id} — ${esc(t.titulo)}</div>
-                        </div>
+                        <span class="ticket-id">#${t.id} · ${esc(t.titulo)}</span>
                         <span class="ticket-priority ${t.prioridad.toLowerCase()}">${t.prioridad}</span>
                     </div>
                     <div class="ticket-meta">
                         ${t.email} · ${t.solicitante} · ${new Date(t.fecha_creacion).toLocaleString()}
                     </div>
                     <div class="ticket-desc">${esc(t.descripcion)}</div>
-                    ${t.detalles_extra ? `<div class="ticket-details"><strong>Notas adicionales:</strong> ${esc(t.detalles_extra)}</div>` : ''}
+                    ${t.detalles_extra ? `<div class="ticket-details"><strong>Notas:</strong> ${esc(t.detalles_extra)}</div>` : ''}
                     <div class="ticket-actions">
                         ${t.estado === 'Abierto' 
-                            ? `<button class="btn btn-resolve" onclick="update(${t.id}, 'Cerrado')">Marcar como resuelto</button>`
+                            ? `<button class="btn btn-resolve" onclick="update(${t.id}, 'Cerrado')">Resolver</button>`
                             : `<button class="btn btn-reopen" onclick="update(${t.id}, 'Abierto')">Reabrir</button>`
                         }
                         <button class="btn btn-delete" onclick="del(${t.id})">Eliminar</button>
@@ -491,6 +475,12 @@
         }
 
         window.addEventListener('beforeunload', () => { TOKEN = ''; });
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                TOKEN = '';
+                location.reload();
+            }
+        });
     </script>
 </body>
 </html>
