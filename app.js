@@ -1,68 +1,68 @@
-// Catálogo de problemas: datos técnicos reales
+// Catálogo de problemas - versión "che, qué te pasa?"
 const catalogoProblemas = {
     hardware: {
         problemas: {
-            'pc-no-enciende': { titulo: 'PC no enciende', descripcion: 'Fallo en fuente de poder o placa madre. Revisar conexiones.', prioridad: 'Alta' },
-            'pantalla-azul': { titulo: 'BSOD - Pantalla azul', descripcion: 'Error crítico de sistema. Posible driver o RAM defectuosa.', prioridad: 'Alta' },
-            'monitor-negro': { titulo: 'Sin señal de video', descripcion: 'Cable HDMI/DP suelto o monitor dañado.', prioridad: 'Alta' },
-            'sobrecalentamiento': { titulo: 'Overheating', descripcion: 'Temperatura >90°C. Limpiar coolers y cambiar pasta térmica.', prioridad: 'Media' },
-            'teclado-danado': { titulo: 'Teclado no responde', descripcion: 'Teclas atascadas o desconexión USB.', prioridad: 'Baja' },
-            'mouse-falla': { titulo: 'Mouse errático', descripcion: 'Sensor sucio o batería baja (si es wireless).', prioridad: 'Baja' }
+            'pc-no-enciende': { titulo: 'La compu no enciende 😭', descripcion: 'Apretás el botón y no pasa nada. Revisamos cables y fuente.', prioridad: 'Alta' },
+            'pantalla-azul': { titulo: 'Pantallazo azul de la muerte', descripcion: 'Windows se puso rebelde. Drivers o RAM.', prioridad: 'Alta' },
+            'monitor-negro': { titulo: 'El monitor está negro', descripcion: 'Cable suelto o se quemó algo.', prioridad: 'Alta' },
+            'sobrecalentamiento': { titulo: 'Se está por prender fuego 🔥', descripcion: 'Temperatura alta. Limpiamos coolers.', prioridad: 'Media' },
+            'teclado-danado': { titulo: 'El teclado no responde', descripcion: 'Teclas atascadas o desconectado.', prioridad: 'Baja' },
+            'mouse-falla': { titulo: 'El mouse se mueve solo', descripcion: 'Sensor sucio o batería baja.', prioridad: 'Baja' }
         }
     },
     software: {
         problemas: {
-            'office-crash': { titulo: 'Office se cierra', descripcion: 'Add-ins corruptos. Iniciar en modo seguro.', prioridad: 'Media' },
-            'antivirus-vencido': { titulo: 'Licencia expirada', descripcion: 'Sistema desprotegido. Renovar licencia urgentemente.', prioridad: 'Alta' },
-            'app-externa': { titulo: 'App corporativa falla', descripcion: 'Error específico de software de la empresa.', prioridad: 'Media' },
-            'navegador-lento': { titulo: 'Browser lento', descripcion: 'Cache saturado o demasiadas extensiones.', prioridad: 'Baja' },
-            'actualizacion-pendiente': { titulo: 'Updates pendientes', descripcion: 'Parches de seguridad sin instalar.', prioridad: 'Baja' }
+            'office-crash': { titulo: 'Office se cierra solo', descripcion: 'Word o Excel se cuelgan.', prioridad: 'Media' },
+            'antivirus-vencido': { titulo: 'El antivirus venció', descripcion: 'Estás desprotegido. Hay que renovar YA.', prioridad: 'Alta' },
+            'app-externa': { titulo: 'App del laburo no anda', descripcion: 'El sistema interno falla.', prioridad: 'Media' },
+            'navegador-lento': { titulo: 'Chrome va lento', descripcion: 'Muchas pestañas o cache lleno.', prioridad: 'Baja' },
+            'actualizacion-pendiente': { titulo: 'Windows quiere actualizar', descripcion: 'Hay parches de seguridad pendientes.', prioridad: 'Baja' }
         }
     },
     red: {
         problemas: {
-            'sin-internet': { titulo: 'Sin conectividad', descripcion: 'Cable de red desconectado o fallo en switch.', prioridad: 'Critica' },
-            'vpn-caida': { titulo: 'VPN caída', descripcion: 'No acceso a servidores corporativos. Revisar certificados.', prioridad: 'Alta' },
-            'wifi-lento': { titulo: 'WiFi intermitente', descripcion: 'Señal débil o interferencia de 2.4GHz.', prioridad: 'Media' },
-            'compartir-archivos': { titulo: 'Sin acceso a shares', descripcion: 'Permisos de red o SMB deshabilitado.', prioridad: 'Media' }
+            'sin-internet': { titulo: '¡No hay internet! 🚨', descripcion: 'Cable desconectado o falla general.', prioridad: 'Critica' },
+            'vpn-caida': { titulo: 'No puedo entrar por VPN', descripcion: 'No accedés a servidores de afuera.', prioridad: 'Alta' },
+            'wifi-lento': { titulo: 'El WiFi va a las chapas', descripcion: 'Se corta o va lento.', prioridad: 'Media' },
+            'compartir-archivos': { titulo: 'No veo las carpetas compartidas', descripcion: 'Problema de permisos.', prioridad: 'Media' }
         }
     },
     email: {
         problemas: {
-            'no-envia': { titulo: 'SMTP fallando', descripcion: 'Cola de envío bloqueada o autenticación errónea.', prioridad: 'Alta' },
-            'no-recibe': { titulo: 'IMAP/POP3 error', descripcion: 'No sincroniza bandeja de entrada.', prioridad: 'Alta' },
-            'outlook-no-abre': { titulo: 'Outlook corrupto', descripcion: 'Reparar perfil o recrear OST.', prioridad: 'Alta' },
-            'configurar-firma': { titulo: 'Firma HTML', descripcion: 'Configuración de firma corporativa.', prioridad: 'Baja' },
-            'recuperar-borrado': { titulo: 'Restore deleted item', descripcion: 'Recuperar de Deleted Items o backup.', prioridad: 'Media' }
+            'no-envia': { titulo: 'Los mails no salen', descripcion: 'Se quedan en la bandeja de salida.', prioridad: 'Alta' },
+            'no-recibe': { titulo: 'No me llegan mails', descripcion: 'Bandeja vacía pero debería tener mails.', prioridad: 'Alta' },
+            'outlook-no-abre': { titulo: 'Outlook no quiere abrir', descripcion: 'Se cierra al iniciar.', prioridad: 'Alta' },
+            'configurar-firma': { titulo: 'Quiero poner firma bonita', descripcion: 'Configuración de firma HTML.', prioridad: 'Baja' },
+            'recuperar-borrado': { titulo: 'Borré un mail importante', descripcion: 'Recuperación desde papelera.', prioridad: 'Media' }
         }
     },
     impresion: {
         problemas: {
-            'impresora-oficina': { titulo: 'Printer offline', descripcion: 'Cola de impresión atascada o sin toner.', prioridad: 'Alta' },
-            'escaner-falla': { titulo: 'Scanner error', descripcion: 'Calibración perdida o cristal sucio.', prioridad: 'Media' },
-            'toner-agotado': { titulo: 'Out of toner', descripcion: 'Reemplazar cartucho.', prioridad: 'Media' },
-            'instalar-impresora': { titulo: 'Setup printer', descripcion: 'Instalar driver y configurar puerto.', prioridad: 'Baja' }
+            'impresora-oficina': { titulo: 'La impresora no imprime', descripcion: 'Cola atascada o sin tinta.', prioridad: 'Alta' },
+            'escaner-falla': { titulo: 'El escáner no escanea', descripcion: 'Error de calibración.', prioridad: 'Media' },
+            'toner-agotado': { titulo: 'Se acabó la tinta', descripcion: 'Hay que cambiar el cartucho.', prioridad: 'Media' },
+            'instalar-impresora': { titulo: 'Necesito instalar impresora nueva', descripcion: 'Setup de nueva impresora.', prioridad: 'Baja' }
         }
     },
     accesos: {
         problemas: {
-            'password-bloqueada': { titulo: 'Account locked', descripcion: 'Múltiples intentos fallidos. Desbloquear desde AD.', prioridad: 'Critica' },
-            'reset-password': { titulo: 'Password reset', descripcion: 'Usuario olvidó contraseña. Generar temporal.', prioridad: 'Media' },
-            'acceso-carpeta': { titulo: 'Permisos NTFS', descripcion: 'Sin acceso a recurso compartido.', prioridad: 'Media' },
-            'crear-usuario': { titulo: 'New user setup', descripcion: 'Onboarding: crear AD, email, VPN.', prioridad: 'Media' },
-            'bloquear-exempleado': { titulo: 'Disable account', descripcion: 'Offboarding: desactivar y backup.', prioridad: 'Alta' }
+            'password-bloqueada': { titulo: 'Me bloquearon la cuenta', descripcion: 'Muchos intentos fallidos.', prioridad: 'Critica' },
+            'reset-password': { titulo: 'Me olvidé la contraseña', descripcion: 'No puedo entrar al sistema.', prioridad: 'Media' },
+            'acceso-carpeta': { titulo: 'No puedo entrar a una carpeta', descripcion: 'Sin permisos.', prioridad: 'Media' },
+            'crear-usuario': { titulo: 'Nuevo compañero necesita cuenta', descripcion: 'Onboarding.', prioridad: 'Media' },
+            'bloquear-exempleado': { titulo: 'Se fue alguien, bloquear cuenta', descripcion: 'Offboarding.', prioridad: 'Alta' }
         }
     },
     otros: {
         problemas: {
-            'consulta-general': { titulo: 'Consulta técnica', descripcion: 'Duda general sobre procedimiento.', prioridad: 'Baja' },
-            'compra-equipo': { titulo: 'Hardware request', descripcion: 'Solicitud de nuevo equipo.', prioridad: 'Baja' },
-            'urgencia-desconocida': { titulo: 'Incidente no catalogado', descripcion: 'Requiere análisis manual.', prioridad: 'Media' }
+            'consulta-general': { titulo: 'Tengo una duda de IT', descripcion: 'Consulta general.', prioridad: 'Baja' },
+            'compra-equipo': { titulo: 'Necesito pedir equipo nuevo', descripcion: 'Compra de hardware.', prioridad: 'Baja' },
+            'urgencia-desconocida': { titulo: 'Algo raro pasa', descripcion: 'No sé qué es, pero algo falla.', prioridad: 'Media' }
         }
     }
 };
 
-// Referencias DOM
+// Referencias
 const selectCategoria = document.getElementById('categoria');
 const campoProblema = document.getElementById('campo-problema');
 const selectProblema = document.getElementById('problema');
@@ -88,12 +88,12 @@ selectCategoria.addEventListener('change', function() {
     }
     
     const problemas = catalogoProblemas[cat].problemas;
-    selectProblema.innerHTML = '<option value="">-- seleccionar --</option>';
+    selectProblema.innerHTML = '<option value="">Elegí el problema...</option>';
     
     Object.entries(problemas).forEach(([key, info]) => {
         const opt = document.createElement('option');
         opt.value = key;
-        opt.textContent = `[${info.prioridad.substring(0,1)}] ${info.titulo}`;
+        opt.textContent = info.titulo;
         selectProblema.appendChild(opt);
     });
     
@@ -125,8 +125,8 @@ selectProblema.addEventListener('change', function() {
         prioridad: info.prioridad
     };
     
-    tagPrioridad.textContent = info.prioridad.toUpperCase();
-    tagPrioridad.className = 'priority-badge ' + info.prioridad.toLowerCase();
+    tagPrioridad.textContent = info.prioridad;
+    tagPrioridad.className = 'prioridad-tag-cute ' + info.prioridad.toLowerCase();
     vpProblemaTexto.textContent = info.titulo;
     
     vistaPrevia.style.display = 'block';
@@ -134,13 +134,13 @@ selectProblema.addEventListener('change', function() {
     btnEnviar.disabled = false;
 });
 
-// Submit con validación
+// Submit
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const detalles = document.getElementById('detalles').value.trim();
     if (!detalles) {
-        alert('> ERROR: El campo notas_adicionales es obligatorio');
+        alert('¡Ups! Contame un poco más de qué te pasó 😊');
         document.getElementById('detalles').focus();
         return;
     }
@@ -155,7 +155,7 @@ form.addEventListener('submit', async (e) => {
     };
     
     btnEnviar.disabled = true;
-    btnEnviar.textContent = '[ ENVIANDO... ]';
+    btnEnviar.innerHTML = '<span>Enviando...</span><span>💫</span>';
     
     try {
         const res = await fetch(`${API_URL}/api/tickets`, {
@@ -170,24 +170,24 @@ form.addEventListener('submit', async (e) => {
             form.style.display = 'none';
             document.getElementById('mensaje-exito').style.display = 'block';
             document.getElementById('email-confirmado').textContent = datosEnvio.email;
-            document.getElementById('numero-ticket').textContent = '#' + data.ticket.id;
-            document.getElementById('prioridad-confirmada').textContent = data.ticket.prioridad.toUpperCase();
+            document.getElementById('numero-ticket').textContent = data.ticket.id;
+            document.getElementById('prioridad-confirmada').textContent = data.ticket.prioridad;
         } else {
             throw new Error(data.error);
         }
     } catch (err) {
-        alert('> ERROR: ' + err.message);
+        alert('Algo salió mal 😅 Probá de nuevo');
         btnEnviar.disabled = false;
-        btnEnviar.textContent = '[ ENVIAR_TICKET ]';
+        btnEnviar.innerHTML = '<span>Enviar consulta</span><span>✨</span>';
     }
 });
 
-// Enter en cualquier campo envía
+// Enter para enviar
 document.querySelectorAll('input, select, textarea').forEach(input => {
     input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && !btnEnviar.disabled) {
             e.preventDefault();
-            if (!btnEnviar.disabled) form.dispatchEvent(new Event('submit'));
+            form.dispatchEvent(new Event('submit'));
         }
     });
 });
