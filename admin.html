@@ -3,223 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel IT | Gestión de Tickets</title>
+    <title>Admin // Tickets IT</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
-        .login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .login-box { background: #1e293b; padding: 40px; border-radius: 16px; width: 100%; max-width: 400px; text-align: center; }
-        .login-box h1 { color: #8b5cf6; margin-bottom: 8px; }
-        .login-box p { color: #64748b; margin-bottom: 24px; }
-        .login-box input { width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #334155; background: #0f172a; color: white; border-radius: 8px; }
-        .login-box button { width: 100%; padding: 12px; background: #8b5cf6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
-        .login-box button:hover { background: #7c3aed; }
-        .error-msg { color: #ef4444; margin-top: 12px; font-size: 0.875rem; }
-        .panel { display: none; padding: 24px; max-width: 1400px; margin: 0 auto; }
-        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #334155; flex-wrap: wrap; gap: 16px; }
-        .panel-header h1 { color: #8b5cf6; }
-        .stats { display: flex; gap: 16px; }
-        .stat-card { background: #1e293b; padding: 16px 24px; border-radius: 12px; text-align: center; }
-        .stat-num { font-size: 2rem; font-weight: 700; color: #8b5cf6; }
-        .stat-label { font-size: 0.875rem; color: #94a3b8; }
-        .filtros { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
-        .filtro-btn { padding: 8px 16px; background: #334155; border: none; color: white; border-radius: 8px; cursor: pointer; }
-        .filtro-btn.active { background: #8b5cf6; }
-        .tickets-grid { display: grid; gap: 16px; }
-        .ticket-card { background: #1e293b; border-radius: 12px; padding: 20px; border-left: 4px solid; }
-        .ticket-card.critica { border-left-color: #ef4444; }
-        .ticket-card.alta { border-left-color: #f97316; }
-        .ticket-card.media { border-left-color: #eab308; }
-        .ticket-card.baja { border-left-color: #22c55e; }
-        .ticket-header { display: flex; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
-        .ticket-id { color: #8b5cf6; font-weight: 600; }
-        .prioridad-badge { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
-        .prioridad-badge.critica { background: #450a0a; color: #fca5a5; }
-        .prioridad-badge.alta { background: #431407; color: #fdba74; }
-        .prioridad-badge.media { background: #422006; color: #fde047; }
-        .prioridad-badge.baja { background: #052e16; color: #86efac; }
-        .ticket-meta { color: #94a3b8; font-size: 0.875rem; margin-bottom: 12px; }
-        .ticket-desc { color: #e2e8f0; line-height: 1.6; margin-bottom: 12px; padding: 12px; background: #0f172a; border-radius: 8px; white-space: pre-wrap; }
-        .detalles-extra { margin-top: 12px; padding: 12px; background: #334155; border-radius: 6px; border-left: 3px solid #8b5cf6; }
-        .detalles-extra strong { color: #c4b5fd; }
-        .ticket-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-        .btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.875rem; }
-        .btn-cerrar { background: #059669; color: white; }
-        .btn-reabrir { background: #475569; color: white; }
-        .btn-borrar { background: #dc2626; color: white; margin-left: auto; }
-        .estado-vacio { text-align: center; padding: 60px; color: #64748b; }
-        .cerrado { opacity: 0.6; }
+        
+        :root {
+            --bg: #0d1117;
+            --bg-secondary: #161b22;
+            --accent: #58a6ff;
+            --success: #238636;
+            --danger: #da3633;
+            --warning: #f0883e;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --border: #30363d;
+            --font: 'JetBrains Mono', monospace;
+        }
+        
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .login-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .login-box h1 {
+            color: var(--accent);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .login-box h1::before {
+            content: "# ";
+            color: var(--success);
+        }
+        
+        .login-box p {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: var(--font);
+            margin-bottom: 16px;
+            border-radius: 3px;
+        }
+        
+        .login-box input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            font-family: var(--font);
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        
+        .login-box button:hover {
+            background: #79c0ff;
+        }
+        
+        .error {
+            color: var(--danger);
+            font-size: 12px;
+            margin-top: 12px;
+        }
+        
+        .panel {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .panel-header h1 {
+            color: var(--accent);
+            font-size: 20px;
+        }
+        
+        .panel-header h1::before {
+            content: "$ ";
+            color: var(--success);
+        }
+        
+        .stats {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .stat {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: var(--font);
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+        
+        .tickets-list {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .ticket {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-left: 3px solid;
+            padding: 16px;
+        }
+        
+        .ticket.critica { border-left-color: var(--danger); }
+        .ticket.alta { border-left-color: var(--warning); }
+        .ticket.media { border-left-color: var(--accent); }
+        .ticket.baja { border-left-color: var(--text-muted); }
+        
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .ticket-id {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .priority {
+            font-size: 10px;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+        
+        .priority.critica { background: var(--danger); color: white; }
+        .priority.alta { background: var(--warning); color: var(--bg); }
+        .priority.media { background: var(--accent); color: var(--bg); }
+        .priority.baja { background: var(--text-muted); color: var(--bg); }
+        
+        .ticket-meta {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .ticket-desc {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        
+        .ticket-details {
+            margin-top: 8px;
+            padding: 8px;
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 2px solid var(--accent);
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        
+        .ticket-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            font-family: var(--font);
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+        
+        .btn-resolve {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-reopen {
+            background: var(--text-muted);
+            color: var(--bg);
+        }
+        
+        .btn-delete {
+            background: var(--danger);
+            color: white;
+            margin-left: auto;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-muted);
+        }
+        
+        .closed {
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body>
     <div class="login-screen" id="login">
         <div class="login-box">
-            <h1>🔐 Acceso IT</h1>
-            <p>Panel de gestión de incidencias</p>
-            <input type="password" id="password" placeholder="Clave de acceso" onkeypress="if(event.key==='Enter')login()">
-            <button onclick="login()">Entrar al panel</button>
-            <div id="login-error" class="error-msg"></div>
+            <h1>ADMIN_CONSOLE</h1>
+            <p>Sistema de Gestión de Tickets</p>
+            <input type="password" id="password" placeholder="Ingresar clave..." onkeypress="if(event.key==='Enter')login()">
+            <button onclick="login()">[ ACCEDER ]</button>
+            <div id="error" class="error"></div>
         </div>
     </div>
 
     <div class="panel" id="panel">
         <div class="panel-header">
-            <div>
-                <h1>Panel de Control IT</h1>
-                <p style="color: #64748b; margin-top: 4px;">Gestión de incidencias y solicitudes</p>
-            </div>
+            <h1>PANEL_ADMIN</h1>
             <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-num" id="stat-abiertos">0</div>
+                <div class="stat">
+                    <div class="stat-num" id="stat-open">0</div>
                     <div class="stat-label">Abiertos</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-num" id="stat-criticos">0</div>
+                <div class="stat">
+                    <div class="stat-num" id="stat-crit">0</div>
                     <div class="stat-label">Críticos</div>
                 </div>
             </div>
         </div>
 
-        <div class="filtros">
-            <button class="filtro-btn active" onclick="filtrar('todos', this)">Todos</button>
-            <button class="filtro-btn" onclick="filtrar('Abierto', this)">Abiertos</button>
-            <button class="filtro-btn" onclick="filtrar('Cerrado', this)">Resueltos</button>
+        <div class="filters">
+            <button class="filter-btn active" onclick="filter('all', this)">TODOS</button>
+            <button class="filter-btn" onclick="filter('open', this)">ABIERTOS</button>
+            <button class="filter-btn" onclick="filter('closed', this)">CERRADOS</button>
         </div>
 
-        <div id="tickets-container" class="tickets-grid">
-            <div class="estado-vacio">Cargando tickets...</div>
+        <div id="tickets-container" class="tickets-list">
+            <div class="empty">Cargando...</div>
         </div>
     </div>
 
     <script>
         const API_URL = 'https://tickets-api-63tv.onrender.com';
-        let IT_TOKEN = '';
-        let ticketsData = [];
+        let TOKEN = '';
+        let tickets = [];
 
         async function login() {
-            const pass = document.getElementById('password').value;
-            document.getElementById('login-error').textContent = '';
+            const pwd = document.getElementById('password').value;
+            document.getElementById('error').textContent = '';
             
-            if (!pass) {
-                document.getElementById('login-error').textContent = 'Ingresa la clave';
-                return;
-            }
+            if (!pwd) return;
             
-            IT_TOKEN = pass;
+            TOKEN = pwd;
             
             try {
                 const res = await fetch(`${API_URL}/api/admin/tickets`, {
-                    headers: { 'x-api-key': IT_TOKEN }
+                    headers: { 'x-api-key': TOKEN }
                 });
                 
                 if (res.status === 401) {
-                    document.getElementById('login-error').textContent = 'Clave incorrecta';
-                    IT_TOKEN = '';
+                    document.getElementById('error').textContent = 'Clave incorrecta';
+                    TOKEN = '';
                     return;
                 }
                 
-                if (!res.ok) throw new Error('Error del servidor');
-                
-                ticketsData = await res.json();
+                tickets = await res.json();
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('panel').style.display = 'block';
-                mostrarTickets('todos');
-                actualizarStats();
+                render('all');
+                updateStats();
                 
             } catch (err) {
-                document.getElementById('login-error').textContent = 'Error de conexión';
-                IT_TOKEN = '';
+                document.getElementById('error').textContent = 'Error de conexión';
+                TOKEN = '';
             }
         }
 
-        function mostrarTickets(filtro) {
+        function render(filter) {
             const container = document.getElementById('tickets-container');
-            let tickets = ticketsData;
+            let list = tickets;
             
-            if (filtro !== 'todos') tickets = tickets.filter(t => t.estado === filtro);
+            if (filter === 'open') list = tickets.filter(t => t.estado === 'Abierto');
+            if (filter === 'closed') list = tickets.filter(t => t.estado === 'Cerrado');
             
-            if (tickets.length === 0) {
-                container.innerHTML = '<div class="estado-vacio">No hay tickets en esta categoría</div>';
+            if (list.length === 0) {
+                container.innerHTML = '<div class="empty">Sin tickets en esta categoría</div>';
                 return;
             }
             
-            container.innerHTML = tickets.map(t => `
-                <div class="ticket-card ${t.prioridad.toLowerCase()} ${t.estado === 'Cerrado' ? 'cerrado' : ''}">
+            container.innerHTML = list.map(t => `
+                <div class="ticket ${t.prioridad.toLowerCase()} ${t.estado === 'Cerrado' ? 'closed' : ''}">
                     <div class="ticket-header">
                         <span class="ticket-id">#${t.id}: ${esc(t.titulo)}</span>
-                        <span class="prioridad-badge ${t.prioridad.toLowerCase()}">${t.prioridad}</span>
+                        <span class="priority ${t.prioridad.toLowerCase()}">${t.prioridad}</span>
                     </div>
                     <div class="ticket-meta">
-                        📧 ${esc(t.email)} | 👤 ${esc(t.solicitante)} | 📅 ${new Date(t.fecha_creacion).toLocaleString()} | Estado: ${t.estado}
+                        ${t.email} | ${t.solicitante} | ${new Date(t.fecha_creacion).toLocaleString()}
                     </div>
-                    <div class="ticket-desc">
-                        ${esc(t.descripcion)}
-                        ${t.detalles_extra ? `<div class="detalles-extra"><strong>📋 Detalles adicionales:</strong><br>${esc(t.detalles_extra)}</div>` : ''}
-                    </div>
+                    <div class="ticket-desc">${esc(t.descripcion)}</div>
+                    ${t.detalles_extra ? `<div class="ticket-details"><strong>Notas:</strong> ${esc(t.detalles_extra)}</div>` : ''}
                     <div class="ticket-actions">
                         ${t.estado === 'Abierto' 
-                            ? `<button class="btn btn-cerrar" onclick="cambiarEstado(${t.id}, 'Cerrado')">✓ Marcar resuelto</button>`
-                            : `<button class="btn btn-reabrir" onclick="cambiarEstado(${t.id}, 'Abierto')">↻ Reabrir</button>`
+                            ? `<button class="btn btn-resolve" onclick="update(${t.id}, 'Cerrado')">[ RESOLVER ]</button>`
+                            : `<button class="btn btn-reopen" onclick="update(${t.id}, 'Abierto')">[ REABRIR ]</button>`
                         }
-                        <button class="btn btn-borrar" onclick="borrar(${t.id})">🗑 Eliminar</button>
+                        <button class="btn btn-delete" onclick="del(${t.id})">[ ELIMINAR ]</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        function actualizarStats() {
-            const abiertos = ticketsData.filter(t => t.estado === 'Abierto').length;
-            const criticos = ticketsData.filter(t => t.prioridad === 'Critica' && t.estado === 'Abierto').length;
-            document.getElementById('stat-abiertos').textContent = abiertos;
-            document.getElementById('stat-criticos').textContent = criticos;
+        function updateStats() {
+            const open = tickets.filter(t => t.estado === 'Abierto').length;
+            const crit = tickets.filter(t => t.prioridad === 'Critica' && t.estado === 'Abierto').length;
+            document.getElementById('stat-open').textContent = open;
+            document.getElementById('stat-crit').textContent = crit;
         }
 
-        async function cambiarEstado(id, estado) {
+        async function update(id, status) {
             await fetch(`${API_URL}/api/admin/tickets/${id}`, {
                 method: 'PUT',
                 headers: { 
                     'Content-Type': 'application/json',
-                    'x-api-key': IT_TOKEN
+                    'x-api-key': TOKEN
                 },
-                body: JSON.stringify({ estado })
+                body: JSON.stringify({ estado: status })
             });
             await login();
         }
 
-        async function borrar(id) {
-            if (!confirm('¿Eliminar este ticket permanentemente?')) return;
+        async function del(id) {
+            if (!confirm('¿Eliminar ticket #' + id + '?')) return;
             await fetch(`${API_URL}/api/admin/tickets/${id}`, {
                 method: 'DELETE',
-                headers: { 'x-api-key': IT_TOKEN }
+                headers: { 'x-api-key': TOKEN }
             });
             await login();
         }
 
-        function filtrar(tipo, btn) {
-            document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+        function filter(type, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            mostrarTickets(tipo);
+            render(type);
         }
 
-        function esc(texto) {
+        function esc(text) {
             const div = document.createElement('div');
-            div.textContent = texto;
+            div.textContent = text;
             return div.innerHTML;
         }
-        // Limpiar al salir de la página
-window.addEventListener('beforeunload', () => {
-    IT_TOKEN = '';
-});
 
-// También limpiar cuando la página pierde visibilidad
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        IT_TOKEN = '';
-        document.getElementById('panel').style.display = 'none';
-        document.getElementById('login').style.display = 'flex';
-        document.getElementById('password').value = '';
-    }
-});
+        // Logout al salir
+        window.addEventListener('beforeunload', () => { TOKEN = ''; });
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                TOKEN = '';
+                location.reload();
+            }
+        });
     </script>
 </body>
 </html>
