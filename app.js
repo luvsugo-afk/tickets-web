@@ -117,13 +117,13 @@ const catalogoProblemas = {
                 descripcion: 'Alta de nuevo empleado en el sistema.', 
                 prioridad: 'Media' 
             },
-            'bloquear-exempleado': { 
-                titulo: 'Bloquear cuenta de ex-empleado', 
-                descripcion: 'Desactivar accesos de personal que se va.', 
+            '<Eliminar-Usuario': { 
+                titulo: 'Eliminar usuario', 
+                descripcion: 'Desactivar accesos de personal que ya no pertenece a la empresa.', 
                 prioridad: 'Alta' 
             },
             'panel-alarma': { 
-                titulo: 'Sobre panel de alarma', 
+                titulo: 'Panel de alarma', 
                 descripcion: 'Consulta o problema con el panel de alarma.', 
                 prioridad: 'Media' 
             },
