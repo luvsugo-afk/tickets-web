@@ -3,131 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✦ Crystal Support ✦</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>✧･ﾟIT Support･ﾟ✧</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="glow"></div>
+    <!-- Background crystals -->
+    <div class="bg-crystal c1">💎</div>
+    <div class="bg-crystal c2">✨</div>
+    <div class="bg-crystal c3">🔮</div>
+    <div class="bg-crystal c4">💫</div>
     
-    <div class="container">
-        <!-- Header etéreo -->
-        <header class="ethereal-header">
-            <div class="crystal-icon">✦</div>
-            <h1 class="title-glow">Crystal Support</h1>
-            <p class="subtitle">Sistema de tickets · Buenos Aires</p>
+    <div class="main-container">
+        
+        <!-- Header con glitter -->
+        <header class="dream-header">
+            <div class="sparkle">✧</div>
+            <h1 class="dream-title">Help Desk</h1>
+            <div class="subtitle">✧･ﾟtechnical support･ﾟ✧</div>
+            <div class="sparkle">✧</div>
         </header>
 
-        <!-- Intro poética -->
-        <div class="intro-card glass">
-            <p class="poetic-text">
-                "En el silencio de los servidores,<br>
-                encuentro tu llamado.<br>
-                Describí tu problema,<br>
-                y lo transformaré en solución."
-            </p>
-            <div class="signature">— El Guardián del Sistema</div>
+        <!-- Welcome card -->
+        <div class="crystal-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+                <p class="dream-text">
+                    Welcome to the digital realm...<br>
+                    Your technical issues will be resolved with magic ✨<br>
+                    Fill out the form below and I'll take care of it
+                </p>
+            </div>
         </div>
 
-        <!-- Formulario místico -->
-        <form id="formTicket" class="ritual-form">
+        <!-- Form -->
+        <form id="formTicket" class="dream-form">
             
-            <div class="form-section glass">
+            <section class="form-section">
                 <h2 class="section-title">
-                    <span class="star-decoration">✧</span>
-                    Tu esencia
+                    <span class="star">⋆</span>
+                    Your Information
+                    <span class="star">⋆</span>
                 </h2>
                 
-                <div class="input-pair">
-                    <div class="input-glow">
-                        <label>Nombre</label>
-                        <input type="text" id="solicitante" required placeholder="¿Quién invoca?">
+                <div class="input-row">
+                    <div class="dream-input-group">
+                        <label class="dream-label">Name ⋆｡˚</label>
+                        <input type="text" id="solicitante" required placeholder="your name">
                     </div>
                     
-                    <div class="input-glow">
-                        <label>Correo etéreo</label>
-                        <input type="email" id="email" required placeholder="tu@dominio.com">
+                    <div class="dream-input-group">
+                        <label class="dream-label">Email ⋆｡˚</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="form-section glass">
+            <section class="form-section">
                 <h2 class="section-title">
-                    <span class="star-decoration">✧</span>
-                    La manifestación del problema
+                    <span class="star">⋆</span>
+                    Describe Your Issue
+                    <span class="star">⋆</span>
                 </h2>
 
-                <div class="input-glow full">
-                    <label>Reino afectado</label>
-                    <select id="categoria" required>
-                        <option value="">Selecciona un reino...</option>
-                        <option value="hardware">⚡ El Hardware Material</option>
-                        <option value="software">🔮 El Software Etéreo</option>
-                        <option value="red">🌐 La Red de Conexiones</option>
-                        <option value="email">📜 Los Mensajes Perdidos</option>
-                        <option value="impresion">🖨️ El Arte de Imprimir</option>
-                        <option value="accesos">🔐 Los Portales Sellados</option>
-                        <option value="otros">✨ Otros Misterios</option>
-                    </select>
+                <div class="dream-input-group">
+                    <label class="dream-label">Category</label>
+                    <div class="select-dream">
+                        <select id="categoria" required>
+                            <option value="">Select...</option>
+                            <option value="hardware">💻 Hardware Problems</option>
+                            <option value="software">⚙️ Software Issues</option>
+                            <option value="red">🌐 Network</option>
+                            <option value="email">📧 Email</option>
+                            <option value="impresion">🖨️ Printing</option>
+                            <option value="accesos">🔐 Access</option>
+                            <option value="otros">✨ Other</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="input-glow full" id="campo-problema" style="display:none;">
-                    <label>Manifestación específica</label>
-                    <select id="problema" required>
-                        <option value="">Elige la forma del problema...</option>
-                    </select>
+                <div class="dream-input-group" id="campo-problema" style="display:none;">
+                    <label class="dream-label">Specific Issue</label>
+                    <div class="select-dream">
+                        <select id="problema" required>
+                            <option value="">Choose...</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="input-glow full" id="campo-detalles" style="display:none;">
-                    <label>Describe la visión <span class="required-glow">*</span></label>
-                    <textarea id="detalles" rows="5" required placeholder="Contame todo lo que viste, sintiste, observaste..."></textarea>
+                <div class="dream-input-group" id="campo-detalles" style="display:none;">
+                    <label class="dream-label">
+                        Additional Details <span class="required-star">*</span>
+                    </label>
+                    <textarea id="detalles" rows="4" required placeholder="Tell me everything..."></textarea>
+                </div>
+            </section>
+
+            <!-- Preview crystal -->
+            <div class="preview-crystal" id="vista-previa" style="display:none;">
+                <div class="crystal-icon">💎</div>
+                <div class="preview-content">
+                    <div class="preview-header">
+                        <span class="preview-title">Ticket Preview</span>
+                        <span class="priority-pill" id="tag-prioridad">Medium</span>
+                    </div>
+                    <p class="preview-issue" id="vp-problema-texto">-</p>
+                    <p class="preview-note">✧ Confirmation will be sent to your email ✧</p>
                 </div>
             </div>
 
-            <!-- Crystal ball preview -->
-            <div class="crystal-ball" id="vista-previa" style="display:none;">
-                <div class="ball-glow"></div>
-                <div class="ball-content">
-                    <div class="prediction-header">
-                        <span class="prediction-title">La profecía revela</span>
-                        <span class="priority-aura" id="tag-prioridad">Media</span>
-                    </div>
-                    <p class="prediction-text" id="vp-problema-texto">-</p>
-                    <div class="prediction-footer">
-                        ✦ Recibirás confirmación en tu correo ✦
-                    </div>
-                </div>
-            </div>
-
-            <div class="summon-area">
-                <button type="submit" class="summon-btn" id="btn-enviar" disabled>
-                    <span class="btn-text">Invocar solución</span>
-                    <span class="btn-sparkle">✦</span>
+            <div class="submit-area">
+                <button type="submit" class="dream-button" id="btn-enviar" disabled>
+                    <span class="btn-star">✧</span>
+                    <span>Send Request</span>
+                    <span class="btn-star">✧</span>
                 </button>
             </div>
         </form>
 
-        <!-- Success manifestation -->
-        <div class="manifestation-complete" id="mensaje-exito" style="display:none;">
-            <div class="success-constellation">✦ ✧ ✦</div>
-            <h2 class="success-title">La invocación fue escuchada</h2>
-            <div class="success-aura">
-                <p><span class="label-mystic">Ticket #</span> <span id="numero-ticket" class="value-glow">-</span></p>
-                <p><span class="label-mystic">Prioridad</span> <span id="prioridad-confirmada" class="value-glow">-</span></p>
-                <p><span class="label-mystic">Destino</span> <span id="email-confirmado" class="value-glow">-</span></p>
+        <!-- Success state -->
+        <div class="success-crystal" id="mensaje-exito" style="display:none;">
+            <div class="success-glow"></div>
+            <div class="success-icon">✨💎✨</div>
+            <h2 class="success-title">Received!</h2>
+            <div class="success-info">
+                <p><span class="label">Ticket:</span> <span id="numero-ticket">-</span></p>
+                <p><span class="label">Priority:</span> <span id="prioridad-confirmada">-</span></p>
+                <p><span class="label">Email:</span> <span id="email-confirmado">-</span></p>
             </div>
-            <p class="closing-words">
-                Revisa tu correo.<br>
-                Incluso en el spam, si es necesario.
-            </p>
-            <button class="new-ritual-btn" onclick="location.reload()">
-                Nueva invocación
+            <p class="success-message">Check your inbox (and spam folder) ✧</p>
+            <button class="dream-button-secondary" onclick="location.reload()">
+                New Request
             </button>
         </div>
 
-        <footer class="ethereal-footer">
-            <p>Creado con intención ✦ Buenos Aires, 2024</p>
+        <footer class="dream-footer">
+            <p>✧ Crafted with intention ✧</p>
+            <p class="location">Buenos Aires · 2024</p>
         </footer>
     </div>
 
