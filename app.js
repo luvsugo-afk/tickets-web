@@ -1,66 +1,171 @@
 const catalogoProblemas = {
     hardware: {
         problemas: {
-            'pc-no-enciende': { titulo: 'Equipo no enciende', descripcion: 'Sin respuesta al presionar botón de encendido. Revisar conexiones eléctricas.', prioridad: 'Alta' },
-            'pantalla-azul': { titulo: 'Pantalla azul (BSOD)', descripcion: 'Error crítico del sistema. Posible conflicto de drivers o hardware defectuoso.', prioridad: 'Alta' },
-            'monitor-negro': { titulo: 'Sin señal de video', descripcion: 'Monitor no detecta entrada de video. Revisar cables y conexiones.', prioridad: 'Alta' },
-            'sobrecalentamiento': { titulo: 'Sobrecalentamiento', descripcion: 'Temperatura superior a lo normal. Limpiar coolers y verificar ventilación.', prioridad: 'Media' },
-            'teclado-danado': { titulo: 'Teclado no responde', descripcion: 'Teclas atascadas o sin función. Revisar conexión USB.', prioridad: 'Baja' },
-            'mouse-falla': { titulo: 'Mouse defectuoso', descripcion: 'Movimientos erráticos o sin respuesta. Limpiar sensor o cambiar batería.', prioridad: 'Baja' }
+            'equipo-roto': { 
+                titulo: 'Equipo roto', 
+                descripcion: 'El equipo presenta daño físico o no enciende.', 
+                prioridad: 'Alta' 
+            },
+            'sesion-point': { 
+                titulo: 'Sesión cerrada en Point', 
+                descripcion: 'Se cerró la sesión del sistema Point y no se puede acceder.', 
+                prioridad: 'Alta' 
+            },
+            'falla-carga': { 
+                titulo: 'Falla de carga', 
+                descripcion: 'El equipo no carga la batería o presenta problemas de energía.', 
+                prioridad: 'Alta' 
+            },
+            'equipo-descarte': { 
+                titulo: 'Equipo de descarte', 
+                descripcion: 'Solicitud de baja y retiro de equipo obsoleto o dañado.', 
+                prioridad: 'Baja' 
+            }
         }
     },
     software: {
         problemas: {
-            'office-crash': { titulo: 'Microsoft Office falla', descripcion: 'Aplicaciones se cierran inesperadamente. Revisar complementos.', prioridad: 'Media' },
-            'antivirus-vencido': { titulo: 'Licencia de seguridad expirada', descripcion: 'Sistema desprotegido. Renovar licencia urgentemente.', prioridad: 'Alta' },
-            'app-externa': { titulo: 'Aplicación corporativa falla', descripcion: 'Software interno no responde. Verificar conexión a servidores.', prioridad: 'Media' },
-            'navegador-lento': { titulo: 'Navegador web lento', descripcion: 'Carga lenta de páginas. Limpiar caché y revisar extensiones.', prioridad: 'Baja' },
-            'actualizacion-pendiente': { titulo: 'Actualizaciones pendientes', descripcion: 'Parches de seguridad sin instalar. Programar mantenimiento.', prioridad: 'Baja' }
+            'instalar-programa': { 
+                titulo: 'Instalar un programa', 
+                descripcion: 'Instalación de software requerido para el puesto de trabajo.', 
+                prioridad: 'Media' 
+            },
+            'pc-lenta': { 
+                titulo: 'PC lenta o no responde', 
+                descripcion: 'El equipo presenta lentitud excesiva o se congela.', 
+                prioridad: 'Alta' 
+            },
+            'problemas-sincronizacion': { 
+                titulo: 'Problemas de sincronización', 
+                descripcion: 'Los datos no se sincronizan correctamente entre dispositivos o la nube.', 
+                prioridad: 'Media' 
+            },
+            'problemas-licencia': { 
+                titulo: 'Problemas de licencia', 
+                descripcion: 'Software con licencia vencida, expirada o no válida.', 
+                prioridad: 'Alta' 
+            }
         }
     },
     red: {
         problemas: {
-            'sin-internet': { titulo: 'Sin conectividad', descripcion: 'No acceso a internet ni red corporativa. Verificar cableado y switches.', prioridad: 'Critica' },
-            'vpn-caida': { titulo: 'VPN desconectada', descripcion: 'Sin acceso remoto a servidores. Revisar certificados y configuración.', prioridad: 'Alta' },
-            'wifi-lento': { titulo: 'WiFi intermitente', descripcion: 'Conexión inestable o velocidad reducida. Revisar cobertura.', prioridad: 'Media' },
-            'compartir-archivos': { titulo: 'Sin acceso a recursos compartidos', descripcion: 'No se ven carpetas de red. Verificar permisos y SMB.', prioridad: 'Media' }
-        }
-    },
-    email: {
-        problemas: {
-            'no-envia': { titulo: 'No se pueden enviar correos', descripcion: 'Mensajes atascados en bandeja de salida. Revisar SMTP.', prioridad: 'Alta' },
-            'no-recibe': { titulo: 'No llegan correos nuevos', descripcion: 'Bandeja no sincroniza. Revisar configuración IMAP/POP3.', prioridad: 'Alta' },
-            'outlook-no-abre': { titulo: 'Cliente de correo no inicia', descripcion: 'Outlook se cierra al abrir. Reparar perfil o recrear OST.', prioridad: 'Alta' },
-            'configurar-firma': { titulo: 'Configuración de firma', descripcion: 'Firma HTML corporativa. Configurar formato y datos.', prioridad: 'Baja' },
-            'recuperar-borrado': { titulo: 'Recuperación de correo eliminado', descripcion: 'Restaurar desde papelera o backup.', prioridad: 'Media' }
+            'sin-internet': { 
+                titulo: 'Sin conexión a internet', 
+                descripcion: 'No hay acceso a internet ni a la red corporativa.', 
+                prioridad: 'Critica' 
+            },
+            'vpn-caida': { 
+                titulo: 'VPN caída', 
+                descripcion: 'No se puede establecer conexión VPN con la empresa.', 
+                prioridad: 'Alta' 
+            },
+            'wifi-lento': { 
+                titulo: 'WiFi lento o intermitente', 
+                descripcion: 'La conexión inalámbrica es inestable o lenta.', 
+                prioridad: 'Media' 
+            },
+            'compartir-archivos': { 
+                titulo: 'No se ven carpetas compartidas', 
+                descripcion: 'Imposible acceder a recursos compartidos en red.', 
+                prioridad: 'Media' 
+            }
         }
     },
     impresion: {
         problemas: {
-            'impresora-oficina': { titulo: 'Impresora compartida offline', descripcion: 'No responde en red. Revisar cola de impresión y conectividad.', prioridad: 'Alta' },
-            'escaner-falla': { titulo: 'Escáner no funciona', descripcion: 'Error de digitalización. Revisar calibración y cristal.', prioridad: 'Media' },
-            'toner-agotado': { titulo: 'Consumible agotado', descripcion: 'Sin tinta o tóner. Reemplazar cartucho.', prioridad: 'Media' },
-            'instalar-impresora': { titulo: 'Instalación de nueva impresora', descripcion: 'Configurar driver y puerto de red.', prioridad: 'Baja' }
+            'impresora-no-funciona': { 
+                titulo: 'Impresora no funciona', 
+                descripcion: 'La impresora no responde o presenta error general.', 
+                prioridad: 'Alta' 
+            },
+            'falla-toner': { 
+                titulo: 'Falla de toner', 
+                descripcion: 'Problemas con el toner, cartucho o tinta.', 
+                prioridad: 'Media' 
+            },
+            'falla-imprimir': { 
+                titulo: 'Falla al imprimir', 
+                descripcion: 'La impresora no imprime o las impresiones salen mal.', 
+                prioridad: 'Alta' 
+            },
+            'instalar-impresora': { 
+                titulo: 'Instalar impresora nueva', 
+                descripcion: 'Configuración de nueva impresora en el equipo.', 
+                prioridad: 'Baja' 
+            }
         }
     },
     accesos: {
         problemas: {
-            'password-bloqueada': { titulo: 'Cuenta bloqueada', descripcion: 'Múltiples intentos fallidos. Desbloquear desde Active Directory.', prioridad: 'Critica' },
-            'reset-password': { titulo: 'Restablecimiento de contraseña', descripcion: 'Usuario olvidó credenciales. Generar contraseña temporal.', prioridad: 'Media' },
-            'acceso-carpeta': { titulo: 'Permisos de carpeta', descripcion: 'Sin acceso a directorio específico. Revisar ACL y grupos.', prioridad: 'Media' },
-            'crear-usuario': { titulo: 'Alta de nuevo usuario', descripcion: 'Onboarding: crear cuenta AD, email, VPN.', prioridad: 'Media' },
-            'bloquear-exempleado': { titulo: 'Baja de usuario', descripcion: 'Offboarding: desactivar cuenta y respaldar datos.', prioridad: 'Alta' }
+            'password-bloqueada': { 
+                titulo: 'Cuenta bloqueada', 
+                descripcion: 'La cuenta fue bloqueada por intentos fallidos.', 
+                prioridad: 'Critica' 
+            },
+            'reset-password': { 
+                titulo: 'Restablecer contraseña', 
+                descripcion: 'Olvidó la contraseña y necesita resetearla.', 
+                prioridad: 'Media' 
+            },
+            'acceso-carpeta': { 
+                titulo: 'Sin acceso a carpeta', 
+                descripcion: 'No tiene permisos para acceder a directorio específico.', 
+                prioridad: 'Media' 
+            },
+            'crear-usuario': { 
+                titulo: 'Crear nuevo usuario', 
+                descripcion: 'Alta de nuevo empleado en el sistema.', 
+                prioridad: 'Media' 
+            },
+            'bloquear-exempleado': { 
+                titulo: 'Bloquear cuenta de ex-empleado', 
+                descripcion: 'Desactivar accesos de personal que se va.', 
+                prioridad: 'Alta' 
+            },
+            'panel-alarma': { 
+                titulo: 'Sobre panel de alarma', 
+                descripcion: 'Consulta o problema con el panel de alarma.', 
+                prioridad: 'Media' 
+            },
+            'sensores-alarma': { 
+                titulo: 'Sensores de alarma', 
+                descripcion: 'Problemas con sensores del sistema de alarma.', 
+                prioridad: 'Media' 
+            },
+            'camaras-seguridad': { 
+                titulo: 'Cámaras de seguridad', 
+                descripcion: 'Consulta o falla en cámaras de vigilancia.', 
+                prioridad: 'Alta' 
+            }
         }
     },
     otros: {
         problemas: {
-            'consulta-general': { titulo: 'Consulta técnica', descripcion: 'Duda general sobre procedimiento o configuración.', prioridad: 'Baja' },
-            'compra-equipo': { titulo: 'Solicitud de hardware', descripcion: 'Requerimiento de nuevo equipo. Especificar necesidades.', prioridad: 'Baja' },
-            'urgencia-desconocida': { titulo: 'Incidente no catalogado', descripcion: 'Requiere análisis manual y diagnóstico.', prioridad: 'Media' }
+            'consulta-general': { 
+                titulo: 'Consulta general', 
+                descripcion: 'Duda o consulta no especificada.', 
+                prioridad: 'Baja' 
+            },
+            'compra-equipo': { 
+                titulo: 'Solicitud de compra de equipo', 
+                descripcion: 'Requerimiento de adquisición de nuevo hardware.', 
+                prioridad: 'Baja' 
+            },
+            'solicitud-presupuesto': { 
+                titulo: 'Solicitud de presupuesto', 
+                descripcion: 'Pedido de cotización para proyecto o compra.', 
+                prioridad: 'Media' 
+            },
+            'urgencia-desconocida': { 
+                titulo: 'Otro problema no listado', 
+                descripcion: 'Incidencia que no entra en las categorías anteriores.', 
+                prioridad: 'Media' 
+            }
         }
     }
 };
 
+// Referencias DOM
 const selectCategoria = document.getElementById('categoria');
 const campoProblema = document.getElementById('campo-problema');
 const selectProblema = document.getElementById('problema');
@@ -73,6 +178,7 @@ const form = document.getElementById('formTicket');
 
 let seleccionActual = null;
 
+// Cambio de categoría
 selectCategoria.addEventListener('change', function() {
     const cat = this.value;
     
@@ -85,7 +191,7 @@ selectCategoria.addEventListener('change', function() {
     }
     
     const problemas = catalogoProblemas[cat].problemas;
-    selectProblema.innerHTML = '<option value="">Seleccione el problema</option>';
+    selectProblema.innerHTML = '<option value="">Seleccione el problema...</option>';
     
     Object.entries(problemas).forEach(([key, info]) => {
         const opt = document.createElement('option');
@@ -101,6 +207,7 @@ selectCategoria.addEventListener('change', function() {
     btnEnviar.disabled = true;
 });
 
+// Cambio de problema específico
 selectProblema.addEventListener('change', function() {
     const cat = selectCategoria.value;
     const prob = this.value;
@@ -130,12 +237,13 @@ selectProblema.addEventListener('change', function() {
     btnEnviar.disabled = false;
 });
 
+// Submit
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const detalles = document.getElementById('detalles').value.trim();
     if (!detalles) {
-        alert('Por favor complete la descripción detallada del incidente.');
+        alert('Por favor complete la descripción detallada');
         document.getElementById('detalles').focus();
         return;
     }
@@ -171,8 +279,18 @@ form.addEventListener('submit', async (e) => {
             throw new Error(data.error);
         }
     } catch (err) {
-        alert('Error al enviar la solicitud. Por favor intente nuevamente.');
+        alert('Error al enviar: ' + err.message);
         btnEnviar.disabled = false;
         btnEnviar.textContent = 'Enviar Solicitud';
     }
+});
+
+// Enter para enviar
+document.querySelectorAll('input, select, textarea').forEach(input => {
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && !btnEnviar.disabled) {
+            e.preventDefault();
+            form.dispatchEvent(new Event('submit'));
+        }
+    });
 });
